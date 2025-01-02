@@ -1,0 +1,81 @@
+/**
+ * Unified Colors for the Footer Section
+ * Ensures consistent color usage and text readability.
+ */
+
+/* Define the primary color palette */
+:root {
+  --ifm-color-primary: #1e90ff; /* Light Blue */
+  --ifm-color-primary-dark: #187bcd;
+  --ifm-color-primary-darker: #1569b3;
+  --ifm-color-primary-darkest: #125899;
+  --ifm-color-primary-light: #4fa3ff;
+  --ifm-color-primary-lighter: #75b5ff;
+  --ifm-color-primary-lightest: #9dc7ff;
+
+  --footer-bg-color: #1e90ff; /* Footer Background Color */
+  --footer-text-color: #ffffff; /* Footer Text Color */
+  --footer-link-color: #4fa3ff; /* Footer Link Color */
+  --footer-link-hover-color: #ffffff; /* Footer Link Hover Color */
+
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] {
+  --footer-bg-color: #1569b3; /* Darker background for dark mode */
+  --footer-text-color: #e0f7ff; /* Slightly dimmed text color for readability */
+  --footer-link-color: #9dc7ff; /* Lighter link color for dark mode */
+  --footer-link-hover-color: #ffffff; /* Hover color remains consistent */
+  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.2);
+}
+
+/**
+ * Improved Contrast for Footer Text and Links
+ */
+
+ :root {
+  --footer-bg-color: #1e90ff; /* Bright blue background */
+  --footer-text-color: #ffffff; /* Pure white for clear text */
+  --footer-link-color: #e0f7ff; /* Light cyan for links */
+  --footer-link-hover-color: #ffffff; /* White for link hover */
+}
+
+[data-theme="dark"] {
+  --footer-bg-color: #1569b3; /* Darker blue for dark mode */
+  --footer-text-color: #ffffff; /* White text */
+  --footer-link-color: #cce7ff; /* Light blue links */
+  --footer-link-hover-color: #ffffff; /* White hover */
+}
+
+/* Footer Styling */
+.footer {
+  background-color: var(--footer-bg-color); /* Unified background color */
+  color: var(--footer-text-color); /* Ensure maximum contrast for text */
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer a {
+  color: var(--footer-link-color); /* Links with sufficient contrast */
+  text-decoration: none;
+  font-weight: bold; /* Make links stand out */
+}
+
+.footer a:hover {
+  color: var(--footer-link-hover-color); /* Hover effect */
+  text-decoration: underline;
+}
+
+.footer__links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 15px 0;
+}
+
+.footer__text {
+  font-size: 0.9rem;
+  line-height: 1.6;
+}

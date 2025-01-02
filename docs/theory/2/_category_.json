@@ -1,0 +1,8 @@
+{
+  "label": "Sensor Data Processing I",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Explore sensor data processing fundamentals, including image segmentation, point cloud segmentation, and object detection tasks and solutions."
+  }
+}

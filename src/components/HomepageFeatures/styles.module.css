@@ -1,0 +1,33 @@
+.features {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.featureSvg {
+  height: 200px;
+  width: 200px;
+}
+
+
+.features {
+  padding: 2rem 0;
+}
+
+.featureSvg {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 1rem;
+}
+
+.col {
+  margin-bottom: 2rem; /* Adds spacing between rows */
+}
+
+
+.placeholder {
+  width: 100px;
+  height: 100px;
+  background-color: transparent;
+}

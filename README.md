@@ -1,97 +1,64 @@
-# Automated and Connected Driving Challenges (ACDC)
+# Automated and Connected Driving Challenges
 
-Welcome to the **Automated and Connected Driving Challenges (ACDC)** repository. This repository complements the [ACDC - MOOC](https://learning.edx.org/course/course-v1:RWTHx+ACDC+3T2023/home) offered by RWTH Aachen University on edX. The course provides insights into the development and testing of automated and connected driving functions, guiding participants through the prototypical development of an automated vehicle.
+This repository complements the [ACDC MOOC](https://learning.edx.org/course/course-v1:RWTHx+ACDC+3T2023/home) offered by RWTH Aachen University. The course provides a comprehensive guide to the development and testing of automated and connected driving functions.
 
 ---
 
 ## Course Overview
 
-The ACDC course introduces participants to the latest research challenges in automated and connected driving. It offers a step-by-step approach to developing and testing driving functions, covering topics such as sensor data processing, environment modeling, trajectory planning, and vehicle guidance. The course utilizes the Robot Operating System (ROS) for implementing software modules.
+This **MOOC** introduces participants to key concepts in automated and connected driving, combining theoretical knowledge with practical implementation. Topics include:
+
+- **Sensor Data Processing:** Techniques like segmentation, object detection, and grid mapping.
+- **Environment Modeling and Prediction:** Methods for creating a digital twin of the driving environment.
+- **Vehicle Guidance and Control:** Navigation, trajectory planning, and stabilization.
+- **Connected Driving:** Understanding Vehicle-to-Everything (V2X) communication.
+
+The course employs the **Robot Operating System (ROS)** as the backbone for building software modules.
 
 ---
 
 ## Repository Contents
 
-This repository contains Jupyter Notebook programming tasks designed to reinforce the concepts covered in the ACDC course. The notebooks are organized into sections corresponding to the course modules:
+This repository is structured to align with the ACDC course modules. It includes:
 
-- **Section 1: Introduction & Robot Operating System**
+1. **Jupyter Notebooks:** Hands-on exercises for Python and ROS programming.
+2. **ROS Implementation Examples:** Demonstrations of foundational ROS concepts like nodes, topics, and services.
+3. **Coding Assignments:** Tasks that build practical skills in topics like object tracking, navigation, and cloud integration.
+
+### Modules:
+
+- **Section 1: Introduction & Tools**
 - **Section 2: Sensor Data Processing**
-- **Section 3: Object Fusion and Tracking**
+- **Section 3: Object Fusion & Tracking**
 - **Section 4: Vehicle Guidance**
 - **Section 5: Connected Driving**
 
-Each section includes exercises and examples to facilitate hands-on learning.
-
----
-
-## mdBook Documentation
-
-We provide an **mdBook** for structured, user-friendly documentation to enhance your learning experience.
-
-### How to Use the mdBook
-
-1. **Clone the Repository:**
-
-   ```bash
-   git clone https://github.com/ika-rwth-aachen/acdc-notebooks.git
-   ```
-
-2. **Navigate to the `mdBook` Directory:**
-
-   ```bash
-   cd acdc-notebooks/mdbook
-   ```
-
-3. **Install mdBook:**
-
-   Ensure you have Rust installed. If not, install Rust using [rustup](https://rustup.rs/).
-
-   ```bash
-   cargo install mdbook
-   ```
-
-4. **Serve the Documentation Locally:**
-
-   Run the following command to serve the book locally:
-
-   ```bash
-   mdbook serve
-   ```
-
-   The documentation will be accessible at `http://localhost:3000`.
-
-5. **Build the Documentation (Optional):**
-
-   To generate the static files for the documentation:
-
-   ```bash
-   mdbook build
-   ```
-
-   The output will be available in the `book` directory.
+Each module includes coding assignments, quizzes, and additional resources.
 
 ---
 
 ## Getting Started
 
-To get started with the notebooks:
+### Prerequisites
+
+1. **Python** (3.8 or later) and **Jupyter Notebook**.
+2. **ROS** (Noetic or ROS 2 Humble).
+3. **Docker** for isolated development environments.
+4. **Node.js** for serving Docusaurus documentation (optional).
+
+### Steps
 
 1. **Clone the Repository:**
-
    ```bash
    git clone https://github.com/ika-rwth-aachen/acdc-notebooks.git
    ```
 
 2. **Navigate to the Directory:**
-
    ```bash
    cd acdc-notebooks
    ```
 
 3. **Set Up the Environment:**
-
-   Ensure you have Python and Jupyter Notebook installed. You can create a virtual environment and install the required dependencies using:
-
    ```bash
    python3 -m venv acdc-env
    source acdc-env/bin/activate
@@ -99,31 +66,45 @@ To get started with the notebooks:
    ```
 
 4. **Launch Jupyter Notebook:**
-
    ```bash
    jupyter notebook
    ```
 
-5. **Access the Notebooks:**
+5. **Access Notebooks:** Open the desired section and start learning!
 
-   In the Jupyter interface, navigate to the desired section and open the corresponding notebook to begin.
+---
+
+## Documentation
+
+I utilize **Docusaurus** for structured documentation. Follow these steps to serve the docs locally:
+
+1. **Install Dependencies:**
+   ```bash
+   npm install
+   ```
+
+2. **Serve Locally:**
+   ```bash
+   npm start
+   ```
+   Access at `http://localhost:3000`.
+
+3. **Build Static Files (Optional):**
+   ```bash
+   npm run build
+   ```
+   The static files will be generated in the `build` directory.
 
 ---
 
 ## Additional Resources
 
-- **Course Wiki:** For detailed information and additional resources, visit the [ACDC Wiki](https://github.com/ika-rwth-aachen/acdc/wiki).
-
-- **edX Course Page:** Enroll in the course and access all materials on the [edX platform](https://learning.edx.org/course/course-v1:RWTHx+ACDC+3T2023/home).
-
----
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+- **[ACDC Wiki](https://github.com/ika-rwth-aachen/acdc/wiki):** Comprehensive details about course content and tasks.
+- **[edX Course Page](https://learning.edx.org/course/course-v1:RWTHx+ACDC+3T2023/home):** Enroll to access all materials.
+- **[ROS Resources](https://www.ros.org/):** Documentation and community support.
 
 ---
 
 ## Acknowledgments
 
-This course and repository are developed by the Institute for Automotive Engineering (ika) at RWTH Aachen University. We thank all contributors and participants for their support and engagement.
+This project is developed by the **Institute for Automotive Engineering (ika)** at RWTH Aachen University. Special thanks to all contributors and participants for advancing the field of automated and connected driving.
