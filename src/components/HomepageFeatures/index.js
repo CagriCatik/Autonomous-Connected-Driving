@@ -5,7 +5,7 @@ import styles from './styles.module.css';
 const FeatureList = [
   {
     title: 'Sensor Data Processing',
-    Svg: require('@site/static/img/sensor.png').default,
+    //Svg: require('@site/static/img/sensor.png').default,
     description: (
       <>
         Leverage advanced algorithms to process and interpret raw data from
@@ -15,7 +15,7 @@ const FeatureList = [
   },
   {
     title: 'Object Fusion and Tracking',
-    Svg: require('@site/static/img/nav.png').default,
+    //Svg: require('@site/static/img/nav.png').default,
     description: (
       <>
         Integrate data from multiple sensors to track objects seamlessly,
@@ -25,7 +25,7 @@ const FeatureList = [
   },
   {
     title: 'Vehicle Guidance',
-    Svg: require('@site/static/img/gyro.png').default,
+    //Svg: require('@site/static/img/gyro.png').default,
     description: (
       <>
         Implement precise trajectory planning and control mechanisms to navigate
@@ -35,7 +35,7 @@ const FeatureList = [
   },
   {
     title: 'Connected Driving',
-    Svg: require('@site/static/img/gps.png').default,
+    //Svg: require('@site/static/img/gps.png').default,
     description: (
       <>
         Enable vehicle-to-vehicle (V2V) and vehicle-to-infrastructure (V2I)
@@ -46,6 +46,27 @@ const FeatureList = [
 ];
 
 
+function Feature({ title, description }) {
+  return (
+    <div className={clsx('col col--6')}>
+      <div className="text--center">
+        <div
+          style={{
+            width: '100px', // Adjust the width as needed
+            height: '100px', // Adjust the height as needed
+            backgroundColor: 'transparent', // Optional: set background color
+          }}
+        ></div>
+      </div>
+      <div className="text--center padding-horiz--md">
+        <Heading as="h3">{title}</Heading>
+        <p>{description}</p>
+      </div>
+    </div>
+  );
+}
+
+/*
 function Feature({ Svg, title, description }) {
   return (
     <div className={clsx('col col--6')}>
@@ -65,6 +86,7 @@ function Feature({ Svg, title, description }) {
     </div>
   );
 }
+*/
 
 
 /*

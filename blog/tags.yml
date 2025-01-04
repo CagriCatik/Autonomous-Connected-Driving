@@ -1,0 +1,10 @@
+# tags.yml
+
+Autonomous Driving:
+  description: "Content related to autonomous driving technologies, systems, and research."
+
+edX:
+  description: "Resources and materials associated with edX courses and programs."
+
+RWTH Aachen:
+  description: "Information and updates pertaining to RWTH Aachen University."
