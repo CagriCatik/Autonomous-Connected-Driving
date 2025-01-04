@@ -1,8 +1,0 @@
-{
-  "label": "Introduction & Tools",
-  "position": 2,
-  "link": {
-    "type": "generated-index",
-    "description": "Learn the fundamentals of the Robot Operating System and explore tools and techniques essential for Automated and Connected Driving Challenges."
-  }
-}

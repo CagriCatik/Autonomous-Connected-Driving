@@ -80,6 +80,8 @@ const config = {
           alt: 'My Site Logo',
           src: 'img/logo.png',
         },*/
+
+        /*
         items: [
           {
             type: 'docSidebar',
@@ -120,14 +122,16 @@ const config = {
             position: 'left',
             label: 'ROS2',
           },
-          */
+          
           {to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/facebook/docusaurus',
             label: 'GitHub',
             position: 'right',
           },
+          x
         ],
+        */
       },
       footer: {
         style: 'dark',
@@ -139,12 +143,15 @@ const config = {
                 label: 'Theory',
                 to: '/docs/category/before-you-begin',
               },
+              /*
               {
                 label: 'Tasks',
                 to: '/docs/category/introduction--tools-1',
               },
+              */
             ],
           },
+          /*
           {
             title: 'Coding',
             items: [
@@ -184,6 +191,7 @@ const config = {
               },
             ],
           },
+          */
         ],
         copyright: `Copyright © ${new Date().getFullYear()} - Automated and Connected Driving.`,
       },
