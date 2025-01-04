@@ -89,7 +89,7 @@ const config = {
           src: 'img/logo.png',
         },*/
 
-        /*
+        
         items: [
           {
             type: 'docSidebar',
@@ -97,14 +97,15 @@ const config = {
             position: 'left',
             label: 'Theory',
           },
-          /*
+          
           {
             type: 'docSidebar',
             sidebarId: 'taskSidebar',
             position: 'left',
             label: 'Tasks',
           },
-          
+
+          /*
           {
             type: 'docSidebar',
             sidebarId: 'cppSidebar',
@@ -137,9 +138,9 @@ const config = {
             label: 'GitHub',
             position: 'right',
           },
-          x
+          */
         ],
-        */
+        
       },
       footer: {
         style: 'dark',
