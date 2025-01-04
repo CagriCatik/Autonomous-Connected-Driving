@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkacd=self.webpackChunkacd||[]).push([[147],{8048:e=>{e.exports=JSON.parse('{"metadata":{"permalink":"/Autonomous-Connected-Driving/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":3,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);
