@@ -1,8 +1,6 @@
-# Automated and Connected Driving Challenges
+# Automated and Connected Driving
 
 This repository complements the [ACDC MOOC](https://learning.edx.org/course/course-v1:RWTHx+ACDC+3T2023/home) offered by RWTH Aachen University. The course provides a comprehensive guide to the development and testing of automated and connected driving functions.
-
----
 
 ## Course Overview
 
@@ -14,8 +12,6 @@ This **MOOC** introduces participants to key concepts in automated and connected
 - **Connected Driving:** Understanding Vehicle-to-Everything (V2X) communication.
 
 The course employs the **Robot Operating System (ROS)** as the backbone for building software modules.
-
----
 
 ## Repository Contents
 
@@ -34,8 +30,6 @@ This repository is structured to align with the ACDC course modules. It includes
 - **Section 5: Connected Driving**
 
 Each module includes coding assignments, quizzes, and additional resources.
-
----
 
 ## Getting Started
 
@@ -72,8 +66,6 @@ Each module includes coding assignments, quizzes, and additional resources.
 
 5. **Access Notebooks:** Open the desired section and start learning!
 
----
-
 ## Documentation
 
 I utilize **Docusaurus** for structured documentation. Follow these steps to serve the docs locally:
@@ -95,15 +87,11 @@ I utilize **Docusaurus** for structured documentation. Follow these steps to ser
    ```
    The static files will be generated in the `build` directory.
 
----
-
 ## Additional Resources
 
 - **[ACDC Wiki](https://github.com/ika-rwth-aachen/acdc/wiki):** Comprehensive details about course content and tasks.
 - **[edX Course Page](https://learning.edx.org/course/course-v1:RWTHx+ACDC+3T2023/home):** Enroll to access all materials.
 - **[ROS Resources](https://www.ros.org/):** Documentation and community support.
-
----
 
 ## Acknowledgments
 
