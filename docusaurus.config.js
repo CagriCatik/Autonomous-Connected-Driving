@@ -26,7 +26,8 @@ const config = {
   projectName: 'docusaurus', // Usually your repo name.
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenMarkdownLinks: 'ignore',
+  //onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -180,7 +181,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} - Automated and Connected Driving -  Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} - Automated and Connected Driving.`,
       },
       prism: {
         theme: prismThemes.github,
