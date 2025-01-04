@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="atom.xsl"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://your-docusaurus-site.example.com/blog</id>
+    <id>https://cagricatik.github.io/Autonomous-Connected-Driving/blog</id>
     <title>Automated and Connected Driving Blog</title>
     <updated>2025-01-07T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://your-docusaurus-site.example.com/blog"/>
+    <link rel="alternate" href="https://cagricatik.github.io/Autonomous-Connected-Driving/blog"/>
     <subtitle>Automated and Connected Driving Blog</subtitle>
-    <icon>https://your-docusaurus-site.example.com/img/favicon.ico</icon>
+    <icon>https://cagricatik.github.io/Autonomous-Connected-Driving/img/favicon.ico</icon>
     <entry>
         <title type="html"><![CDATA[WTF is ACDC?]]></title>
-        <id>https://your-docusaurus-site.example.com/blog/acdc-edX</id>
-        <link href="https://your-docusaurus-site.example.com/blog/acdc-edX"/>
+        <id>https://cagricatik.github.io/Autonomous-Connected-Driving/blog/acdc-edX</id>
+        <link href="https://cagricatik.github.io/Autonomous-Connected-Driving/blog/acdc-edX"/>
         <updated>2025-01-07T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[An unfiltered, brutally critical take on the first week of the ACDC course—where ambition meets poor execution.]]></summary>
         <content type="html"><![CDATA[<p>An unfiltered, brutally critical take on the first week of the ACDC course—where ambition meets poor execution.</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="acdc-bold-promises-mild-deliveries">ACDC: Bold Promises, Mild Deliveries<a href="https://your-docusaurus-site.example.com/blog/acdc-edX#acdc-bold-promises-mild-deliveries" class="hash-link" aria-label="Direct link to ACDC: Bold Promises, Mild Deliveries" title="Direct link to ACDC: Bold Promises, Mild Deliveries">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="acdc-bold-promises-mild-deliveries">ACDC: Bold Promises, Mild Deliveries<a href="https://cagricatik.github.io/Autonomous-Connected-Driving/blog/acdc-edX#acdc-bold-promises-mild-deliveries" class="hash-link" aria-label="Direct link to ACDC: Bold Promises, Mild Deliveries" title="Direct link to ACDC: Bold Promises, Mild Deliveries">​</a></h3>
 <p>The Automated and Connected Driving Challenges course is an ambitious, sprawling beast. Marketed as your gateway to mastering the future of mobility, it teeters somewhere between a groundbreaking educational experience and a chaotic circus of lofty ideals, half-baked tutorials, and endless technical hurdles. Let’s peel back the layers of this onion.</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="ambition-dream-big-fail-small">Ambition: Dream Big, Fail Small<a href="https://your-docusaurus-site.example.com/blog/acdc-edX#ambition-dream-big-fail-small" class="hash-link" aria-label="Direct link to Ambition: Dream Big, Fail Small" title="Direct link to Ambition: Dream Big, Fail Small">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="ambition-dream-big-fail-small">Ambition: Dream Big, Fail Small<a href="https://cagricatik.github.io/Autonomous-Connected-Driving/blog/acdc-edX#ambition-dream-big-fail-small" class="hash-link" aria-label="Direct link to Ambition: Dream Big, Fail Small" title="Direct link to Ambition: Dream Big, Fail Small">​</a></h3>
 <p>The course proudly proclaims its mission: <em>"Prepare students for interdisciplinary research and inspire them to shape the future of mobility."</em> A noble goal, but let’s call a spade a spade. Most of us aren’t here to write groundbreaking papers or revolutionize automotive engineering. We’re here for practical skills, employable knowledge, and let’s be honest—a certificate to pad the resume.</p>
 <p>Instead, you get drowned in concepts like "connected mobility" and "interdisciplinary function development." Translation: a lot of jargon, very little actionable knowledge. By week two, you’ll be asking yourself if you accidentally signed up for a philosophy course.</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="ros-the-holy-grail-or-just-plumbing">ROS: The Holy Grail or Just Plumbing?<a href="https://your-docusaurus-site.example.com/blog/acdc-edX#ros-the-holy-grail-or-just-plumbing" class="hash-link" aria-label="Direct link to ROS: The Holy Grail or Just Plumbing?" title="Direct link to ROS: The Holy Grail or Just Plumbing?">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="ros-the-holy-grail-or-just-plumbing">ROS: The Holy Grail or Just Plumbing?<a href="https://cagricatik.github.io/Autonomous-Connected-Driving/blog/acdc-edX#ros-the-holy-grail-or-just-plumbing" class="hash-link" aria-label="Direct link to ROS: The Holy Grail or Just Plumbing?" title="Direct link to ROS: The Holy Grail or Just Plumbing?">​</a></h3>
 <p>Ah, Robot Operating System (ROS)—the cornerstone of ACDC’s curriculum. Praised for its open-source charm and "lightweight" architecture, it’s positioned as the savior of automated systems. But let’s face it: ROS is only lightweight until you spend six hours debugging your first node, then realize it’s because of a missing package buried in the 37th subfolder.</p>
 <p>The course promises to teach you ROS foundations, but it glosses over the fact that mastering ROS is like learning a new language while blindfolded. And then there’s ROS2—the younger, fancier sibling that everyone claims is the future, yet half the tools you need are still in beta. It’s like being told to learn Windows Vista because Windows 11 isn’t quite ready.</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="assignments-hands-on-learning-or-just-busy-work">Assignments: "Hands-On Learning" or Just Busy Work?<a href="https://your-docusaurus-site.example.com/blog/acdc-edX#assignments-hands-on-learning-or-just-busy-work" class="hash-link" aria-label="Direct link to Assignments: &quot;Hands-On Learning&quot; or Just Busy Work?" title="Direct link to Assignments: &quot;Hands-On Learning&quot; or Just Busy Work?">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="assignments-hands-on-learning-or-just-busy-work">Assignments: "Hands-On Learning" or Just Busy Work?<a href="https://cagricatik.github.io/Autonomous-Connected-Driving/blog/acdc-edX#assignments-hands-on-learning-or-just-busy-work" class="hash-link" aria-label="Direct link to Assignments: &quot;Hands-On Learning&quot; or Just Busy Work?" title="Direct link to Assignments: &quot;Hands-On Learning&quot; or Just Busy Work?">​</a></h3>
 <p>The coding assignments sound exciting on paper. Python, C++, Jupyter Notebooks—it’s a buffet of tech tools. But the execution? Let’s just say the phrase "figure it out yourself" should be in the course syllabus. The assignments oscillate between "too simplistic to be useful" and "so complex that only the professor’s pet can solve them."</p>
 <p>What’s worse, the feedback system is non-existent. Did you submit code that barely compiles? Great, here’s a generic "good effort" badge. There’s no meaningful guidance to help you understand why your node keeps crashing, just a vague suggestion to "check the documentation"—because we all know ROS documentation is a joy to navigate.</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="tools-death-by-overengineering">Tools: Death by Overengineering<a href="https://your-docusaurus-site.example.com/blog/acdc-edX#tools-death-by-overengineering" class="hash-link" aria-label="Direct link to Tools: Death by Overengineering" title="Direct link to Tools: Death by Overengineering">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="tools-death-by-overengineering">Tools: Death by Overengineering<a href="https://cagricatik.github.io/Autonomous-Connected-Driving/blog/acdc-edX#tools-death-by-overengineering" class="hash-link" aria-label="Direct link to Tools: Death by Overengineering" title="Direct link to Tools: Death by Overengineering">​</a></h3>
 <p>Linux, Docker, GitHub, Jupyter—on their own, these tools are powerful. Together, they form a chaotic labyrinth that only seasoned developers can navigate. The course throws you into the deep end with these tools, expecting you to swim without a lifejacket. New to Docker? Too bad. Don’t know Git? Hope you like Googling.</p>
 <p>And then there’s the infamous GitHub Issues. The course encourages collaboration by having students log their problems as issues. Sounds great, right? Until you realize that half the issues are duplicates, and the other half are barely legible cries for help.</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="the-a-model-a-masterpiece-of-overcomplication">The A-Model: A Masterpiece of Overcomplication<a href="https://your-docusaurus-site.example.com/blog/acdc-edX#the-a-model-a-masterpiece-of-overcomplication" class="hash-link" aria-label="Direct link to The A-Model: A Masterpiece of Overcomplication" title="Direct link to The A-Model: A Masterpiece of Overcomplication">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="the-a-model-a-masterpiece-of-overcomplication">The A-Model: A Masterpiece of Overcomplication<a href="https://cagricatik.github.io/Autonomous-Connected-Driving/blog/acdc-edX#the-a-model-a-masterpiece-of-overcomplication" class="hash-link" aria-label="Direct link to The A-Model: A Masterpiece of Overcomplication" title="Direct link to The A-Model: A Masterpiece of Overcomplication">​</a></h3>
 <p>The A-Model diagrams are a recurring feature, meant to show the intricacies of automated driving. In reality, they’re a beautiful mess of arrows, boxes, and terms like "Maneuver Planning" and "Stabilization." They look fantastic in a presentation but are about as useful as a chocolate teapot when it comes to actual implementation. Good luck applying them to a real-world problem.</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="objectivity-check-is-it-all-bad">Objectivity Check: Is It All Bad?<a href="https://your-docusaurus-site.example.com/blog/acdc-edX#objectivity-check-is-it-all-bad" class="hash-link" aria-label="Direct link to Objectivity Check: Is It All Bad?" title="Direct link to Objectivity Check: Is It All Bad?">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="objectivity-check-is-it-all-bad">Objectivity Check: Is It All Bad?<a href="https://cagricatik.github.io/Autonomous-Connected-Driving/blog/acdc-edX#objectivity-check-is-it-all-bad" class="hash-link" aria-label="Direct link to Objectivity Check: Is It All Bad?" title="Direct link to Objectivity Check: Is It All Bad?">​</a></h3>
 <p>No, it’s not all bad. ACDC does introduce you to some genuinely valuable concepts. The focus on ROS and its integration into connected driving is relevant, and the community-driven approach has potential. If you’re disciplined, resourceful, and willing to fill in the gaps yourself, there’s a lot to gain here.</p>
 <p>But let’s not sugarcoat the truth: this course demands more from you than it gives back. It’s like a bad gym trainer—happy to yell at you to lift more weight but unwilling to show you proper form.</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="the-verdict-proceed-with-caution">The Verdict: Proceed with Caution<a href="https://your-docusaurus-site.example.com/blog/acdc-edX#the-verdict-proceed-with-caution" class="hash-link" aria-label="Direct link to The Verdict: Proceed with Caution" title="Direct link to The Verdict: Proceed with Caution">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="the-verdict-proceed-with-caution">The Verdict: Proceed with Caution<a href="https://cagricatik.github.io/Autonomous-Connected-Driving/blog/acdc-edX#the-verdict-proceed-with-caution" class="hash-link" aria-label="Direct link to The Verdict: Proceed with Caution" title="Direct link to The Verdict: Proceed with Caution">​</a></h3>
 <p>ACDC is not for the faint of heart. It’s a whirlwind of concepts, tools, and expectations that assumes you already know half the material. If you’re here for a polished, beginner-friendly experience, you’re in the wrong place. But if you enjoy chaos, have a masochistic streak, and are willing to teach yourself most of the content, ACDC might just work for you.</p>
 <p>Just don’t forget to caffeinate. Heavily.</p>
 <hr>
@@ -50,17 +50,17 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[ROS, ROS2, and the Art of Wasting Time]]></title>
-        <id>https://your-docusaurus-site.example.com/blog/acdc-edX-ros</id>
-        <link href="https://your-docusaurus-site.example.com/blog/acdc-edX-ros"/>
+        <id>https://cagricatik.github.io/Autonomous-Connected-Driving/blog/acdc-edX-ros</id>
+        <link href="https://cagricatik.github.io/Autonomous-Connected-Driving/blog/acdc-edX-ros"/>
         <updated>2025-01-04T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[A scathing critique of ACDC's decision to introduce both ROS and ROS2 in Week 1—because who doesn’t love learning outdated tech alongside its replacement?]]></summary>
         <content type="html"><![CDATA[<p>ROS, ROS2, and the Fine Line Between Ambition and Absurdity.</p>
 <p>Week 1 of ACDC introduces you to the <em>foundation</em> of robotics development: the Robot Operating System (ROS). But why stop at one system when you can overload students with <strong>two</strong>? That’s right—ACDC has decided to teach both ROS and ROS2 at the same time, in what can only be described as an exercise in futility.</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="ros-vs-ros2-a-tale-of-two-systems">ROS vs. ROS2: A Tale of Two Systems<a href="https://your-docusaurus-site.example.com/blog/acdc-edX-ros#ros-vs-ros2-a-tale-of-two-systems" class="hash-link" aria-label="Direct link to ROS vs. ROS2: A Tale of Two Systems" title="Direct link to ROS vs. ROS2: A Tale of Two Systems">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="ros-vs-ros2-a-tale-of-two-systems">ROS vs. ROS2: A Tale of Two Systems<a href="https://cagricatik.github.io/Autonomous-Connected-Driving/blog/acdc-edX-ros#ros-vs-ros2-a-tale-of-two-systems" class="hash-link" aria-label="Direct link to ROS vs. ROS2: A Tale of Two Systems" title="Direct link to ROS vs. ROS2: A Tale of Two Systems">​</a></h2>
 <p>For the uninitiated, ROS (Robot Operating System) is an open-source framework for robotics development that’s been around for over a decade. ROS2 is its younger, shinier sibling, designed to address the flaws of its predecessor. Sounds great, right? Except there’s one glaring problem:</p>
 <p><strong>ROS is on its way out.</strong> Its most recent distribution, Noetic, reaches end-of-life in 2025. Meanwhile, ROS2 is actively being developed, with support for modern features like real-time communication and multi-threading.</p>
 <p>So why, in the name of all that is logical, does ACDC insist on teaching both simultaneously? Are we supposed to master outdated tech while also grappling with its replacement? If ROS2 is the future, why not just focus on that?</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="the-problem-with-teaching-two-systems-at-once">The Problem with Teaching Two Systems at Once<a href="https://your-docusaurus-site.example.com/blog/acdc-edX-ros#the-problem-with-teaching-two-systems-at-once" class="hash-link" aria-label="Direct link to The Problem with Teaching Two Systems at Once" title="Direct link to The Problem with Teaching Two Systems at Once">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="the-problem-with-teaching-two-systems-at-once">The Problem with Teaching Two Systems at Once<a href="https://cagricatik.github.io/Autonomous-Connected-Driving/blog/acdc-edX-ros#the-problem-with-teaching-two-systems-at-once" class="hash-link" aria-label="Direct link to The Problem with Teaching Two Systems at Once" title="Direct link to The Problem with Teaching Two Systems at Once">​</a></h2>
 <ol>
 <li>
 <p><strong>Split Focus, Split Sanity</strong><br>
@@ -79,18 +79,18 @@
 <!-- -->The course tries to justify this madness by suggesting that both systems are still relevant. Sure, some legacy projects still use ROS, but industry trends clearly favor ROS2. If the goal is to prepare students for the future, why anchor them to the past?</p>
 </li>
 </ol>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="the-practical-nightmare">The Practical Nightmare<a href="https://your-docusaurus-site.example.com/blog/acdc-edX-ros#the-practical-nightmare" class="hash-link" aria-label="Direct link to The Practical Nightmare" title="Direct link to The Practical Nightmare">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="the-practical-nightmare">The Practical Nightmare<a href="https://cagricatik.github.io/Autonomous-Connected-Driving/blog/acdc-edX-ros#the-practical-nightmare" class="hash-link" aria-label="Direct link to The Practical Nightmare" title="Direct link to The Practical Nightmare">​</a></h2>
 <p>Let’s talk about implementation. Week 1 expects you to dive into ROS basics like nodes, topics, and messages, while also introducing ROS2 features like DDS (Data Distribution Service). The result? Pure chaos.</p>
 <ul>
 <li><strong>Tool Overload</strong>: You’re forced to install and juggle tools for both systems, each with their quirks. Want to use RVIZ? Make sure you’re running the right version for the right system.</li>
 <li><strong>Conflicting Commands</strong>: ROS commands start with <code>ros</code>, while ROS2 commands start with <code>ros2</code>. Simple enough—until you accidentally mix them up and spend an hour troubleshooting why your topic isn’t publishing.</li>
 <li><strong>Double the Bugs</strong>: ROS is infamous for its dependency hell. ROS2 improves on this but introduces its own set of quirks. Now imagine dealing with bugs from both systems simultaneously. Fun times.</li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="the-missed-opportunity">The Missed Opportunity<a href="https://your-docusaurus-site.example.com/blog/acdc-edX-ros#the-missed-opportunity" class="hash-link" aria-label="Direct link to The Missed Opportunity" title="Direct link to The Missed Opportunity">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="the-missed-opportunity">The Missed Opportunity<a href="https://cagricatik.github.io/Autonomous-Connected-Driving/blog/acdc-edX-ros#the-missed-opportunity" class="hash-link" aria-label="Direct link to The Missed Opportunity" title="Direct link to The Missed Opportunity">​</a></h2>
 <p>This could’ve been a fantastic chance to focus entirely on ROS2, equipping students with cutting-edge skills. Instead, the course wastes time teaching a dying system, leaving students with a fragmented understanding of both. It’s like being handed two half-built bicycles and told to ride them at the same time.</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="the-objective-perspective-because-fairness-is-overrated">The Objective Perspective (Because Fairness is Overrated)<a href="https://your-docusaurus-site.example.com/blog/acdc-edX-ros#the-objective-perspective-because-fairness-is-overrated" class="hash-link" aria-label="Direct link to The Objective Perspective (Because Fairness is Overrated)" title="Direct link to The Objective Perspective (Because Fairness is Overrated)">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="the-objective-perspective-because-fairness-is-overrated">The Objective Perspective (Because Fairness is Overrated)<a href="https://cagricatik.github.io/Autonomous-Connected-Driving/blog/acdc-edX-ros#the-objective-perspective-because-fairness-is-overrated" class="hash-link" aria-label="Direct link to The Objective Perspective (Because Fairness is Overrated)" title="Direct link to The Objective Perspective (Because Fairness is Overrated)">​</a></h2>
 <p>Yes, ROS has historical significance, and some industries still use it. But the decision to teach both ROS and ROS2 in parallel lacks foresight. ACDC claims to prepare students for the future, but clinging to ROS feels like preparing for a horse-drawn carriage comeback.</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="final-thoughts-pick-a-lane-acdc">Final Thoughts: Pick a Lane, ACDC<a href="https://your-docusaurus-site.example.com/blog/acdc-edX-ros#final-thoughts-pick-a-lane-acdc" class="hash-link" aria-label="Direct link to Final Thoughts: Pick a Lane, ACDC" title="Direct link to Final Thoughts: Pick a Lane, ACDC">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="final-thoughts-pick-a-lane-acdc">Final Thoughts: Pick a Lane, ACDC<a href="https://cagricatik.github.io/Autonomous-Connected-Driving/blog/acdc-edX-ros#final-thoughts-pick-a-lane-acdc" class="hash-link" aria-label="Direct link to Final Thoughts: Pick a Lane, ACDC" title="Direct link to Final Thoughts: Pick a Lane, ACDC">​</a></h2>
 <p>The simultaneous introduction of ROS and ROS2 isn’t just unnecessary—it’s a disservice to students. It splits focus, wastes time, and muddles the learning experience. If ACDC wants to be taken seriously, it needs to stop living in the past and commit to the future.</p>
 <p>For now, we’ll keep flipping between ROS and ROS2, wondering if this dual approach is an elaborate prank. Thanks, ACDC.</p>
 <hr>
@@ -107,14 +107,14 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[A-Model? Overengineered Mess?]]></title>
-        <id>https://your-docusaurus-site.example.com/blog/a-model-critique</id>
-        <link href="https://your-docusaurus-site.example.com/blog/a-model-critique"/>
+        <id>https://cagricatik.github.io/Autonomous-Connected-Driving/blog/a-model-critique</id>
+        <link href="https://cagricatik.github.io/Autonomous-Connected-Driving/blog/a-model-critique"/>
         <updated>2025-01-02T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[A critical look at the A-Model for automated driving, its practical relevance, and the academic obsession with overengineered process models.]]></summary>
         <content type="html"><![CDATA[<p>A critical look at the A-Model for automated driving, its practical relevance, and the academic obsession with overengineered process models.</p>
 <p>Every field has its overly complicated, buzzword-heavy frameworks that are more about looking impressive than actually being useful. In automated driving, the <strong>A-Model</strong> takes the crown. It’s a sprawling, overly ambitious diagram that tries to encapsulate everything from sensor data processing to maneuver planning. But instead of empowering engineers, it drowns them in abstraction, leaving you wondering: <em>Do we really need this?</em></p>
 <hr>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="what-even-is-the-a-model">What Even Is the A-Model?<a href="https://your-docusaurus-site.example.com/blog/a-model-critique#what-even-is-the-a-model" class="hash-link" aria-label="Direct link to What Even Is the A-Model?" title="Direct link to What Even Is the A-Model?">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="what-even-is-the-a-model">What Even Is the A-Model?<a href="https://cagricatik.github.io/Autonomous-Connected-Driving/blog/a-model-critique#what-even-is-the-a-model" class="hash-link" aria-label="Direct link to What Even Is the A-Model?" title="Direct link to What Even Is the A-Model?">​</a></h2>
 <p>The A-Model claims to represent the hierarchical structure of tasks required for automated driving. It splits everything into:</p>
 <ul>
 <li><strong>Strategic Level</strong>: Long-term planning (e.g., route planning, traffic prediction).</li>
@@ -123,7 +123,7 @@
 </ul>
 <p>Add in layers like <strong>Environment Modeling</strong>, <strong>Self-Perception</strong>, and <strong>Trajectory Planning</strong>, and you’ve got what appears to be a comprehensive framework. But peel back the layers, and what do you find? Not much beyond a fancy diagram that assumes engineers will somehow "figure it out."</p>
 <hr>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="why-the-a-model-is-a-headache-not-a-help">Why the A-Model Is a Headache, Not a Help<a href="https://your-docusaurus-site.example.com/blog/a-model-critique#why-the-a-model-is-a-headache-not-a-help" class="hash-link" aria-label="Direct link to Why the A-Model Is a Headache, Not a Help" title="Direct link to Why the A-Model Is a Headache, Not a Help">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="why-the-a-model-is-a-headache-not-a-help">Why the A-Model Is a Headache, Not a Help<a href="https://cagricatik.github.io/Autonomous-Connected-Driving/blog/a-model-critique#why-the-a-model-is-a-headache-not-a-help" class="hash-link" aria-label="Direct link to Why the A-Model Is a Headache, Not a Help" title="Direct link to Why the A-Model Is a Headache, Not a Help">​</a></h2>
 <ol>
 <li>
 <p><strong>It’s Overly Abstract</strong><br>
@@ -143,7 +143,7 @@
 </li>
 </ol>
 <hr>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="is-the-a-model-completely-useless">Is the A-Model Completely Useless?<a href="https://your-docusaurus-site.example.com/blog/a-model-critique#is-the-a-model-completely-useless" class="hash-link" aria-label="Direct link to Is the A-Model Completely Useless?" title="Direct link to Is the A-Model Completely Useless?">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="is-the-a-model-completely-useless">Is the A-Model Completely Useless?<a href="https://cagricatik.github.io/Autonomous-Connected-Driving/blog/a-model-critique#is-the-a-model-completely-useless" class="hash-link" aria-label="Direct link to Is the A-Model Completely Useless?" title="Direct link to Is the A-Model Completely Useless?">​</a></h2>
 <p>To be fair, the A-Model does have some redeeming qualities:</p>
 <ul>
 <li><strong>High-Level Overview</strong>: It’s a decent tool for explaining the big picture to non-technical stakeholders.</li>
@@ -151,11 +151,11 @@
 </ul>
 <p>But let’s not kid ourselves: these are minor benefits. When it comes to actually building automated systems, the A-Model is more of a distraction than a solution.</p>
 <hr>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="why-academia-loves-models-like-this">Why Academia Loves Models Like This<a href="https://your-docusaurus-site.example.com/blog/a-model-critique#why-academia-loves-models-like-this" class="hash-link" aria-label="Direct link to Why Academia Loves Models Like This" title="Direct link to Why Academia Loves Models Like This">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="why-academia-loves-models-like-this">Why Academia Loves Models Like This<a href="https://cagricatik.github.io/Autonomous-Connected-Driving/blog/a-model-critique#why-academia-loves-models-like-this" class="hash-link" aria-label="Direct link to Why Academia Loves Models Like This" title="Direct link to Why Academia Loves Models Like This">​</a></h2>
 <p>The A-Model is a prime example of what happens when academia prioritizes appearances over practicality. Academics love these kinds of frameworks because they look good in papers, conferences, and funding proposals. They’re full of buzzwords, visually impressive, and suggest a level of mastery that isn’t actually there.</p>
 <p>But for engineers in the field? Models like the A-Model are a dead weight. They don’t solve real problems—they just add an extra layer of abstraction to an already complex field.</p>
 <hr>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="conclusion-we-need-actionable-frameworks-not-abstract-diagrams">Conclusion: We Need Actionable Frameworks, Not Abstract Diagrams<a href="https://your-docusaurus-site.example.com/blog/a-model-critique#conclusion-we-need-actionable-frameworks-not-abstract-diagrams" class="hash-link" aria-label="Direct link to Conclusion: We Need Actionable Frameworks, Not Abstract Diagrams" title="Direct link to Conclusion: We Need Actionable Frameworks, Not Abstract Diagrams">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="conclusion-we-need-actionable-frameworks-not-abstract-diagrams">Conclusion: We Need Actionable Frameworks, Not Abstract Diagrams<a href="https://cagricatik.github.io/Autonomous-Connected-Driving/blog/a-model-critique#conclusion-we-need-actionable-frameworks-not-abstract-diagrams" class="hash-link" aria-label="Direct link to Conclusion: We Need Actionable Frameworks, Not Abstract Diagrams" title="Direct link to Conclusion: We Need Actionable Frameworks, Not Abstract Diagrams">​</a></h2>
 <p>The A-Model is a classic example of an academic framework that overpromises and underdelivers. While it looks impressive and provides a broad overview, it offers little to no value for actual engineers trying to solve real-world problems. Instead of empowering teams, it bogs them down in unnecessary abstraction and buzzword overload.</p>
 <p>This obsession with overcomplicated frameworks isn’t new. I once had a professor at TU Braunschweig who was similarly obsessed with his own "design models." His approach, much like the A-Model, was full of circles, arrows, and vague terms that seemed designed to confuse rather than clarify. It was as if he believed the more convoluted the diagram, the better it was. Spoiler: It wasn’t.</p>
 <p>We don’t need more theoretical frameworks like the A-Model or stupid maurer’s process circle. We need tools, clear methodologies, and actionable steps that help engineers build systems—not impress reviewers at academic conferences.</p>

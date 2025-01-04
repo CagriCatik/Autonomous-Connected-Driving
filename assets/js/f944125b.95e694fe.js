@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkacd=self.webpackChunkacd||[]).push([[432],{1637:e=>{e.exports=JSON.parse('{"categoryGeneratedIndex":{"title":"Before You Begin","description":"README","slug":"/category/before-you-begin","permalink":"/docs/category/before-you-begin","sidebar":"docsSidebar","navigation":{"next":{"title":"Preface","permalink":"/docs/theory/0/Preface"}}}}')}}]);
