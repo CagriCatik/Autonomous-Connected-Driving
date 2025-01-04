@@ -87,13 +87,14 @@ const config = {
             position: 'left',
             label: 'Theory',
           },
+          /*
           {
             type: 'docSidebar',
             sidebarId: 'taskSidebar',
             position: 'left',
             label: 'Tasks',
           },
-          /*
+          
           {
             type: 'docSidebar',
             sidebarId: 'cppSidebar',

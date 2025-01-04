@@ -1,1 +1,0 @@
-# Collective Cloud Functions - Tasks
