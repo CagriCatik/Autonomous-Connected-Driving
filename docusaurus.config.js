@@ -15,15 +15,23 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://cagricatik.github.io/Autonomous-Connected-Driving/',
+  url: 'https://cagricatik.github.io', // Correct: Root domain without sub-path
+
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/Autonomous-Connected-Driving/', // Correct: Sub-path with trailing slash
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'cagricatik', // Usually your GitHub org/user name.
   projectName: 'Autonomous-Connected-Driving', // Usually your repo name.
+
+  // Enable GitHub Pages deployment
+  deploymentBranch: 'gh-pages', // Default is 'gh-pages'
+  trailingSlash: false, // Optional: depends on your preference
+
+  // Additional configurations can go here
+  // e.g., themeConfig, presets, plugins, etc.
 
   onBrokenLinks: 'throw',
   //onBrokenMarkdownLinks: 'ignore',
