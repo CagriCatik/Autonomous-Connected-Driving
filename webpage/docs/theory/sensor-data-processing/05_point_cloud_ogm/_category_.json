@@ -1,0 +1,8 @@
+{
+  "label": "Point Cloud OGM",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "README"
+  }
+}
