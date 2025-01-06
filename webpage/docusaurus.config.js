@@ -83,11 +83,11 @@ const config = {
       // Replace with your project's social card
       image: "img/docusaurus-social-card.jpg",
       navbar: {
-        title: "ACD",
-        /*logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.png',
-        },*/
+        title: "",
+        logo: {
+          alt: "My Site Logo",
+          src: "img/logo.png",
+        },
         items: [
           {
             type: "docSidebar",
@@ -155,16 +155,6 @@ const config = {
         style: "dark",
         links: [
           {
-            title: "ACD",
-            items: [
-              {
-                label: "Theory",
-                to: "/docs/theory/content",
-              },
-            ],
-          },
-
-          {
             title: "Coding",
             items: [
               {
@@ -200,7 +190,7 @@ const config = {
               },
               {
                 label: "GitHub",
-                href: "https://github.com/CagriCatik/ACD",
+                href: "https://github.com/CagriCatik/Autonomous-Connected-Driving",
               },
             ],
           },
