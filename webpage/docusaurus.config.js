@@ -166,7 +166,7 @@ const config = {
             items: [
               {
                 label: 'Theory',
-                to: '/docs/theory/toc',
+                to: '/docs/theory',
               },
             ],
           },
@@ -176,11 +176,11 @@ const config = {
             items: [
               {
                 label: 'C++',
-                to: '/docs/cpp/toc',
+                to: '/docs/cpp',
               },
               {
                 label: 'Python',
-                to: '/docs/python/toc',
+                to: '/docs/python',
               },
             ],
           },
@@ -189,11 +189,11 @@ const config = {
             items: [
               {
                 label: 'ROS',
-                to: '/docs/ros/',
+                to: '/docs/ros',
               },
               {
                 label: 'ROS2',
-                to: '/docs/ros2/',
+                to: '/docs/ros2',
               },
             ],
           },
