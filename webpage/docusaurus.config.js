@@ -93,11 +93,40 @@ const config = {
         items: [
           {
             type: 'docSidebar',
-            sidebarId: 'docsSidebar',
+            sidebarId: 'introSidebar',
             position: 'left',
-            label: 'Theory',
+            label: 'Introduction',
           },
-          
+          {
+            type: 'docSidebar',
+            sidebarId: 'toolsSidebar',
+            position: 'left',
+            label: 'Tools',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'sensorSidebar',
+            position: 'left',
+            label: 'Sensor Data Processing',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'objectSidebar',
+            position: 'left',
+            label: 'Object Fusion and Tracking',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'vehicleSidebar',
+            position: 'left',
+            label: 'Vehicle Guidance',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'connectedSidebar',
+            position: 'left',
+            label: 'Connected Driving',
+          },
           {
             type: 'docSidebar',
             sidebarId: 'taskSidebar',
@@ -105,40 +134,37 @@ const config = {
             label: 'Tasks',
           },
 
-          /*
+          
           {
             type: 'docSidebar',
             sidebarId: 'cppSidebar',
-            position: 'left',
+            position: 'right',
             label: 'C++',
           },
           
           {
             type: 'docSidebar',
             sidebarId: 'pySidebar',
-            position: 'left',
+            position: 'right',
             label: 'Python',
           },
+          
           {
             type: 'docSidebar',
             sidebarId: 'rosSidebar',
-            position: 'left',
+            position: 'right',
             label: 'ROS',
           },
           {
             type: 'docSidebar',
             sidebarId: 'ros2Sidebar',
-            position: 'left',
+            position: 'right',
             label: 'ROS2',
           },
           
-          {to: '/blog', label: 'Blog', position: 'left'},
-          {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
-            position: 'right',
-          },
-          */
+          
+
+          
         ],
         
       },
@@ -152,6 +178,12 @@ const config = {
                 label: 'Theory',
                 to: '/docs/category/before-you-begin',
               },
+              {
+                href: 'https://github.com/facebook/docusaurus',
+                label: 'GitHub',
+                position: 'right',
+              },
+              {to: '/blog', label: 'Blog', position: 'left'},
               /*
               {
                 label: 'Tasks',
@@ -160,17 +192,17 @@ const config = {
               */
             ],
           },
-          /*
+          
           {
             title: 'Coding',
             items: [
               {
                 label: 'C++',
-                to: '/docs/category/basics',
+                to: '/docs/cpp/',
               },
               {
                 label: 'Python',
-                to: '/docs/category/basics-1',
+                to: '/docs/python/',
               },
             ],
           },
@@ -179,11 +211,11 @@ const config = {
             items: [
               {
                 label: 'ROS',
-                to: '/docs/category/basics',
+                to: '/docs/ros/',
               },
               {
                 label: 'ROS2',
-                to: '/docs/category/basics-1',
+                to: '/docs/ros2/',
               },
             ],
           },
@@ -200,7 +232,7 @@ const config = {
               },
             ],
           },
-          */
+          
         ],
         copyright: `Copyright © ${new Date().getFullYear()} - Automated and Connected Driving.`,
       },
