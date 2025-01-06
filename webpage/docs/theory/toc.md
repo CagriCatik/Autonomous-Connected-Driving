@@ -1,0 +1,66 @@
+# Structure
+
+- **Introduction & Tools**
+    - Course Introduction
+    - Course Tools - Theory
+    - Course Tools - Setup
+    - Optional: Introduction to JupyterLab and Python
+    - ROS - Introduction
+    - ROS - Tutorials
+    - ROS - Solutions
+---
+- **Sensor Data Processing I**
+    - Introduction
+    - Image Segmentation - Theory
+    - Image Segmentation - Tasks
+    - Image Segmentation - Solutions
+    - Point Cloud Segmentation - Theory
+    - Point Cloud Segmentation - Tasks
+    - Point Cloud Segmentation - Solutions
+    - Object Detection - Theory
+    - Object Detection - Tasks
+    - Object Detection - Solutions
+---
+- **Sensor Data Processing II**
+    - Point Cloud Occupancy Grid Mapping - Theory
+    - Point Cloud Occupancy Grid Mapping - Tasks
+    - Point Cloud Occupancy Grid Mapping - Solutions
+    - Camera-based Semantic Grid Mapping - Theory
+    - Camera-based Semantic Grid Mapping - Tasks
+    - Camera-based Semantic Grid Mapping - Solutions
+    - Localization - Theory
+    - Localization - Tasks
+    - Localization - Solutions
+---
+- **Object Fusion and Tracking**
+    - Introduction
+    - Object Prediction - Theory
+    - Object Prediction - Tasks
+    - Object Prediction - Solution
+    - Object Association - Theory
+    - Object Association - Tasks
+    - Object Association - Solution
+    - Object Fusion - Theory
+    - Object Fusion - Tasks
+    - Object Fusion - Solution
+---
+- **Vehicle Guidance**
+    - Introduction
+    - Navigation-Level - Theory
+    - Navigation-Level - Tasks
+    - Navigation-Level - Solutions
+    - Guidance-Level - Theory
+    - Guidance-Level - Tasks
+    - Guidance-Level - Solutions
+    - Stabilization-Level - Theory
+    - Stabilization-Level - Tasks
+    - Stabilization-Level - Solutions
+---
+- **Connected Driving**
+    - Introduction
+    - Collective Cloud Functions - Theory
+    - Collective Cloud Functions - Tasks
+    - Collective Cloud Functions - Solution
+    - V2I-Communication - Theory
+    - V2I-Communication - Tasks
+    - V2I-Communication - Solution

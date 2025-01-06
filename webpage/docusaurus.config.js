@@ -88,8 +88,6 @@ const config = {
           alt: 'My Site Logo',
           src: 'img/logo.png',
         },*/
-
-        
         items: [
           {
             type: 'docSidebar',
@@ -132,23 +130,19 @@ const config = {
             sidebarId: 'taskSidebar',
             position: 'left',
             label: 'Tasks',
-          },
-
-          
+          },  
           {
             type: 'docSidebar',
             sidebarId: 'cppSidebar',
             position: 'right',
             label: 'C++',
           },
-          
           {
             type: 'docSidebar',
             sidebarId: 'pySidebar',
             position: 'right',
             label: 'Python',
           },
-          
           {
             type: 'docSidebar',
             sidebarId: 'rosSidebar',
@@ -161,10 +155,6 @@ const config = {
             position: 'right',
             label: 'ROS2',
           },
-          
-          
-
-          
         ],
         
       },
@@ -176,20 +166,8 @@ const config = {
             items: [
               {
                 label: 'Theory',
-                to: '/docs/category/before-you-begin',
+                to: '/docs/theory/toc',
               },
-              {
-                href: 'https://github.com/facebook/docusaurus',
-                label: 'GitHub',
-                position: 'right',
-              },
-              {to: '/blog', label: 'Blog', position: 'left'},
-              /*
-              {
-                label: 'Tasks',
-                to: '/docs/category/introduction--tools-1',
-              },
-              */
             ],
           },
           
