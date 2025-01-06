@@ -1,6 +1,6 @@
 {
-  "label": "Before You Begin",
-  "position": 2,
+  "label": "ROS2",
+  "position": 1,
   "link": {
     "type": "generated-index",
     "description": "README"

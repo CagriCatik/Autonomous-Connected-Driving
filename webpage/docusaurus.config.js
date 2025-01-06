@@ -176,11 +176,11 @@ const config = {
             items: [
               {
                 label: 'C++',
-                to: '/docs/cpp/',
+                to: '/docs/cpp/toc',
               },
               {
                 label: 'Python',
-                to: '/docs/python/',
+                to: '/docs/python/toc',
               },
             ],
           },
