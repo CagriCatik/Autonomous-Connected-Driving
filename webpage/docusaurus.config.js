@@ -91,15 +91,9 @@ const config = {
         items: [
           {
             type: "docSidebar",
-            sidebarId: "introSidebar",
+            sidebarId: "introToolsSidebar",
             position: "left",
-            label: "Introduction",
-          },
-          {
-            type: "docSidebar",
-            sidebarId: "toolsSidebar",
-            position: "left",
-            label: "Tools",
+            label: "Introduction & Tools",
           },
           {
             type: "docSidebar",
