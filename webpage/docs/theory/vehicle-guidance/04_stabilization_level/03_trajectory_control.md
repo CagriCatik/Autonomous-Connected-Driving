@@ -1,7 +1,5 @@
 # Trajectory Control Using Feedback PID Controllers
 
-## Introduction
-
 Trajectory control at the stabilization level is a cornerstone of autonomous driving systems, ensuring that vehicles accurately follow pre-planned paths with minimal deviation. This is achieved through the integration of feedback **PID controllers** with feedforward controls. The primary objective is to calculate and correct deviations in both longitudinal and lateral movements, maintaining precise adherence to the desired trajectory. This is implemented using a **closed-loop simulation** within the ROS (Robot Operating System) framework, leveraging odometry calculations, trajectory data interpolation, and sophisticated control system design.
 
 ---
@@ -38,13 +36,14 @@ Odometry is fundamental for trajectory control, providing real-time estimates of
   
   The vehicle's position in the 2D plane is updated using the following equations:
   
-  $$
-  x(t+1) = x(t) + v(t) \cdot \cos(\theta(t)) \cdot \Delta t
-  $$
-  
-  $$
-  y(t+1) = y(t) + v(t) \cdot \sin(\theta(t)) \cdot \Delta t
-  $$
+$$
+x(t+1) = x(t) + v(t) \cdot \cos\left(\theta(t)\right) \cdot \Delta t
+$$
+
+$$
+y(t+1) = y(t) + v(t) \cdot \sin\left(\theta(t)\right) \cdot \Delta t
+$$
+
   
 - **Orientation (Heading) Calculation**:
   
@@ -56,11 +55,11 @@ Odometry is fundamental for trajectory control, providing real-time estimates of
   
   Where:
   
-  - \( x(t), y(t) \): Position coordinates at time \( t \).
-  - \( v(t) \): Linear velocity.
-  - \( \theta(t) \): Orientation angle.
-  - \( \omega(t) \): Angular velocity (yaw rate).
-  - \( \Delta t \): Time step duration.
+  - $ x(t), y(t) $: Position coordinates at time $ t $.
+  - $ v(t) $: Linear velocity.
+  - $ \theta(t) $: Orientation angle.
+  - $ \omega(t) $: Angular velocity (yaw rate).
+  - $ \Delta t $: Time step duration.
 
 ### Velocity and Acceleration
 
@@ -68,10 +67,10 @@ Odometry is fundamental for trajectory control, providing real-time estimates of
   
   The actual velocity is derived from the rate of change of position:
   
-  $$
-  v(t) = \sqrt{\left(\frac{dx(t)}{dt}\right)^2 + \left(\frac{dy(t)}{dt}\right)^2}
-  $$
-  
+   $$
+   v(t) = \sqrt{\left( \frac{dx(t)}{dt} \right)^2 + \left( \frac{dy(t)}{dt} \right)^2}
+   $$
+
 - **Acceleration Calculation**:
   
   Acceleration is determined by the change in velocity over time:
@@ -107,7 +106,7 @@ The longitudinal controller is responsible for maintaining the vehicle's speed a
   Where:
   
   - $u(t)$: Control output (e.g., throttle or brake signal).
-  - $e(t)$ = v_{desired}$ - $v_{actual}$: Velocity error.
+  - $e(t)$ = $v_{desired}$ - $v_{actual}$: Velocity error.
   - $K_p$, $K_i$, $K_d$: Proportional, integral, and derivative gains, respectively.
 
 - **Implementation Example**:
@@ -145,7 +144,7 @@ The lateral controller ensures that the vehicle maintains its position within th
 
 - **Desired Yaw Rate Calculation**:
   
-  The desired yaw rate (\( \omega_d \)) is determined by the vehicle's velocity (\( v \)) and the trajectory curvature (\( \kappa \)):
+  The desired yaw rate $ \omega_d $ is determined by the vehicle's velocity $ v $ and the trajectory curvature $ \kappa $:
   
   $$
   \omega_d = v \cdot \kappa
@@ -153,18 +152,18 @@ The lateral controller ensures that the vehicle maintains its position within th
   
 - **Steering Angle Derivation**:
   
-  The steering angle (\( \delta \)) is computed using the inverse single-track model:
+  The steering angle $\delta $ is computed using the inverse single-track model:
   
-  $$
-  \delta = \arctan\left(\frac{L \cdot \omega_d}{v}\right)
-  $$
-  
-  Where \( L \) is the wheelbase of the vehicle.
+   $$
+   \delta = \arctan\left( \frac{L \cdot \omega_d}{v} \right)
+   $$
+   
+  Where $ L $ is the wheelbase of the vehicle.
 
 ### Cascaded Feedback Control: Two-Level PID Controller
 
 1. **Outer Loop (Yaw Rate Control)**:
-   - **Objective**: Minimize the lateral error (\( e_y \)) by computing the desired yaw rate.
+   - **Objective**: Minimize the lateral error $ e_y $) by computing the desired yaw rate.
    - **PID Controller**: Adjusts the yaw rate based on the lateral deviation from the trajectory.
 
 2. **Inner Loop (Steering Control)**:
@@ -209,7 +208,7 @@ Implementing trajectory control within the ROS framework involves integrating va
 ### Task Breakdown
 
 1. **Odometry Equations**:
-   - Implement odometry calculations to determine the vehicle's current state (\(x, y, \theta, v, a\)).
+   - Implement odometry calculations to determine the vehicle's current state $x$, $y$, $\theta$, $v, $a$.
    
 2. **Feedback Controller Implementation**:
    - Develop PID controllers for both longitudinal velocity and lateral yaw rate.

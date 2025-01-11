@@ -1,4 +1,4 @@
-# Vehicle Guidance in Automated Driving Systems
+# Vehicle Guidance
 
 Vehicle guidance is a pivotal component within the software architecture of automated driving systems. It ensures the safe and efficient navigation of autonomous vehicles by leveraging data from various upstream modules, such as perception and environment modeling. Beyond mere collision avoidance, vehicle guidance aims to enhance driving comfort and operational efficiency. Functioning as a tactical process, it translates high-level strategic navigation plans into actionable instructions, effectively bridging the gap between overarching decision-making and granular vehicle control.
 

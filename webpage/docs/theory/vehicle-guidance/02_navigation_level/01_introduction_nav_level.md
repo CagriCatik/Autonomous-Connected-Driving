@@ -1,4 +1,4 @@
-# Introduction to Vehicle Guidance on Navigation Level
+# Vehicle Guidance on Navigation Level
 
 Vehicle guidance is essential for enabling autonomous systems to navigate complex environments effectively. It encompasses methods and algorithms designed to solve navigation problems, optimizing for safety, efficiency, and adaptability. This document explores the theoretical foundations and practical applications of vehicle guidance, with a particular focus on dynamic programming methods grounded in Bellman’s principle of optimality.
 

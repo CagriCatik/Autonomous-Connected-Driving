@@ -21,11 +21,11 @@ Direct approaches, including multiple shooting, rely heavily on the discretizati
 The multiple shooting method involves a systematic process of forward integration and optimization across multiple intervals:
 
 1. **System State Integration:**
-   - **Forward Integration:** For each interval, the system state is integrated forward starting from an initial state \( s_i \), producing a piecewise trajectory.
+   - **Forward Integration:** For each interval, the system state is integrated forward starting from an initial state $ s_i $, producing a piecewise trajectory.
    
 2. **Optimization Variables:**
-   - **Control Variables:** The control inputs \( u_i \) for each interval are treated as optimization variables.
-   - **Initial States:** The initial states \( s_i \) for each interval are also treated as optimization variables, allowing for flexibility in adjusting the trajectory.
+   - **Control Variables:** The control inputs $ u_i $ for each interval are treated as optimization variables.
+   - **Initial States:** The initial states $ s_i $ for each interval are also treated as optimization variables, allowing for flexibility in adjusting the trajectory.
    
 3. **Continuity Conditions:**
    - **Smooth Trajectories:** Continuity constraints are imposed between intervals to ensure that the final state of one interval seamlessly connects to the initial state of the subsequent interval. This guarantees a smooth and physically feasible trajectory.
@@ -75,24 +75,24 @@ The optimization process within the Direct Multiple Shooting Approach involves a
 ### Step-by-Step Workflow
 
 1. **Initialization:**
-   - **Define Variables:** Establish initial values for the control inputs \( u_i \) and the initial states \( s_i \) of each interval.
+   - **Define Variables:** Establish initial values for the control inputs $ u_i $ and the initial states $ s_i $ of each interval.
    - **Trajectory Guess:** Optionally, utilize a previously computed trajectory to initialize the optimization process, enhancing convergence speed and reliability.
 
 2. **Forward Integration:**
-   - **System Dynamics Integration:** For each interval, perform forward integration of the system dynamics starting from the initial state \( s_i \) using the control input \( u_i \).
+   - **System Dynamics Integration:** For each interval, perform forward integration of the system dynamics starting from the initial state $ s_i $ using the control input $ u_i $.
    - **Piecewise Trajectory Construction:** Generate a piecewise trajectory that approximates the continuous motion of the vehicle across all intervals.
 
 3. **Cost and Constraints Evaluation:**
-   - **Cost Function Calculation:** Evaluate the defined cost function \( J \) for each interval, which typically includes terms related to energy consumption, time, and trajectory smoothness.
+   - **Cost Function Calculation:** Evaluate the defined cost function $ J $ for each interval, which typically includes terms related to energy consumption, time, and trajectory smoothness.
    - **Boundary Conditions Enforcement:** Apply boundary conditions to ensure that the trajectory meets the desired initial and final states.
    - **Continuity Constraints:** Impose continuity constraints to link the final state of one interval to the initial state of the next, ensuring a smooth trajectory.
 
 4. **Cost Aggregation:**
-   - **Total Cost Computation:** Aggregate the individual costs from each interval to compute the overall cost \( J \) for the entire trajectory.
+   - **Total Cost Computation:** Aggregate the individual costs from each interval to compute the overall cost $ J $ for the entire trajectory.
    - **Gradient Calculation:** Determine the sensitivities or gradients of the cost function with respect to the optimization variables, guiding the optimizer towards optimal solutions.
 
 5. **Optimization:**
-   - **Variable Adjustment:** Adjust the control inputs \( u_i \) and initial states \( s_i \) to minimize the total cost \( J \) while satisfying all constraints.
+   - **Variable Adjustment:** Adjust the control inputs $ u_i $ and initial states $ s_i $ to minimize the total cost $ J $ while satisfying all constraints.
    - **Iterative Refinement:** Iteratively refine the optimization variables, progressively enhancing the trajectory's optimality and feasibility.
 
 6. **Termination Criteria:**
@@ -146,10 +146,10 @@ $$
 
 **Where:**
 
-- \( J_i \): Cost associated with interval \( i \), typically representing objectives like minimizing energy consumption or travel time.
-- \( x_i \): System state in interval \( i \), encompassing variables such as position and velocity.
-- \( u_i \): Control inputs in interval \( i \), including steering angles and acceleration.
-- \( N \): Total number of intervals, determining the granularity of the discretization.
+- $ J_i $: Cost associated with interval $ i $, typically representing objectives like minimizing energy consumption or travel time.
+- $ x_i $: System state in interval $ i $, encompassing variables such as position and velocity.
+- $ u_i $: Control inputs in interval $ i $, including steering angles and acceleration.
+- $ N $: Total number of intervals, determining the granularity of the discretization.
 
 This formulation encapsulates the essence of the Direct Multiple Shooting Approach, balancing the complexity of real-world dynamics with the computational feasibility of discrete optimization.
 
@@ -210,18 +210,18 @@ print("Optimal controls:", solution.value(U))
 **Explanation:**
 
 1. **System Dynamics:**
-   - Defines a simple linear relationship where the next state \( x_{i+1} \) is the current state \( x_i \) plus the control input \( u_i \) multiplied by the time step \( dt \).
+   - Defines a simple linear relationship where the next state $ x_{i+1} $ is the current state $ x_i $ plus the control input $ u_i $ multiplied by the time step $ dt $.
 
 2. **Cost Function:**
    - Aims to minimize the sum of squares of the states and control inputs, promoting smoother trajectories with minimal control effort.
 
 3. **Optimization Variables:**
-   - \( X \): Represents the state trajectory over \( N+1 \) discrete time steps.
-   - \( U \): Represents the control trajectory over \( N \) discrete time steps.
+   - $ X $: Represents the state trajectory over $ N+1 $ discrete time steps.
+   - $ U $: Represents the control trajectory over $ N $ discrete time steps.
 
 4. **Constraints:**
-   - **System Dynamics Constraints:** Ensures that each subsequent state adheres to the defined relationship \( x_{i+1} = x_i + u_i \cdot dt \).
-   - **Boundary Conditions:** Sets the initial state to \( x0 \) and the final state to \( xf \).
+   - **System Dynamics Constraints:** Ensures that each subsequent state adheres to the defined relationship $ x_{i+1} = x_i + u_i \cdot dt $.
+   - **Boundary Conditions:** Sets the initial state to $ x0 $ and the final state to $ xf $.
 
 5. **Solver Configuration:**
    - Utilizes the IPOPT solver, a robust tool for solving large-scale nonlinear optimization problems.
@@ -235,7 +235,7 @@ Optimal states: [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
 Optimal controls: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
 ```
 
-*Explanation:* In this simplified example, the optimal control input \( u \) is consistently set to 1.0 across all intervals, resulting in a linear progression of the state variable \( x \) from 0 to 10. This demonstrates how direct collocation effectively solves the OCP by optimizing control inputs to achieve the desired final state while minimizing the cost function.
+*Explanation:* In this simplified example, the optimal control input $ u $ is consistently set to 1.0 across all intervals, resulting in a linear progression of the state variable $ x $ from 0 to 10. This demonstrates how direct collocation effectively solves the OCP by optimizing control inputs to achieve the desired final state while minimizing the cost function.
 
 ---
 

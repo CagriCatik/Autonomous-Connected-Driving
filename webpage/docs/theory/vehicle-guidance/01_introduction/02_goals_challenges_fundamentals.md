@@ -1,6 +1,4 @@
-# Goals, Challenges & Fundamentals of Vehicle Guidance in Automated Driving Systems
-
-## Introduction
+# Goals, Challenges & Fundamentals
 
 Vehicle guidance is a fundamental component of automated driving systems, ensuring the safe, efficient, and robust operation of autonomous vehicles (AVs). It encompasses the vehicle’s ability to navigate complex environments, make tactical decisions, and execute precise control actions. This framework is structured across three hierarchical levels:
 

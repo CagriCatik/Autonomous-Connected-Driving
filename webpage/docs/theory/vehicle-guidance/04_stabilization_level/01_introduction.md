@@ -1,7 +1,5 @@
 # Stabilization Level in Vehicle Control
 
-## Introduction
-
 The **stabilization level** is a pivotal component of vehicle control systems in autonomous driving, responsible for ensuring that the vehicle adheres to the planned trajectory with minimal deviation. It compensates for external disturbances and inaccuracies in both the vehicle's state and the planned trajectory. Operating closest to the vehicle's physical interface, the stabilization level bridges the gap between high-level trajectory planning and low-level actuator commands, ensuring smooth and precise vehicle maneuvers.
 
 Building upon Donges' **driver model**, the stabilization level integrates **anticipatory feed-forward control** and **compensatory feedback control** to emulate the functions of an experienced human driver. This integration enables autonomous vehicles to respond proactively and reactively to dynamic driving conditions, enhancing both safety and driving comfort.

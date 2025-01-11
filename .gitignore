@@ -3,6 +3,7 @@ node_modules
 /sort
 # Production
 /build
+/sort
 
 # Generated files
 .docusaurus

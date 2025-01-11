@@ -1,0 +1,78 @@
+# Structure
+
+- [ ] **Introduction & Tools**
+    - **Theory**
+        - [ ] Course Introduction
+        - [ ] Course Tools - Theory
+        - [ ] Optional: Introduction to JupyterLab and Python
+        - [ ] ROS - Introduction
+    - **Tasks**
+        - [ ] Course Tools - Setup
+        - [ ] ROS - Tutorials
+        - [ ] ROS - Solutions
+---
+- [ ] **Sensor Data Processing I**
+    - **Theory**
+        - [ ] Introduction
+        - [ ] Image Segmentation - Theory
+        - [ ] Point Cloud Segmentation - Theory
+        - [ ] Object Detection - Theory
+    - **Tasks**
+        - [ ] Image Segmentation - Tasks
+        - [ ] Image Segmentation - Solutions
+        - [ ] Point Cloud Segmentation - Tasks
+        - [ ] Point Cloud Segmentation - Solutions
+        - [ ] Object Detection - Tasks
+        - [ ] Object Detection - Solutions
+---
+- [ ] **Sensor Data Processing II**
+    - **Theory**
+        - [ ] Point Cloud Occupancy Grid Mapping - Theory
+        - [ ] Camera-based Semantic Grid Mapping - Theory
+        - [ ] Localization - Theory
+    - **Tasks**
+        - [ ] Point Cloud Occupancy Grid Mapping - Tasks
+        - [ ] Point Cloud Occupancy Grid Mapping - Solutions
+        - [ ] Camera-based Semantic Grid Mapping - Tasks
+        - [ ] Camera-based Semantic Grid Mapping - Solutions
+        - [ ] Localization - Tasks
+        - [ ] Localization - Solutions
+---
+- [ ] **Object Fusion and Tracking**
+    - **Theory**
+        - [ ] Introduction
+        - [ ] Object Prediction - Theory
+        - [ ] Object Association - Theory
+        - [ ] Object Fusion - Theory
+    - **Tasks**
+        - [ ] Object Prediction - Tasks
+        - [ ] Object Prediction - Solution
+        - [ ] Object Association - Tasks
+        - [ ] Object Association - Solution
+        - [ ] Object Fusion - Tasks
+        - [ ] Object Fusion - Solution
+---
+- [ ] **Vehicle Guidance**
+    - **Theory**
+        - [ ] Introduction
+        - [ ] Navigation-Level - Theory
+        - [ ] Guidance-Level - Theory
+        - [ ] Stabilization-Level - Theory
+    - **Tasks**
+        - [ ] Navigation-Level - Tasks
+        - [ ] Navigation-Level - Solutions
+        - [ ] Guidance-Level - Tasks
+        - [ ] Guidance-Level - Solutions
+        - [ ] Stabilization-Level - Tasks
+        - [ ] Stabilization-Level - Solutions
+---
+- [ ] **Connected Driving**
+    - **Theory**
+        - [ ] Introduction
+        - [ ] Collective Cloud Functions - Theory
+        - [ ] V2I-Communication - Theory
+    - **Tasks**
+        - [ ] Collective Cloud Functions - Tasks
+        - [ ] Collective Cloud Functions - Solution
+        - [ ] V2I-Communication - Tasks
+        - [ ] V2I-Communication - Solution
