@@ -2,7 +2,7 @@
  * Unified Colors for the Footer Section
  * Ensures consistent color usage and text readability.
  */
-
+ @import "katex/dist/katex.min.css";
 /* Define the primary color palette */
 :root {
   --ifm-color-primary: #1e90ff; /* Light Blue */
