@@ -1,4 +1,4 @@
-# Infrastructure-to-Vehicle Communication (I2V) Documentation
+# Infrastructure-to-Vehicle Communication
 
 Infrastructure-to-Vehicle (I2V) communication is a pivotal component in the landscape of connected and automated driving. By facilitating the exchange of critical data between road infrastructure, vehicles, and other traffic participants, I2V aims to significantly enhance road safety and traffic efficiency. This documentation delves into the standardized message formats, benefits, and challenges associated with I2V communication, as well as its potential to complement and augment vehicle sensor systems.
 

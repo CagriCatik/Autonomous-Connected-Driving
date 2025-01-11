@@ -2,8 +2,6 @@
 
 In the rapidly evolving landscape of automated and connected driving, effective communication between vehicles and traffic infrastructure is paramount. Two pivotal components in this communication framework are the **Signal Phase and Timing (SPAT) Extended Message** and the **MAP Extended Message**. These messages enable seamless Vehicle-to-Infrastructure (V2I) interactions, which are essential for optimizing traffic flow, enhancing road safety, and paving the way for fully autonomous transportation systems.
 
-This documentation delves into the intricacies of SPAT and MAP Extended Messages, elucidating their purposes, features, and implementation strategies. It is tailored to serve both newcomers and seasoned professionals in the field of connected driving technologies.
-
 ---
 
 ## Overview of SPAT and MAP Messages
