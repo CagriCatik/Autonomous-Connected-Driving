@@ -133,13 +133,13 @@ $$
 $$
 
 Where:
-- $\(\mathbf{x}_{\text{image}}\)$: Homogeneous pixel coordinates in the image.
-- $\(\mathbf{K}\)$: Intrinsic matrix, encapsulating focal length and principal point.
-- $\(\mathbf{R}\)$: Rotation matrix, representing the camera's orientation.
-- $\(\mathbf{t}\)$: Translation vector, representing the camera's position.
-- $\(\mathbf{X}_{\text{world}}\)$: Homogeneous world coordinates.
+- $\mathbf{x}_{\text{image}}$: Homogeneous pixel coordinates in the image.
+- $\mathbf{K}$: Intrinsic matrix, encapsulating focal length and principal point.
+- $\mathbf{R}$: Rotation matrix, representing the camera's orientation.
+- $\mathbf{t}$: Translation vector, representing the camera's position.
+- $\mathbf{X}_{\text{world}}$: Homogeneous world coordinates.
 
-**Intrinsic Matrix** $(\(\mathbf{K}\))$ **Example:**
+**Intrinsic Matrix** ($\mathbf{K}$) **Example:**
 
 $$
 \mathbf{K} = \begin{bmatrix}
@@ -149,25 +149,22 @@ f_x & 0 & c_x \\
 \end{bmatrix}
 $$
 
-
 Where:
-- $\(f_x, f_y\)$: Focal lengths in pixels.
-- $\(c_x, c_y\)$: Principal point coordinates.
+- $f_x, f_y$: Focal lengths in pixels.
+- $c_x, c_y$: Principal point coordinates.
 
 #### Step 2: Inverse Transformation
 
 To map image coordinates back to the world frame, an inverse transformation is applied. This involves computing the inverse of the rotation matrix and intrinsic matrix, followed by adjusting for translation.
 
 $$
-\[
 \mathbf{X}_{\text{world}} = \mathbf{R}^{-1} \left( \mathbf{K}^{-1} \mathbf{x}_{\text{image}} - \mathbf{t} \right)
-\]
 $$
 
 **Explanation:**
-1. **Intrinsic Inversion $(\(\mathbf{K}^{-1}\))$:** Converts pixel coordinates to normalized camera coordinates.
-2. **Translation Adjustment $(\(- \mathbf{t}\))$:** Accounts for the camera's position in the world frame.
-3. **Rotation Adjustment $(\(\mathbf{R}^{-1}\))$:** Aligns the coordinates with the world frame's orientation.
+1. **Intrinsic Inversion ($\mathbf{K}^{-1}$):** Converts pixel coordinates to normalized camera coordinates.
+2. **Translation Adjustment ($-\mathbf{t}$):** Accounts for the camera's position in the world frame.
+3. **Rotation Adjustment ($\mathbf{R}^{-1}$):** Aligns the coordinates with the world frame's orientation.
 
 **Homogeneous Coordinates:**
 It's essential to use homogeneous coordinates (adding a third component with value 1) to facilitate matrix operations and transformations.
@@ -399,14 +396,14 @@ Effective visualization of semantic grid maps enhances interpretability and usab
 
 **Example Color Scheme:**
 
-| Semantic Class | Color (RGB)       | Hex Code  |
-|----------------|-------------------|-----------|
-| Road           | Gray              | #808080    |
-| Sidewalk       | Yellow            | #FFFF00    |
-| Building       | Blue              | #0000FF    |
-| Pedestrian     | Green             | #00FF00    |
-| Vehicle        | Red               | #FF0000    |
-| Obstacle       | Purple            | #800080    |
+| Semantic Class | Color (RGB) | Hex Code |
+|----------------|-------------|----------|
+| Road           | Gray        | #808080   |
+| Sidewalk       | Yellow      | #FFFF00   |
+| Building       | Blue        | #0000FF   |
+| Pedestrian     | Green       | #00FF00   |
+| Vehicle        | Red         | #FF0000   |
+| Obstacle       | Purple      | #800080   |
 
 **Visualization Tools:**
 - **OpenCV:** For image-based visualization and saving.
