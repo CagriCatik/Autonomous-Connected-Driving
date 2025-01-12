@@ -26,25 +26,25 @@ The primary objectives of this documentation are to:
 
 This documentation is organized into the following chapters, each focusing on a specific aspect of object prediction using the Kalman filter:
 
-1. **[Mathematical Notation](02_Mathematical_Notation.md)**  
+1. **Mathematical Notation**  
    Defines the symbols, indices, and coordinate systems used throughout the documentation, establishing a consistent mathematical framework.
 
-2. **[Object Description](03_Object_Description.md)**  
+2. **Object Description**  
    Details the core components of the Kalman filter, including the state vector and error covariance matrix, essential for accurate state estimation.
 
-3. **[Importance of Prediction](04_Importance_of_Prediction.md)**  
+3. **Importance of Prediction**  
    Explains the critical role of prediction in maintaining accurate and reliable object tracking within autonomous driving systems.
 
-4. **[Prediction Equations](05_Prediction_Equations.md)**  
+4. **Prediction Equations**  
    Presents the mathematical equations governing the prediction step of the Kalman filter, including state and covariance predictions.
 
-5. **[Motion Model and Process Noise Matrix](06_Motion_Model_and_Process_Noise_Matrix.md)**  
+5. **Motion Model and Process Noise Matrix**  
    Discusses various motion models and the formulation of the process noise matrix, key factors influencing prediction accuracy.
 
-6. **[Integration with ROS](07_Integration_with_ROS.md)**  
+6. **[Integration with ROS]**  
    Provides a comprehensive guide to implementing and integrating the Kalman filter-based object prediction within a ROS environment.
 
-7. **[Conclusion](08_Conclusion.md)**  
+7. **Conclusion**  
    Summarizes the key insights and outlines potential next steps for further enhancing object prediction mechanisms.
 
 ## Intended Audience
