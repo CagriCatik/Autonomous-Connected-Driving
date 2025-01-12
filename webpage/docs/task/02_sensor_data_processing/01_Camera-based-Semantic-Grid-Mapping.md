@@ -16,28 +16,6 @@ The learning goals of this workshop are ...
 - Learn how to use the tf2 library
 - Learn how to visualize the output of semantic grid mapping
 
-## Contents
-<!-- MarkdownTOC autolink="true" -->
-
-- [Perform Camera-based Semantic Grid Mapping using geometry-based inverse perspective mapping](#perform-camera-based-semantic-grid-mapping-using-geometry-based-inverse-perspective-mapping)
-- [Contents](#contents)
-- [Introduction to this workshop](#introduction-to-this-workshop)
-- [ROS2's `sensor_msgs/msg/Image` Message](#ros2s-sensor_msgsmsgimage-message)
-- [ROS2's `sensor_msgs/msg/CameraInfo` Message](#ros2s-sensor_msgsmsgcamerainfo-message)
-- [Task 1: Explore the semantic grid mapping package and build and source the package](#task-1-explore-the-semantic-grid-mapping-package-and-build-and-source-the-package)
-- [Task 2: Replay rosbag and run the camera-based grid mapping node](#task-2-replay-rosbag-and-run-the-camera-based-grid-mapping-node)
-- [Task 3: Synchronize the subscribers](#task-3-synchronize-the-subscribers)
-- [Task 4: Extract the camera intrinsic matrix from the CameraInfo message](#task-4-extract-the-camera-intrinsic-matrix-from-the-camerainfo-message)
-    - [hints:](#hints)
-- [Task 5: Calculate the camera extrinsic matrix](#task-5-calculate-the-camera-extrinsic-matrix)
-    - [Hints:](#hints-1)
-- [Result](#result)
-- [Wrap-up](#wrap-up)
-- [ROS1 Instructions](#ros1-instructions)
-
-
-<!-- /MarkdownTOC -->
-
 ## Introduction to this workshop
 
 We prepared a rosbag with camera data for you to use.

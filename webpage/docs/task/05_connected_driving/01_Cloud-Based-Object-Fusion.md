@@ -1,7 +1,6 @@
+# Cloud Based Object Fusion
+
 ![ROS1](https://img.shields.io/badge/ROS1-blue)
-
-
-## Introduction
 
 In this workshop, you will learn to receive V2X messages and process them correctly. You will use your knowledge from the previous two sections to adapt the existing nodes so that they can handle the received messages. In this section, two use cases for V2X communication are implemented:
 - **Cloud-based object fusion** (Section 3)
@@ -14,17 +13,16 @@ In this first subsection you will only need the `mqtt_launchpack` and the packag
 
 Then let's start with the **Cloud-based object fusion**!
 
-
 ## Cloud-based Object Fusion
+
 The global goal of this first task is to fuse the object lists of two infrastructure sensors using the object fusion algorithm from Section 3. The two infrastructure sensors - Station A and Station B - are positioned at the intersection of Campus-Boulevard and Forckenbeckstraße.
 
 Both publish their detected objects in the form of an `ikaObjectList` (known from [Section 2](https://github.com/ika-rwth-aachen/acdc/wiki/Section-2-Object-Detection#ika-ros-object-lists-definition)) via MQTT to a broker.
 
 To receive the messages from the infrastructure sensors and convert them into ROS messages we use the open-source ROS package [mqtt_client](https://github.com/ika-rwth-aachen/mqtt_client). This is installed already in your docker image as a ros-package and provides a functionality to bridge between ROS and MQTT in bidirectional.
 
-
-
 ## Task 1: Configure the bridge so that you receive the two object lists
+
 First you should build the workspace:
 ```bash
 catkin build

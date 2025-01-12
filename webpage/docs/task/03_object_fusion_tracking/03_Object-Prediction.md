@@ -1,3 +1,5 @@
+# Object Prediction
+
 ![ROS1](https://img.shields.io/badge/ROS1-blue)
 
 In this workshop, we will program a **Multi-Object Tracking** step-by-step. We prepared a **ROS** node for this task, in which you have to implement parts of a **Multi-Instance Kalman Filter**.
@@ -12,21 +14,8 @@ Furthermore you will learn to...
 - use the Eigen library
 - utilize advanced RViz features
 
-## Contents
-
-- [Contents](#contents)
-- [Introduction to this workshop](#introduction-to-this-workshop)
-- [Visualize the object detections](#visualize-the-object-detections)
-- [Introduction to the Eigen library](#introduction-to-the-eigen-library)
-- [Introduction to the fusion code](#introduction-to-the-fusion-code)
-- [Task 1: Implement Object Prediction](#task-1-implement-object-prediction)
-    - [Updating IkaObjects "in place"](#updating-ikaobjects-in-place)
-    - [Prediction code](#prediction-code)
-- [Advanced: Introspection in RViz](#advanced-introspection-in-rviz)
-
-
-
 ## Introduction to this workshop
+
 For this workshop we provide simulated data from a vehicle equipped with a camera and a radar. The camera detects the surrounding objects with a high accuracy in lateral direction but a high uncertainty in longitudinal direction while the radar behaves in exactly the opposite way. The data were simulated on the ika test track.
 
 **You can download the bag file for this workshop here** **[Link](https://rwth-aachen.sciebo.de/s/F2M2P4G63aaRryB)**.

@@ -1,24 +1,6 @@
+# SPaT Processing
+
 ![ROS1](https://img.shields.io/badge/ROS1-blue)
-
-## Contents
-<!-- MarkdownTOC autolink="true" -->
-
-- [Contents](#contents)
-- [SPaT/MAP processing for trajectory planning](#spatmap-processing-for-trajectory-planning)
-- [Task 1: Configure the bridge so that you receive the messages (SPATEM/MAPEM) from the traffic light](#task-1-configure-the-bridge-so-that-you-receive-the-messages-spatemmapem-from-the-traffic-light)
-- [Task 2: Visualize the messages (SPATEM/MAPEM) in RVIZ](#task-2-visualize-the-messages-spatemmapem-in-rviz)
-  - [MAPEM visualization](#mapem-visualization)
-  - [SPATEM visualization](#spatem-visualization)
-- [Task 3: Modify the trajectory planner, so it can react to the traffic lights](#task-3-modify-the-trajectory-planner-so-it-can-react-to-the-traffic-lights)
-  - [Process MAPEM](#process-mapem)
-  - [Process SPATEM](#process-spatem)
-- [Task 4: Visualize other vehicles via Cooperative Awareness Messages (CAM)](#task-4-visualize-other-vehicles-via-cooperative-awareness-messages-cam)
-- [Wrap-up](#wrap-up)
-- [References](#references)
-
-<!-- /MarkdownTOC -->
-
-
 
 ## SPaT/MAP processing for trajectory planning
 

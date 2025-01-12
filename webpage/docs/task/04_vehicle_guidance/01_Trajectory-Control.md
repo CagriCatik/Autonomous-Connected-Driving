@@ -1,3 +1,5 @@
+# Trajectory Control
+
 ![ROS1](https://img.shields.io/badge/ROS1-blue)
 
 In the previous workshop you may have noticed that the vehicle sometimes slowly deviates from the planned trajectory. If the deviation to the trajectory gets too large, the trajectory jumps into the center of the rear axis. This behaviour is due to the fact that the vehicle guidance system is implemented using the concept of Bi-Level-Stabilization. However, **the low-level stabilization controller was not yet implemented in the previous workshop**. Therefore, the vehicle was not able to correctly follow the trajectory given by the high-level stabilization of the trajectory planner. When the deviation became too large, the MPC was reinitialized with the current measured vehicle data - hence the jump back to the center of the rear axis.

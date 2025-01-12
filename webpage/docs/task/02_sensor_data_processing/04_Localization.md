@@ -11,29 +11,6 @@ The learning goals of this workshop are ...
 - Apply projections and transformations to the GNSS measurements
 - Record a bag file for further investigations of the results in a separate [Notebook Exercise](https://github.com/ika-rwth-aachen/acdc-notebooks)
 
-## Contents
-<!-- MarkdownTOC autolink="true" -->
-
-- [Combining GNSS and LiDAR-Odometry for frequent pose estimation](#combining-gnss-and-lidar-odometry-for-frequent-pose-estimation)
-- [Contents](#contents)
-- [Introduction to this workshop](#introduction-to-this-workshop)
-- [ROS 2's `nav_msgs/msg/Odometry` Message](#ros-2s-nav_msgsmsgodometry-message)
-- [ROS 2's `sensor_msgs/msg/NavSatFix` Message](#ros-2s-sensor_msgsmsgnavsatfix-message)
-- [ROS 2's `geometry_msgs/msg/PoseStamped` Message](#ros-2s-geometry_msgsmsgposestamped-message)
-- [Investigating KISS-ICP LiDAR Odometry](#investigating-kiss-icp-lidar-odometry)
-  - [Task 1: Configuration of KISS-ICP](#task-1-configuration-of-kiss-icp)
-- [Processing of GNSS measurements](#processing-of-gnss-measurements)
-  - [Task 2: Projecting GNSS measurements into the UTM reference frame](#task-2-projecting-gnss-measurements-into-the-utm-reference-frame)
-  - [Task 3: Transforming an UTM point into a local map frame using tf2](#task-3-transforming-an-utm-point-into-a-local-map-frame-using-tf2)
-  - [Task 4: Estimating the vehicle yaw from sequential GNSS measurements](#task-4-estimating-the-vehicle-yaw-from-sequential-gnss-measurements)
-- [Combining Odometry and GNSS measurements](#combining-odometry-and-gnss-measurements)
-  - [Task 5: Predicting the current pose using relative odometry measurements](#task-5-predicting-the-current-pose-using-relative-odometry-measurements)
-- [Result](#result)
-- [Preparation for Notebook Exercise](#preparation-for-notebook-exercise)
-- [Wrap-up](#wrap-up)
-
-<!-- /MarkdownTOC -->
-
 ## Introduction to this workshop
 
 We prepared a rosbag with measurement data captured in simulation for you to use.

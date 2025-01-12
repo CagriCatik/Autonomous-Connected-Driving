@@ -25,3 +25,16 @@ yarn-error.log*
 sort/
 materials/
 information
+
+# Notebooks
+venv
+my_venv
+__pycache__
+.db3
+.ipynb_checkpoints
+.idea
+section_2_sensor_data_processing/tensorflow_datasets
+section_2_sensor_data_processing/tensorboard
+section_2_sensor_data_processing/grid_mapping/checkpoints
+section_2_sensor_data_processing/grid_mapping/point_cloud.png
+section_2_sensor_data_processing/grid_mapping/grid_map.png

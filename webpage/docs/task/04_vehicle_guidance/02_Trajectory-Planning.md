@@ -1,3 +1,5 @@
+# Trajectory Planning
+
 ![ROS1](https://img.shields.io/badge/ROS1-blue)
 
 In this workshop, we will implement a trajectory-planning approach using the [Control Toolbox](https://github.com/ethz-adrl/control-toolbox). We prepared a **ROS** node for this task, in which you have to implement parts of the optimal-control-problem.
@@ -12,21 +14,6 @@ The learning goals of this workshop are...
 
 The gaps for all tasks are located in the [trajectory_planner.cpp](https://github.com/ika-rwth-aachen/acdc/blob/main/catkin_workspace/src/workshops/section_4/trajectory_planner/src/trajectory_planner.cpp)-file; you don't need to make any changes in other files.
 
-
-## Contents
-<!-- MarkdownTOC autolink="true" -->
-
-- [Contents](#contents)
-- [Introduction to this workshop](#introduction-to-this-workshop)
-- [Task 1: Implementation of the system dynamics](#task-1-implementation-of-the-system-dynamics)
-- [Task 2: Penalize high control- and lateral jerk values](#task-2-penalize-high-control--and-lateral-jerk-values)
-- [Task 3: Implement propulsive velocity term](#task-3-implement-propulsive-velocity-term)
-- [Task 4: Collision avoidance with dynamic objects](#task-4-collision-avoidance-with-dynamic-objects)
-- [Result](#result)
-- [Wrap-up](#wrap-up)
-- [References](#references)
-
-<!-- /MarkdownTOC -->
 
 ## Introduction to this workshop
 
