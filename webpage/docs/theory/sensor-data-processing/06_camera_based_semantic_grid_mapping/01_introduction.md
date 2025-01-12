@@ -252,6 +252,7 @@ if __name__ == "__main__":
 
     # Save the resulting semantic grid map
     cv2.imwrite("semantic_grid.png", semantic_grid)
+
 ```
 
 #### Optimized IPM Implementation
@@ -325,6 +326,7 @@ if __name__ == "__main__":
 
     # Save the resulting semantic grid map
     cv2.imwrite("semantic_grid_optimized.png", semantic_grid)
+
 ```
 
 **Enhancements in the Optimized Implementation:**
