@@ -13,12 +13,15 @@
 
 ---
 
-- [ ] **Sensor Data Processing I**
+- [ ] **Sensor Data Processing**
     - **Theory**
         - [ ] Introduction
         - [ ] Image Segmentation
         - [ ] Point Cloud Segmentation
         - [ ] Object Detection
+        - [ ] Point Cloud Occupancy Grid Mapping
+        - [ ] Camera-based Semantic Grid Mapping
+        - [ ] Localization
     - **Tasks**
         - [ ] Image Segmentation - Tasks
         - [ ] Image Segmentation - Solutions
@@ -26,15 +29,6 @@
         - [ ] Point Cloud Segmentation - Solutions
         - [ ] Object Detection - Tasks
         - [ ] Object Detection - Solutions
-
----
-
-- [ ] **Sensor Data Processing II**
-    - **Theory**
-        - [ ] Point Cloud Occupancy Grid Mapping
-        - [ ] Camera-based Semantic Grid Mapping
-        - [ ] Localization
-    - **Tasks**
         - [ ] Point Cloud Occupancy Grid Mapping - Tasks
         - [ ] Point Cloud Occupancy Grid Mapping - Solutions
         - [ ] Camera-based Semantic Grid Mapping - Tasks
@@ -46,10 +40,10 @@
 
 - [ ] **Object Fusion and Tracking**
     - **Theory**
-        - [ ] Introduction
-        - [ ] Object Prediction
-        - [ ] Object Association
-        - [ ] Object Fusion
+        - [x] Introduction
+        - [x] Object Prediction
+        - [x] Object Association
+        - [x] Object Fusion
     - **Tasks**
         - [ ] Object Prediction - Tasks
         - [ ] Object Prediction - Solution
