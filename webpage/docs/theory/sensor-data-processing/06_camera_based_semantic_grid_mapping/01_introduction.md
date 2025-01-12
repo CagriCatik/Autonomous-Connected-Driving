@@ -127,11 +127,11 @@ Understanding the mathematical principles behind IPM is crucial for implementing
 A camera's projection model describes how 3D world coordinates are mapped to 2D image coordinates. This relationship is captured by the camera's intrinsic and extrinsic parameters.
 
 The projection can be represented as:
+
 $$
-\[
 \mathbf{x}_{\text{image}} = \mathbf{K} \begin{bmatrix} \mathbf{R} & \mathbf{t} \end{bmatrix} \mathbf{X}_{\text{world}}
-\]
 $$
+
 Where:
 - $\(\mathbf{x}_{\text{image}}\)$: Homogeneous pixel coordinates in the image.
 - $\(\mathbf{K}\)$: Intrinsic matrix, encapsulating focal length and principal point.
@@ -139,28 +139,31 @@ Where:
 - $\(\mathbf{t}\)$: Translation vector, representing the camera's position.
 - $\(\mathbf{X}_{\text{world}}\)$: Homogeneous world coordinates.
 
-**Intrinsic Matrix (\(\mathbf{K}\)) Example:**
+**Intrinsic Matrix** $(\(\mathbf{K}\))$ **Example:**
+
 $$
-\[
 \mathbf{K} = \begin{bmatrix}
 f_x & 0 & c_x \\
 0 & f_y & c_y \\
 0 & 0 & 1
 \end{bmatrix}
-\]
 $$
+
+
 Where:
-- \(f_x, f_y\): Focal lengths in pixels.
-- \(c_x, c_y\): Principal point coordinates.
+- $\(f_x, f_y\)$: Focal lengths in pixels.
+- $\(c_x, c_y\)$: Principal point coordinates.
 
 #### Step 2: Inverse Transformation
 
 To map image coordinates back to the world frame, an inverse transformation is applied. This involves computing the inverse of the rotation matrix and intrinsic matrix, followed by adjusting for translation.
+
 $$
 \[
 \mathbf{X}_{\text{world}} = \mathbf{R}^{-1} \left( \mathbf{K}^{-1} \mathbf{x}_{\text{image}} - \mathbf{t} \right)
 \]
 $$
+
 **Explanation:**
 1. **Intrinsic Inversion $(\(\mathbf{K}^{-1}\))$:** Converts pixel coordinates to normalized camera coordinates.
 2. **Translation Adjustment $(\(- \mathbf{t}\))$:** Accounts for the camera's position in the world frame.
@@ -481,30 +484,6 @@ To deepen your understanding and stay abreast of the latest developments, consid
 - **Sensor Fusion Techniques:** Explore methods for integrating data from various sensors to enhance mapping accuracy and robustness.
 - **Real-World Implementations:** Study case studies and real-world applications to understand practical challenges and solutions.
 - **Optimization Strategies:** Learn about algorithmic and hardware optimization techniques to achieve real-time performance.
-
----
-
-## Further Reading
-
-1. **Books and Textbooks:**
-    - *Computer Vision: Algorithms and Applications* by Richard Szeliski
-    - *Multiple View Geometry in Computer Vision* by Richard Hartley and Andrew Zisserman
-    - *Deep Learning for Autonomous Vehicles* by Jason Yosinski
-
-2. **Research Papers:**
-    - "Cross-View Semantic Segmentation" by Y. Zhang et al.
-    - "Cam2BEV: Camera to Bird's Eye View Semantic Segmentation" by I. Kärkkäinen et al.
-    - "A Survey on Semantic Segmentation for Autonomous Driving" by K. He et al.
-
-3. **Online Resources:**
-    - [OpenCV Documentation](https://docs.opencv.org/)
-    - [PyTorch Tutorials](https://pytorch.org/tutorials/)
-    - [Autonomous Vehicle Simulators](https://carla.org/)
-
-4. **Conferences and Workshops:**
-    - IEEE Conference on Computer Vision and Pattern Recognition (CVPR)
-    - International Conference on Robotics and Automation (ICRA)
-    - Autonomous Driving Workshops at NeurIPS and ICRA
 
 ---
 
