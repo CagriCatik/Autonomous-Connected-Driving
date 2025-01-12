@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-task/intro/ROS-GUI-Tools" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.7.0">
+<title data-rh="true">ROS GUI Tools | Automated and Connected Driving</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://cagricatik.github.io/Autonomous-Connected-Driving/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://cagricatik.github.io/Autonomous-Connected-Driving/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://cagricatik.github.io/Autonomous-Connected-Driving/docs/task/intro/ROS-GUI-Tools"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="ROS GUI Tools | Automated and Connected Driving"><meta data-rh="true" name="description" content="ROS1"><meta data-rh="true" property="og:description" content="ROS1"><link data-rh="true" rel="icon" href="/Autonomous-Connected-Driving/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://cagricatik.github.io/Autonomous-Connected-Driving/docs/task/intro/ROS-GUI-Tools"><link data-rh="true" rel="alternate" href="https://cagricatik.github.io/Autonomous-Connected-Driving/docs/task/intro/ROS-GUI-Tools" hreflang="en"><link data-rh="true" rel="alternate" href="https://cagricatik.github.io/Autonomous-Connected-Driving/docs/task/intro/ROS-GUI-Tools" hreflang="x-default"><link rel="alternate" type="application/rss+xml" href="/Autonomous-Connected-Driving/blog/rss.xml" title="Automated and Connected Driving RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/Autonomous-Connected-Driving/blog/atom.xml" title="Automated and Connected Driving Atom Feed"><link rel="stylesheet" href="/Autonomous-Connected-Driving/assets/css/styles.ce2d5abf.css">
+<script src="/Autonomous-Connected-Driving/assets/js/runtime~main.eb32a1b0.js" defer="defer"></script>
+<script src="/Autonomous-Connected-Driving/assets/js/main.67cec90f.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/Autonomous-Connected-Driving/"><div class="navbar__logo"><img src="/Autonomous-Connected-Driving/img/logo.png" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/Autonomous-Connected-Driving/img/logo.png" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate"></b></a><a class="navbar__item navbar__link" href="/Autonomous-Connected-Driving/docs/theory/introduction-tools/getting_started">Introduction &amp; Tools</a><a class="navbar__item navbar__link" href="/Autonomous-Connected-Driving/docs/theory/sensor-data-processing/getting_started">Sensor Data Processing</a><a class="navbar__item navbar__link" href="/Autonomous-Connected-Driving/docs/theory/object-fusion-tracking/getting_started">Object Fusion and Tracking</a><a class="navbar__item navbar__link" href="/Autonomous-Connected-Driving/docs/theory/vehicle-guidance/getting_started">Vehicle Guidance</a><a class="navbar__item navbar__link" href="/Autonomous-Connected-Driving/docs/theory/connected-driving/getting_started">Connected Driving</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/Autonomous-Connected-Driving/docs/task/getting_started">Tasks</a></div><div class="navbar__items navbar__items--right"><a class="navbar__item navbar__link" href="/Autonomous-Connected-Driving/docs/cpp/getting_started">C++</a><a class="navbar__item navbar__link" href="/Autonomous-Connected-Driving/docs/python/getting_started">Python</a><a class="navbar__item navbar__link" href="/Autonomous-Connected-Driving/docs/ros/getting_started">ROS</a><a class="navbar__item navbar__link" href="/Autonomous-Connected-Driving/docs/ros2/getting_started">ROS2</a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite" aria-pressed="false"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/Autonomous-Connected-Driving/docs/task/getting_started">Getting Started</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/Autonomous-Connected-Driving/docs/category/introduction--tools">Introduction &amp; Tools</a><button aria-label="Collapse sidebar category &#x27;Introduction &amp; Tools&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/Autonomous-Connected-Driving/docs/task/intro/ROS-Setup">ROS Setup</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/Autonomous-Connected-Driving/docs/task/intro/ROS-Foundations">ROS Foundations</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/Autonomous-Connected-Driving/docs/task/intro/ROS-GUI-Tools">ROS GUI Tools</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/Autonomous-Connected-Driving/docs/task/intro/ROS-Nodes-in-Cpp">ROS Nodes in C++</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/Autonomous-Connected-Driving/docs/task/intro/ROS-Bags">ROS Bags</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/Autonomous-Connected-Driving/docs/task/intro/ROS-Application">ROS Application</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/Autonomous-Connected-Driving/docs/task/intro/ROS2-Outlook">ROS2 Outlook</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/Autonomous-Connected-Driving/docs/task/intro/ROS2-Tutorial-in-Cpp">ROS2 Tutorial in C++</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/Autonomous-Connected-Driving/docs/category/sensor-data-processing">Sensor Data Processing</a><button aria-label="Expand sidebar category &#x27;Sensor Data Processing&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/Autonomous-Connected-Driving/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/Autonomous-Connected-Driving/docs/category/introduction--tools"><span itemprop="name">Introduction &amp; Tools</span></a><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">ROS GUI Tools</span><meta itemprop="position" content="2"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>ROS GUI Tools</h1></header>
+<p><img decoding="async" loading="lazy" src="https://img.shields.io/badge/ROS1-blue" alt="ROS1" class="img_ev3q"></p>
+<p>In the previous exercise, you familiarized yourself with the basic and fundamental terminal commands essential for working with ROS. Fortunately, the ROS community offers a plethora of graphical tools with graphical user interfaces (GUIs) that complement terminal commands, enhancing debugging, visualization, and development processes. This documentation delves into the primary GUI tools in ROS: <strong>rqt</strong> and <strong>RViz</strong>.</p>
+<ul>
+<li><strong><a href="https://wiki.ros.org/rqt" target="_blank" rel="noopener noreferrer">RQT</a>:</strong> A Qt-based framework for developing GUIs in ROS.</li>
+<li><strong><a href="https://wiki.ros.org/rviz" target="_blank" rel="noopener noreferrer">RViz</a>:</strong> A 3D visualization tool tailored for ROS.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="prerequisites">Prerequisites<a href="#prerequisites" class="hash-link" aria-label="Direct link to Prerequisites" title="Direct link to Prerequisites">​</a></h2>
+<p>Before diving into the GUI tools, ensure that your ROS environment is correctly set up and running the necessary nodes. Follow these steps:</p>
+<ol>
+<li>
+<p><strong>Start Multiple Terminals:</strong> Open several terminal windows within your <code>acdc</code> Docker container.</p>
+</li>
+<li>
+<p><strong>Launch ROS Core and Essential Nodes:</strong></p>
+<ul>
+<li>Start <code>roscore</code> to initiate the ROS master.</li>
+<li>Launch the Flatland simulation.</li>
+<li>Start the vehicle controller.</li>
+</ul>
+<p>You can achieve this by executing one of the two launch scripts provided or using the new <code>combined.launch</code> file from the previous unit:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">roslaunch racing combined.launch</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="rqt">RQT<a href="#rqt" class="hash-link" aria-label="Direct link to RQT" title="Direct link to RQT">​</a></h2>
+<p><strong>RQT</strong> is a versatile Qt-based framework that facilitates the development and integration of GUI tools in ROS through a plugin-based architecture. These plugins can be executed in two primary ways:</p>
+<ul>
+<li><strong>Command Line:</strong> Directly invoke a specific plugin, e.g., <code>rqt_graph</code>.</li>
+<li><strong>RQT Main Window:</strong> Access and manage plugins within the RQT interface.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="launching-rqt">Launching RQT<a href="#launching-rqt" class="hash-link" aria-label="Direct link to Launching RQT" title="Direct link to Launching RQT">​</a></h3>
+<p>To start RQT, open one of your available terminals and execute:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">rqt</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>Once launched, you&#x27;ll have access to a myriad of plugins. For a comprehensive list, refer to the <a href="https://wiki.ros.org/rqt/Plugins" target="_blank" rel="noopener noreferrer">RQT Plugins</a> page. This documentation focuses on the most pertinent plugins:</p>
+<ul>
+<li><strong>Essential Plugins:</strong>
+<ul>
+<li><code>rqt_graph</code></li>
+<li><code>rqt_topic</code></li>
+<li><code>rqt_console</code></li>
+<li><code>rqt_plot</code></li>
+</ul>
+</li>
+<li><strong>Advanced Plugins:</strong> Explored individually in the practical tasks at the end of this unit.</li>
+<li><strong>Less Relevant Plugins:</strong> Omitted for brevity.</li>
+</ul>
+<p><strong>Accessing Plugins:</strong></p>
+<p>Navigate to the plugins via the GUI as illustrated below:</p>
+<p><img decoding="async" loading="lazy" alt="rqt" src="/Autonomous-Connected-Driving/assets/images/rqt_dropdown_menu_plugins-1a91c606cfaaf651b4c96c6e151a61e5.png" width="612" height="364" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="rqt-node-graph">RQT Node Graph<a href="#rqt-node-graph" class="hash-link" aria-label="Direct link to RQT Node Graph" title="Direct link to RQT Node Graph">​</a></h3>
+<p>The <strong>RQT Node Graph</strong> visualizes the active ROS nodes and their interconnections through topics. To initiate <code>rqt_graph</code>:</p>
+<ol>
+<li>
+<p>In RQT, select <strong>Plugins</strong> → <strong>Introspection</strong> → <strong>Node Graph</strong>.</p>
+<p><a href="https://wiki.ros.org/rqt_graph" target="_blank" rel="noopener noreferrer">rqt_graph Documentation</a></p>
+</li>
+<li>
+<p><strong>Understanding the Graph:</strong></p>
+<ul>
+<li><strong>Vertices:</strong> Represent ROS nodes.</li>
+<li><strong>Edges:</strong> Depict the topics that nodes publish to or subscribe from.</li>
+</ul>
+<p>For instance, in our project:</p>
+<ul>
+<li>The <strong>simulation node</strong> (<code>/flatland_server</code>) publishes sensor measurements to <code>/vehicle/lidar_measurements</code>.</li>
+<li>The <strong>controller node</strong> (<code>/vehicle_controller</code>) subscribes to this topic, computes target velocity and steering angles, and publishes these to <code>/vehicle/actuator_commands</code>.</li>
+<li>The <strong>simulation node</strong> subscribes to <code>/vehicle/actuator_commands</code> to simulate the vehicle&#x27;s response.</li>
+</ul>
+<p><img decoding="async" loading="lazy" alt="Default RQT Graph" src="/Autonomous-Connected-Driving/assets/images/default_rqt-97831b481357df61f49a66c75d498028.png" width="1082" height="602" class="img_ev3q"></p>
+</li>
+<li>
+<p><strong>Interactive Features:</strong></p>
+<ul>
+<li><strong>Hovering:</strong> Highlights connected nodes and topics for clarity.</li>
+<li><strong>Filtering:</strong> Utilize the namespace filter to focus on specific nodes or topics, e.g., entering <code>/vehicle_controller</code> narrows the visualization.</li>
+<li><strong>View Options:</strong> Toggle options such as &quot;Nodes Only&quot; to adjust the scope of the graph, aiding in managing larger projects.</li>
+</ul>
+</li>
+<li>
+<p><strong>Tooltips:</strong> Hover over GUI elements to reveal tooltips that explain their functionality.</p>
+<p><img decoding="async" loading="lazy" alt="Tooltip Example" src="/Autonomous-Connected-Driving/assets/images/ToolTip-b6705d8810611703ff073190f15af408.png" width="1130" height="170" class="img_ev3q"></p>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="rqt-topic-monitor">RQT Topic Monitor<a href="#rqt-topic-monitor" class="hash-link" aria-label="Direct link to RQT Topic Monitor" title="Direct link to RQT Topic Monitor">​</a></h3>
+<p>The <strong>Topic Monitor</strong> offers a graphical representation of ROS topics, providing insights akin to <code>rostopic list</code>, <code>rostopic info</code>, or <code>rostopic echo</code>.</p>
+<ol>
+<li>
+<p><strong>Launching the Topic Monitor:</strong></p>
+<ul>
+<li>In RQT, navigate to <strong>Plugins</strong> → <strong>Topics</strong> → <strong>Topic Monitor</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Interface Layout:</strong></p>
+<ul>
+<li>Arrange multiple plugins side by side by dragging, dropping, docking, or floating them to create a personalized workspace.</li>
+</ul>
+<p><img decoding="async" loading="lazy" alt="Default RQT Layout" src="/Autonomous-Connected-Driving/assets/images/default_rqt_4-1e83260e5c40874710f410ed403659e9.png" width="1688" height="602" class="img_ev3q"></p>
+</li>
+<li>
+<p><strong>Analyzing Topics:</strong></p>
+<ul>
+<li>
+<p><strong>Fields Displayed:</strong></p>
+<ul>
+<li><strong>Topic:</strong> Name and variables of the transmitted message.</li>
+<li><strong>Type:</strong> Data types and sub-types.</li>
+<li><strong>Value:</strong> Numerical values of primitive types.</li>
+<li><strong>Bandwidth:</strong> Data rate transmitted.</li>
+<li><strong>Hz:</strong> Frequency of data transmission.</li>
+</ul>
+</li>
+<li>
+<p><strong>Example Analysis:</strong></p>
+<ul>
+<li><strong>/vehicle/actuator_commands:</strong>
+<ul>
+<li>Message Type: <code>geometry_msgs/Twist</code></li>
+<li>Focus on <code>linear.x</code> and <code>angular.z</code> for velocity and steering control.</li>
+</ul>
+</li>
+<li><strong>Frequency Comparison:</strong>
+<ul>
+<li>Both <code>/vehicle/actuator_commands</code> and <code>/vehicle/lidar_measurements</code> transmit at 12.5 Hz, indicating a data-triggered operation by the <code>vehicle_controller</code>.</li>
+<li>Other topics, such as <code>/vehicle/wheel_sensors</code>, may exhibit higher frequencies due to independent publishing mechanisms.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Cross-Referencing:</strong></p>
+<ul>
+<li>Utilize the <strong>Node Graph</strong> to identify publishers or subscribers of specific topics, enhancing your understanding of node interactions.</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="rqt-console">RQT Console<a href="#rqt-console" class="hash-link" aria-label="Direct link to RQT Console" title="Direct link to RQT Console">​</a></h3>
+<p><strong>RQT Console</strong> provides a comprehensive view of log messages published to <code>/rosout</code>, offering enhanced filtering and highlighting capabilities compared to terminal-based logs.</p>
+<ol>
+<li>
+<p><strong>Launching RQT Console:</strong></p>
+<ul>
+<li>In RQT, go to <strong>Plugins</strong> → <strong>Logging</strong> → <strong>Console</strong>.</li>
+</ul>
+<p><a href="https://wiki.ros.org/rqt_console" target="_blank" rel="noopener noreferrer">rqt_console Documentation</a></p>
+</li>
+<li>
+<p><strong>Features:</strong></p>
+<ul>
+<li><strong>Log Display:</strong> Shows log messages, including severity levels.</li>
+<li><strong>Filtering:</strong> Exclude or highlight messages based on specific criteria.</li>
+<li><strong>Highlighting Example:</strong>
+<ul>
+<li>After restarting the vehicle controller, a distinct log message is generated when the cart crosses the start/finish line.</li>
+<li>To highlight:<!-- -->
+<ol>
+<li>Navigate to <strong>Highlight Messages...</strong> → Click the &quot;Plus&quot; button → Select <strong>...containing</strong>.</li>
+<li>Enter &quot;measurement&quot; in the filter.</li>
+<li>Adjust column spacing using the <strong>Fit Columns</strong> button.</li>
+<li>Remove the checkmark to reset highlighting.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<p><img decoding="async" loading="lazy" alt="RQT Console Highlighting" src="/Autonomous-Connected-Driving/assets/images/default_rqt-97831b481357df61f49a66c75d498028.png" width="1082" height="602" class="img_ev3q"></p>
+</li>
+<li>
+<p><strong>Excluding Messages:</strong></p>
+<ul>
+<li>Filter out less relevant log messages to focus on critical information, especially useful when multiple nodes publish logs simultaneously.</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="rqt-plot">RQT Plot<a href="#rqt-plot" class="hash-link" aria-label="Direct link to RQT Plot" title="Direct link to RQT Plot">​</a></h3>
+<p><strong>RQT Plot</strong> enables the visualization of numeric data over time, facilitating real-time monitoring of various signals.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="producing-plots">Producing Plots<a href="#producing-plots" class="hash-link" aria-label="Direct link to Producing Plots" title="Direct link to Producing Plots">​</a></h4>
+<ol>
+<li>
+<p><strong>Launching RQT Plot:</strong></p>
+<ul>
+<li>In RQT, select <strong>Plugins</strong> → <strong>Visualization</strong> → <strong>Plot</strong>.</li>
+</ul>
+<p><a href="https://wiki.ros.org/rqt_plot" target="_blank" rel="noopener noreferrer">rqt_plot Documentation</a></p>
+</li>
+<li>
+<p><strong>Creating Plots:</strong></p>
+<ul>
+<li><strong>Velocity Signals:</strong>
+<ul>
+<li>Enter <code>/vehicle/actuator_commands/linear/x</code> and <code>/vehicle/wheel_sensors/linear/x</code> individually into the &quot;<em>Topic</em>&quot; field, clicking &quot;<em>Plus</em>&quot; after each entry.</li>
+</ul>
+</li>
+<li><strong>Steering Angle Signals:</strong>
+<ul>
+<li>Open a second instance of RQT Plot.</li>
+<li>Enter <code>/vehicle/actuator_commands/angular/z</code> and <code>/vehicle/wheel_sensors/angular/z</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Adjusting Plot Appearance:</strong></p>
+<ul>
+<li>Click the <img decoding="async" loading="lazy" alt="plot_adjust_symbol" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAsCAYAAADxRjE/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAF6SURBVGhD7dZNSsNAFMDxZJ3cwN4gdWUvIbqwdVk/NooLP08gUrSKiriQQsFLCIIIQkHELxRdioKCKFVUPMKTVxjp4EteUp0XA7P4LzIzYX4ME4jz+daErGXRUlm0VBYtlUVLZdFSWbRULPr85IgcTzMW3d/XS46nmQh6bmYKRobKWqPDZTg+bJDruUTQq8tL4LouOI6jtV2vkeu5xK7HxPhYttB7uzvg+3520GHgVNHvL09QWZiHx/vbH3MUuFQcgOpipXXHU0EjeLBUbGEKhR4NHgbGd3B+c2MdGgf73+uT1DG6HaxScA782zpCU2BVdz4wCsYSo6PAVH8NxhKhKTCear22BblclzaOmQBjsdFhYLy/OH91carBTYGxWOiP1+dIsErBTYKx2Cc9Oz0ZCVY93N0YBWOJ7jTCPc8LBUuVCI1dX55pz2nEovNBAGsrVWNRe3Kx6PaPz0TUnlwsGv8PTEbtycWi/2MWLZVFS2XRUlm0VBlEN+EL5FZWDRtf+FMAAAAASUVORK5CYII=" width="45" height="44" class="img_ev3q"> to modify plot settings:<!-- -->
+<ul>
+<li><strong>Axes:</strong> Adjust the X-Axis range for better temporal visualization.</li>
+<li><strong>Curves:</strong> Add markers to plotted points by increasing their size relative to the line width.</li>
+</ul>
+</li>
+</ul>
+<p><img decoding="async" loading="lazy" alt="RQT Plot Example" src="/Autonomous-Connected-Driving/assets/images/default_rqt_3-828449ceeede1d72b5375a35d46ea7ec.png" width="1174" height="563" class="img_ev3q"></p>
+</li>
+</ol>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="explaining-the-plots">Explaining the Plots<a href="#explaining-the-plots" class="hash-link" aria-label="Direct link to Explaining the Plots" title="Direct link to Explaining the Plots">​</a></h4>
+<ul>
+<li><strong>Actuator Commands vs. Wheel Sensors:</strong>
+<ul>
+<li>The <strong>actuator_commands</strong> represent the target values from the controller.</li>
+<li>The <strong>wheel_sensors</strong> reflect the actual values, showcasing a delayed and smoothed response due to actuator inertia.</li>
+<li>The frequency of signal changes is evident from the spacing between markers, illustrating the system&#x27;s responsiveness.</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="rviz">RViz<a href="#rviz" class="hash-link" aria-label="Direct link to RViz" title="Direct link to RViz">​</a></h2>
+<p><strong>RViz</strong> is a powerful 3D visualization tool for ROS, offering a wide array of plugins to visualize custom data types and robot states.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="launching-rviz">Launching RViz<a href="#launching-rviz" class="hash-link" aria-label="Direct link to Launching RViz" title="Direct link to Launching RViz">​</a></h3>
+<ol>
+<li>
+<p><strong>Start RViz Manually:</strong></p>
+<ul>
+<li>
+<p>Close any existing RViz instances.</p>
+</li>
+<li>
+<p>Launch RViz from the terminal:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">rviz</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Loading a Configuration:</strong></p>
+<ul>
+<li>If the default view is empty, load the project&#x27;s specific RViz configuration:<!-- -->
+<ul>
+<li>Navigate to <strong>File</strong> → <strong>Open Config</strong>.</li>
+<li>Browse to <code>~/ws/catkin_workspace/src/workshops/section_1/racing/rviz/racing.rviz</code>.</li>
+</ul>
+</li>
+</ul>
+<div class="language-plaintext codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-plaintext codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Activate the following Panels: Tools, Displays, Views, Time.</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p><img decoding="async" loading="lazy" alt="RViz Interface" src="/Autonomous-Connected-Driving/assets/images/rviz-aeb8cb8fa053d2460ab2d098fa4cb344.png" width="1384" height="827" class="img_ev3q"></p>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="rviz-panels-and-features">RViz Panels and Features<a href="#rviz-panels-and-features" class="hash-link" aria-label="Direct link to RViz Panels and Features" title="Direct link to RViz Panels and Features">​</a></h3>
+<ol>
+<li>
+<p><strong>Time Panel (Bottom):</strong></p>
+<ul>
+<li>Displays timing information, including:<!-- -->
+<ul>
+<li><strong>/clock Topic:</strong> Synchronizes simulation time.</li>
+<li><strong>Frames Per Second (FPS):</strong> Indicates the visualization&#x27;s refresh rate.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Displays Panel (Left):</strong></p>
+<ul>
+<li>Manages how data is rendered in the 3D space.</li>
+<li><strong>Adding Displays:</strong>
+<ul>
+<li>Click <strong>Add</strong> → <strong>By Topic</strong> to introduce new visual elements.</li>
+<li>For example, adding a &quot;LaserScan&quot; display by selecting <code>/vehicle/lidar_measurements</code>.</li>
+</ul>
+</li>
+<li><strong>Grouping:</strong>
+<ul>
+<li>Organize displays into groups or sub-groups, such as &quot;References&quot; or &quot;Sensor,&quot; for better management.</li>
+</ul>
+</li>
+</ul>
+<p><img decoding="async" loading="lazy" alt="Laser Scanner Topic in RViz" src="/Autonomous-Connected-Driving/assets/images/laserscanner_topic_rviz-2ece8f68f2eed39bfd2655a18d941c57.png" width="423" height="77" class="img_ev3q"></p>
+</li>
+<li>
+<p><strong>Views Panel (Right):</strong></p>
+<ul>
+<li>Configures the camera perspective within the 3D environment.</li>
+<li><strong>View Types:</strong>
+<ul>
+<li><strong>TopDownOrtho:</strong> Orthographic top-down view.</li>
+<li><strong>Follow:</strong> Camera follows the robot, similar to a video game.</li>
+<li><strong>Free:</strong> Unrestricted camera movement for custom viewpoints.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Tools Panel (Top):</strong></p>
+<ul>
+<li>Hosts additional tools for interaction and manipulation within RViz, such as selection and measurement tools.</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="saving-and-loading-configurations">Saving and Loading Configurations<a href="#saving-and-loading-configurations" class="hash-link" aria-label="Direct link to Saving and Loading Configurations" title="Direct link to Saving and Loading Configurations">​</a></h3>
+<ul>
+<li><strong>Save Configuration:</strong>
+<ul>
+<li>Press <kbd>Ctrl</kbd>+<kbd>S</kbd> to save your current RViz setup as a <code>.rviz</code> file.</li>
+</ul>
+</li>
+<li><strong>Load Configuration:</strong>
+<ul>
+<li>Load previously saved configurations to restore specific visualization setups.</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="practical-tasks">Practical Tasks<a href="#practical-tasks" class="hash-link" aria-label="Direct link to Practical Tasks" title="Direct link to Practical Tasks">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="task-1-customizing-rviz-configuration">Task 1: Customizing RViz Configuration<a href="#task-1-customizing-rviz-configuration" class="hash-link" aria-label="Direct link to Task 1: Customizing RViz Configuration" title="Direct link to Task 1: Customizing RViz Configuration">​</a></h3>
+<p><strong>Objective:</strong> Gain deeper familiarity with RViz by creating a custom configuration that mirrors a provided screenshot.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>
+<p><strong>Launch RViz:</strong></p>
+<ul>
+<li>Ensure all necessary ROS nodes are running.</li>
+<li>Start RViz and load the base configuration if necessary.</li>
+</ul>
+</li>
+<li>
+<p><strong>Create New RViz Configuration:</strong></p>
+<ul>
+<li>Navigate to <strong>File</strong> → <strong>New Config</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Add Visual Elements:</strong></p>
+<ul>
+<li>Use <strong>Add</strong> → <strong>By Topic</strong> to introduce new visuals such as LaserScans, Robot Models, etc.</li>
+<li>Specifically, add the <code>/vehicle/lidar_measurements</code> topic as a LaserScan display.</li>
+</ul>
+</li>
+<li>
+<p><strong>Customize Appearance:</strong></p>
+<ul>
+<li>Adjust colors and styles for clarity:<!-- -->
+<ul>
+<li>Select the LaserScan display.</li>
+<li>Modify the color settings to enhance visibility.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Arrange Panels:</strong></p>
+<ul>
+<li>Organize the <strong>Displays</strong>, <strong>Views</strong>, <strong>Tools</strong>, and <strong>Time</strong> panels to resemble the target layout.</li>
+</ul>
+</li>
+<li>
+<p><strong>Save Configuration:</strong></p>
+<ul>
+<li>Press <kbd>Ctrl</kbd>+<kbd>S</kbd> and save the configuration with an appropriate name.</li>
+</ul>
+<p><img decoding="async" loading="lazy" alt="Customized RViz Lidar" src="/Autonomous-Connected-Driving/assets/images/rviz_lidar-ddde640786beb4206941ee1ad3d3ec41.png" width="1291" height="833" class="img_ev3q"></p>
+</li>
+</ol>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>Utilize the <strong>Add</strong> → <strong>By Topic</strong> feature to streamline adding visual elements.</li>
+<li>Experiment with color settings to differentiate between various data streams effectively.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="task-2-exploring-rqt-plugins">Task 2: Exploring RQT Plugins<a href="#task-2-exploring-rqt-plugins" class="hash-link" aria-label="Direct link to Task 2: Exploring RQT Plugins" title="Direct link to Task 2: Exploring RQT Plugins">​</a></h3>
+<p><strong>Objective:</strong> Enhance your understanding of RQT by interacting with various plugins and observing their functionalities in real-time.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>
+<p><strong>Launch Simulation and Controller:</strong></p>
+<ul>
+<li>Ensure the ROS simulation and vehicle controller nodes are active.</li>
+</ul>
+</li>
+<li>
+<p><strong>Explore Plugins:</strong></p>
+<ul>
+<li><strong>Configuration:</strong>
+<ul>
+<li><strong>Launch Plugin:</strong> Manage and launch ROS nodes and configurations.</li>
+</ul>
+</li>
+<li><strong>Introspection:</strong>
+<ul>
+<li><strong>Package Graph:</strong> Visualize package dependencies (note: may throw errors in ROS Noetic).</li>
+<li><strong>Process Monitor:</strong> Monitor active processes and their resource usage.</li>
+</ul>
+</li>
+<li><strong>Miscellaneous Tools:</strong>
+<ul>
+<li><strong>Python Console:</strong> Execute Python commands within the ROS environment.</li>
+<li><strong>Web:</strong> Access web-based tools or dashboards integrated with ROS.</li>
+</ul>
+</li>
+<li><strong>Robot Tools:</strong>
+<ul>
+<li><strong>Robot Steering:</strong> Control the robot manually using <code>/vehicle/actuator_commands</code>.</li>
+</ul>
+</li>
+<li><strong>Services:</strong>
+<ul>
+<li><strong>Service Caller:</strong> Invoke ROS services such as <code>/toggle_pause</code> or <code>/move_model</code> with parameters like <code>name=&quot;racing_cart&quot;</code>.</li>
+<li><strong>Service Type Browser:</strong> Browse and inspect available service types.</li>
+</ul>
+</li>
+<li><strong>Topics:</strong>
+<ul>
+<li><strong>Message Publisher:</strong> Publish custom messages to topics.</li>
+<li><strong>Message Type Browser:</strong> Explore the structure and types of messages being transmitted.</li>
+</ul>
+</li>
+<li><strong>Visualization:</strong>
+<ul>
+<li><strong>RViz (Embedded in RQT):</strong> Launch RViz within the RQT environment.</li>
+<li><strong>TF Tree:</strong> Visualize the transformation frames, e.g., between <code>map</code> and <code>base</code> (the cart&#x27;s coordinate system).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Hands-On Interaction:</strong></p>
+<ul>
+<li>Manipulate each plugin to understand its capabilities.</li>
+<li>For example, use the <strong>Robot Steering</strong> plugin to manually adjust the cart&#x27;s movement and observe the effects in real-time.</li>
+</ul>
+</li>
+<li>
+<p><strong>Refer to Official Documentation:</strong></p>
+<ul>
+<li>If uncertain about a plugin&#x27;s functionality, consult the <a href="https://wiki.ros.org/rqt/Plugins" target="_blank" rel="noopener noreferrer">official RQT Plugins documentation</a> for detailed guidance.</li>
+</ul>
+</li>
+<li>
+<p><strong>Be Creative:</strong></p>
+<ul>
+<li>Experiment with different configurations and settings within each plugin to discover advanced features and customizations.</li>
+</ul>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="wrap-up">Wrap-up<a href="#wrap-up" class="hash-link" aria-label="Direct link to Wrap-up" title="Direct link to Wrap-up">​</a></h2>
+<p>Throughout this documentation, you have explored essential GUI tools in ROS that significantly enhance development and debugging workflows:</p>
+<ul>
+<li>
+<p><strong>RQT:</strong></p>
+<ul>
+<li>Launch using the <code>rqt</code> command.</li>
+<li>Integrates numerous plugins for visualization, debugging, and development.</li>
+<li>Facilitates a customizable and interactive ROS environment.</li>
+</ul>
+</li>
+<li>
+<p><strong>RViz:</strong></p>
+<ul>
+<li>Launch using the <code>rviz</code> command.</li>
+<li>Offers a rich 3D visualization platform for ROS data.</li>
+<li>Supports saving and loading configurations for consistent visualization setups.</li>
+</ul>
+</li>
+</ul>
+<p>By leveraging these tools, you can achieve a more intuitive and efficient development process within the ROS ecosystem, catering to both beginners and advanced users alike.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/task/01_intro/03_ROS-GUI-Tools.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/Autonomous-Connected-Driving/docs/task/intro/ROS-Foundations"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">ROS Foundations</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/Autonomous-Connected-Driving/docs/task/intro/ROS-Nodes-in-Cpp"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">ROS Nodes in C++</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#prerequisites" class="table-of-contents__link toc-highlight">Prerequisites</a></li><li><a href="#rqt" class="table-of-contents__link toc-highlight">RQT</a><ul><li><a href="#launching-rqt" class="table-of-contents__link toc-highlight">Launching RQT</a></li><li><a href="#rqt-node-graph" class="table-of-contents__link toc-highlight">RQT Node Graph</a></li><li><a href="#rqt-topic-monitor" class="table-of-contents__link toc-highlight">RQT Topic Monitor</a></li><li><a href="#rqt-console" class="table-of-contents__link toc-highlight">RQT Console</a></li><li><a href="#rqt-plot" class="table-of-contents__link toc-highlight">RQT Plot</a></li></ul></li><li><a href="#rviz" class="table-of-contents__link toc-highlight">RViz</a><ul><li><a href="#launching-rviz" class="table-of-contents__link toc-highlight">Launching RViz</a></li><li><a href="#rviz-panels-and-features" class="table-of-contents__link toc-highlight">RViz Panels and Features</a></li><li><a href="#saving-and-loading-configurations" class="table-of-contents__link toc-highlight">Saving and Loading Configurations</a></li></ul></li><li><a href="#practical-tasks" class="table-of-contents__link toc-highlight">Practical Tasks</a><ul><li><a href="#task-1-customizing-rviz-configuration" class="table-of-contents__link toc-highlight">Task 1: Customizing RViz Configuration</a></li><li><a href="#task-2-exploring-rqt-plugins" class="table-of-contents__link toc-highlight">Task 2: Exploring RQT Plugins</a></li></ul></li><li><a href="#wrap-up" class="table-of-contents__link toc-highlight">Wrap-up</a></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Coding</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/Autonomous-Connected-Driving/docs/cpp/content">C++</a></li><li class="footer__item"><a class="footer__link-item" href="/Autonomous-Connected-Driving/docs/python/content">Python</a></li></ul></div><div class="col footer__col"><div class="footer__title">Robot Operating System</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/Autonomous-Connected-Driving/docs/ros/content">ROS</a></li><li class="footer__item"><a class="footer__link-item" href="/Autonomous-Connected-Driving/docs/ros2/content">ROS2</a></li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/Autonomous-Connected-Driving/blog">Blog</a></li><li class="footer__item"><a href="https://github.com/CagriCatik/Autonomous-Connected-Driving" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 - Automated and Connected Driving.</div></div></div></footer></div>
+</body>
+</html>
