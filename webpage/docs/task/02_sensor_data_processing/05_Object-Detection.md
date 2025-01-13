@@ -2,24 +2,143 @@
 
 ![ROS1](https://img.shields.io/badge/ROS1-blue)
 
-<img src="../images/section_2/object_detection/header_object_detection.png" alt="Description of image" />
+![fag1](../images/section_2/object_detection/header_object_detection.PNG)
 
+## Overview
 
-In this assignment, we will focus on __3D object detection__ for raw LiDAR within ROS. In particular, we consider a recording from our test vehicle which is equipped with a [Velodyne VLP-32C](https://icave2.cse.buffalo.edu/resources/sensor-modeling/VLP32CManual.pdf) and apply a state-of-the art 3D object detection model to predict bounding boxes.
+Object detection is a fundamental capability in autonomous vehicle systems, enabling the vehicle to perceive and understand its surrounding environment. This workshop focuses on **3D object detection** using raw LiDAR data within the **Robot Operating System (ROS)** framework. Specifically, we will work with data recorded from a test vehicle equipped with a [Velodyne VLP-32C](https://icave2.cse.buffalo.edu/resources/sensor-modeling/VLP32CManual.pdf) LiDAR sensor. Utilizing a state-of-the-art 3D object detection model, participants will learn to predict bounding boxes around detected objects, facilitating tasks such as navigation, obstacle avoidance, and path planning.
 
-In this exercise you will learn
-* how ROS **object definitions** are defined
-* to visualize **LiDAR point clouds** within **RViz**
-* how to launch a **ROS node** that applies a detection algorithm on the raw sensor data
-* to use **RVIZ** to visualize **detected objects**
+## Learning Objectives
+
+By the end of this workshop, participants will be able to:
+
+- **Understand ROS Object Definitions:** Comprehend how objects are defined and structured within ROS messages.
+- **Visualize LiDAR Point Clouds in RViz:** Utilize RViz to visualize and interpret raw LiDAR data.
+- **Launch and Operate ROS Nodes:** Execute ROS nodes that apply detection algorithms to raw sensor data.
+- **Visualize Detected Objects in RViz:** Use RViz to display and analyze detected objects with bounding boxes.
+
+## Prerequisites
+
+- **Basic Knowledge of ROS:** Familiarity with ROS concepts, including nodes, topics, and messages.
+- **C++ Programming Skills:** Ability to read and modify C++ code.
+- **Understanding of LiDAR Technology:** Basic comprehension of LiDAR sensors and point cloud data.
+- **Experience with RViz:** Prior experience using RViz for visualization is beneficial but not mandatory.
+
+## Setup Instructions
+
+### 1. Clone the Repository and Navigate to the Workspace
+
+Ensure you have access to the necessary ROS workspace. Navigate to your workspace directory:
+
+```bash
+cd ~/catkin_workspace/src
+```
+
+### 2. Clone the Necessary Packages
+
+Clone the `lidar_detection` package along with its dependencies:
+
+```bash
+git clone https://github.com/ika-rwth-aachen/acdc.git
+cd acdc/catkin_workspace/src
+git clone https://github.com/ika-rwth-aachen/acdc.git
+```
+
+### 3. Download the Required Bag File
+
+Download the LiDAR data recording from Campus Melaten in Aachen:
+
+```bash
+wget -O lidar_campus_melaten.bag https://rwth-aachen.sciebo.de/s/udlMYloXpCdVtyp/download
+```
+
+Alternatively, access the bag file directly [**here**](https://rwth-aachen.sciebo.de/s/udlMYloXpCdVtyp) (approx. 1.5 GB). Save the file to the local directory `${REPOSITORY}/bag` on your host machine, which is mounted to `~/bag` in the Docker container.
+
+### 4. Build the Workspace
+
+Navigate to your workspace and build the packages:
+
+```bash
+cd ~/catkin_workspace
+catkin build
+source devel/setup.bash
+```
+
+*Note:* If you encounter a compilation error similar to `g++: internal compiler error: Killed (program cc1plus)`, it indicates excessive resource consumption. To resolve this, disable parallel building:
+
+```bash
+catkin build -j 1
+source devel/setup.bash
+```
+
+### 5. Launch the ROS Environment with RViz and Rosbag
+
+To streamline the process of launching `rosbag play` and `RViz` simultaneously, utilize the provided launch file:
+
+```bash
+roslaunch lidar_detection start_rosbag_play_rviz.launch
+```
+
+This command performs the following actions:
+
+- **Rosbag Playback:** Plays the `lidar_campus_melaten.bag` file.
+- **RViz Visualization:** Launches RViz with a pre-configured display for point clouds.
+
+#### Expected Terminal Output:
+
+```bash
+Initialization of Trajectory Planner done!
+Trajectory optimization SUCCESSFUL after [...]s.
+Trajectory optimization SUCCESSFUL after [...]s.
+...
+```
+
+#### Expected RViz Visualization:
+
+![fag1](../images/section_2/object_detection/rviz.PNG)
+
+- **PointCloud2 Display:** Shows the raw LiDAR point cloud data.
+- **Adjust Visualization Settings:** Enhance visibility by modifying parameters such as `Size`, `Style`, `Decay Time`, and `Color Transformer` in the `PointCloud2` tab.
+
+#### RViz Navigation Controls:
+
+- **Left Mouse Button:** Rotate the view around the Z-axis.
+- **Middle Mouse Button:** Pan the camera along the XY plane.
+- **Right Mouse Button:** Zoom in and out.
+- **Scroll Wheel:** Zoom in and out incrementally.
+
+**Congratulations!** You have successfully visualized the raw LiDAR data. Proceed to the object detection algorithms in the subsequent sections.
 
 ## Definitions
 
-The ika definitions for the ROS messages and other internal definitions are defined in the package [*definitions*](https://github.com/ika-rwth-aachen/acdc/blob/main/catkin_workspace/src/dependencies/definitions). The ROS message files are located in the subdirectory [definitions/msg](https://github.com/ika-rwth-aachen/acdc/tree/main/catkin_workspace/src/dependencies/definitions/msg) and all other internal definitions can be found in `~/ws/catkin_workspace/src/dependencies/definitions/include/definitions/utility`.
+### ROS Object Definitions
 
-### ika ROS Object Definition 
-The files [IkaObject.msg](https://github.com/ika-rwth-aachen/acdc/blob/main/catkin_workspace/src/dependencies/definitions/msg/IkaObject.msg) and [object_definitions.h](https://github.com/ika-rwth-aachen/acdc/blob/main/catkin_workspace/src/dependencies/definitions/include/definitions/utility/object_definitions.h) define the properties of an **3D object**. By the term *object*, we refer to a surround traffic participant which can be assigned to a class (e.g. car, pedestrian, truck) and has an estimated state (e.g. position, velocity, orientation). The ika object definitions distinguish between several classes as shown in the following snipped (excerpt from [object_definitions.h](https://github.com/ika-rwth-aachen/acdc/blob/main/catkin_workspace/src/dependencies/definitions/include/definitions/utility/object_definitions.h#L96)
-):
+Understanding how objects are defined and structured within ROS is crucial for effective communication between nodes and for processing detection results.
+
+#### ika ROS Object Definition
+
+The **ika** definitions for ROS messages and internal utilities are located in the [*definitions*](https://github.com/ika-rwth-aachen/acdc/blob/main/catkin_workspace/src/dependencies/definitions) package. Specifically:
+
+- **ROS Message Files:** Located in `definitions/msg`.
+- **Internal Definitions:** Found in `~/ws/catkin_workspace/src/dependencies/definitions/include/definitions/utility`.
+
+##### IkaObject.msg
+
+Defines the structure of a single 3D object detected by the LiDAR sensor.
+
+```bash
+float32[] fMean               # State vector, containing attributes based on the chosen motion model
+float32[] fCovariance         # Covariance matrix, representing uncertainties in the state vector
+```
+
+- **fMean:** Represents the object's bounding box attributes such as position, velocity, acceleration, and orientation.
+- **fCovariance:** Captures the uncertainties associated with each attribute in `fMean`, essential for tasks like object fusion.
+
+*Note:* This assignment focuses solely on 3D object detection, thus only the `fMean` vector is utilized to describe an object's bounding box.
+
+##### object_definitions.h
+
+Defines the enumeration of object types recognized by the system.
 
 ```c++
 enum ika_object_types {
@@ -36,52 +155,66 @@ enum ika_object_types {
   TRAILER = 10,
   TYPES_COUNT = 11
 };
-
-```
-For simplicity, we will focus in this assignment on the classes `CAR`, `PEDESTRIAN`, `TRUCK` and `BIKE`. Note that the [enumeration](https://en.cppreference.com/w/cpp/language/enum) above assigns each type to an unique ID. For example, type `CAR` has ID 4. This association can then be accessed in the code with `definitions::ika_object_types::CAR`.
-
-The following code snippet presents an excerpt from the file [IkaObject.msg](https://github.com/ika-rwth-aachen/acdc/blob/main/catkin_workspace/src/dependencies/definitions/msg/IkaObject.msg). As shown below, each object has a **state vector** which holds current values of the object, such as the **position**, **velocity**, **acceleration** and the **3D bounding box**.
-
-```bash
-float32[] fMean               # Statevector, containing attributes depend on chosen motion model
-float32[] fCovariance         # Covariance-Matrix, containing attributes depend on chosen motion model
 ```
 
-As each quantity might be estimated by the AV's sensors and its perception algorithms, which are not perfect, we need to consider uncertainties as well. The **state covariance vector** stores such uncertainties, which are necessary in later processing steps such as the object fusion.
+- **Key Object Classes:** For simplicity, this workshop focuses on the following classes:
+  - `CAR` (ID: 4)
+  - `PEDESTRIAN` (ID: 1)
+  - `TRUCK` (ID: 5)
+  - `BICYCLE` (ID: 2)
 
-In this assignment we will focus purely on 3D object detection. That means, we will just consider the state vector `fMean`, which basically describe an object's bounding box.
+*Example Usage:* Access the `CAR` type in code using `definitions::ika_object_types::CAR`.
 
-### ika ROS Object Lists Definition 
-Sending many single object messages from various sources over the ROS network might be very tedious to handle and organize. Further, sensor's have often a fixed sample rate in which they detect and send several objects. Hence, so called *object lists* are used to handle and send several object messages at once. The [`IkaObjectList.msg`](https://github.com/ika-rwth-aachen/acdc/blob/main/catkin_workspace/src/dependencies/definitions/msg/IkaObjectList.msg) defines such a list. The implementation for the `IkaObjectList` is shown below
+#### ika ROS Object Lists Definition
+
+Handling multiple objects efficiently is essential for real-time applications. The `IkaObjectList.msg` facilitates this by aggregating multiple `IkaObject` messages into a single list.
+
+##### IkaObjectList.msg
 
 ```bash
 std_msgs/Header header
 
 # List meta information
-uint8 IdSource    #see definitions/utility/object_definitions.h for enum of sensors
+uint8 IdSource    # See definitions/utility/object_definitions.h for enum of sensors
 
-# Actually objects
+# Actual objects
 IkaObject[] objects
 ```
 
-As you can see, the message `IkaObjectList` has a field `objects` which is a list (with undefined length) and contains elements of the type `IkaObject`.   
+- **header:** Contains timestamp and frame information.
+- **IdSource:** Identifies the sensor source of the object detections.
+- **objects:** An array of `IkaObject` messages, allowing the transmission of multiple detected objects simultaneously.
+
+*Benefits:*
+
+- **Efficiency:** Reduces the overhead of publishing individual object messages.
+- **Organization:** Simplifies the management and processing of multiple detections from various sources.
 
 ## Measurement Data
-We provide real sensor data from our institute's test vehicle which is equipped with a Velodyne VLP-32C. This laser scanner has 32 layers and scans its environment with 10 Hz. The recordings were captured at Campus Melaten in Aachen, Germandy and can be downloaded as follows:
+
+For this workshop, we utilize real sensor data captured from our institute's test vehicle equipped with a **Velodyne VLP-32C** LiDAR sensor. This sensor provides high-resolution 3D point clouds at a rate of 10 Hz, making it ideal for dynamic object detection tasks.
+
+### Downloading the LiDAR Bag File
+
+Retrieve the recorded LiDAR data:
 
 ```bash
 wget -O lidar_campus_melaten.bag https://rwth-aachen.sciebo.de/s/udlMYloXpCdVtyp/download
 ```
 
-Alternatively, you can download the bag file for this assignment here [**Link**](https://rwth-aachen.sciebo.de/s/udlMYloXpCdVtyp) (approx. 1.5 GB). 
-
-Save the file to the local directory `${REPOSITORY}/bag` on you host which is mounted to `~/bag` in the docker container. Now, we want to work with the `rosbag` commands inside the container
+*Alternatively,* access the bag file directly [**here**](https://rwth-aachen.sciebo.de/s/udlMYloXpCdVtyp) (approx. 1.5 GB). Save the file to the local directory `${REPOSITORY}/bag` on your host machine, which is mounted to `~/bag` within the Docker container.
 
 ### Rosbag Inspection
-Inspect the bag file with the command `rosbag info`:
+
+Inspect the contents of the bag file using the `rosbag info` command:
 
 ```bash
-rosuser@:/home/rosuser/bag# rosbag info lidar_campus_melaten.bag 
+rosbag info lidar_campus_melaten.bag 
+```
+
+#### Expected Output:
+
+```bash
 path:        lidar_campus_melaten.bag 
 version:     2.0
 duration:    1:59s (119s)
@@ -94,18 +227,29 @@ types:       sensor_msgs/PointCloud2 [1158d486dd51d683ce2f1be655c3c181]
              tf2_msgs/TFMessage      [94810edda583a504dfda3829e70d7eec]
 topics:      /points2     1199 msgs    : sensor_msgs/PointCloud2
              /tf_static      1 msg     : tf2_msgs/TFMessage
-
 ```
-As you can see the bag file contains the topic `/points2` which contains messages of type `sensor_msgs/PointCloud2`. In contrast to the ika ROS message definition, this message type is a standard message which was defined by the ROS community. The message definition can be found [here](http://docs.ros.org/noetic/api/sensor_msgs/html/msg/PointCloud2.html). 
+
+- **Topics:**
+  - `/points2`: Contains `sensor_msgs/PointCloud2` messages representing raw LiDAR point clouds.
+  - `/tf_static`: Contains `tf2_msgs/TFMessage` messages for static transformations.
+
+*Note:* `sensor_msgs/PointCloud2` is a standard ROS message type for point cloud data, documented [here](http://docs.ros.org/noetic/api/sensor_msgs/html/msg/PointCloud2.html).
 
 ### Rosbag Visualization
-Now, we want to visualize the point clouds using RVIZ. 
 
-Instead of starting a `roscore`, `rviz` and `rosbag play`, we suggest to use a launch file to execute all three commands at once. We prepared such a launch file for you here `workshops/section_2/lidar_detection/launch/start_rosbag_play_rviz.launch`:
+Visualizing the LiDAR point clouds provides insights into the sensor data and facilitates debugging.
+
+#### Using a Launch File for Visualization
+
+Instead of manually starting `roscore`, `rviz`, and `rosbag play`, utilize the provided launch file to execute these commands simultaneously.
+
+##### Launch File: `start_rosbag_play_rviz.launch`
+
+Located in the `lidar_detection` package, this launch file orchestrates the playback of the bag file and the visualization in RViz.
 
 ```xml
 <launch>
-    <!-- Rosbag -->
+    <!-- Rosbag Playback -->
     <param name="use_sim_time" value="true"/>
     <node 
         pkg="rosbag"
@@ -115,7 +259,7 @@ Instead of starting a `roscore`, `rviz` and `rosbag play`, we suggest to use a l
         output="screen">
     </node>
 
-    <!-- RViz -->
+    <!-- RViz Visualization -->
     <node
         type="rviz"
         name="rviz"
@@ -125,187 +269,333 @@ Instead of starting a `roscore`, `rviz` and `rosbag play`, we suggest to use a l
 </launch>
 ```
 
-As you can see, `rosbag play` and `rviz` are evoked. The launch file basically bundles all necessary commands to run the nodes with their parameters and executes them simultaneously. Furthermore, `roscore` is called implicitly and it is not necessary to manually execute it.
+- **Parameters:**
+  - `use_sim_time`: Synchronizes ROS time with simulation time.
+  - `rosbag play` arguments:
+    - `--clock`: Publishes simulated clock time.
+    - `-l`: Loops the bag file indefinitely.
+    - `-r 0.5`: Plays the bag file at half speed.
+    - `-d 1`: Delays the start by 1 second.
 
-Since the launch file is in the package `lidar_detection`, you can simply start it with:
+#### Launching the Visualization
+
+Execute the launch file to start playback and visualization:
+
 ```bash
-roslaunch lidar detection start_rosbag_play_rviz.launch
+roslaunch lidar_detection start_rosbag_play_rviz.launch
 ```
 
-The RViz window should pop up and you should see something like this
+#### Expected RViz Window:
 
-<img src="../images/section_2/object_detection/rviz.png" alt="Description of image" />
+![fag1](../images/section_2/object_detection/rviz.PNG)
 
-For a better visualization you may alter the display settings. Have a look on tab `PointCloud2`. Here you could increase `Size` to different values. Feel free to play with the settings such as `Style`, `Decay Time` or `Color Transformer`.
+- **PointCloud2 Display:** Visualizes the raw LiDAR point clouds.
+- **Customization:** Enhance visualization by adjusting settings such as `Size`, `Style`, `Decay Time`, and `Color Transformer` within the `PointCloud2` tab.
 
-#### Recap: Navigation in RVIZ
-- Left mouse button: Click and drag to rotate around the Z axis
-- Middle mouse button: Click and drag to move the camera along the XY plane
-- Right mouse button: Click and drag to zoom the image
-- Scrollwheel: Zoom the image
-
-**Congratulations!** We can terminate the previous launch file and focus on the actual lidar detection alorithms in the following.
+*Tip:* Modify RViz settings to improve clarity and highlight specific features of the point cloud data.
 
 ## Lidar Detection
 
-We already provide a ROS package `lidar_detection` for the detection of 3D objects, where the actual inference of the deep learning model is performed first, before generating the bounding boxes and object lists in a second step. The code is located in `~/ws/catkin_workspace/src/workshops/section_2/lidar_detection`.
+The `lidar_detection` ROS package facilitates the detection of 3D objects from raw LiDAR data. It leverages the **PointPillars** deep learning model to infer bounding boxes around detected objects, which are then published as `IkaObjectList` messages for further processing.
+
+### Package Structure
 
 ```bash
 section_2/
 └── lidar_detection
-    ├── CMakeLists.txt
-    ├── include
+    ├── CMakeLists.txt
+    ├── include
     │   ├── definitions.h
     │   ├── detector.h
     │   ├── lidar_detection.h
-    │   ├── list_creator.h
-    │   ├── pillar_utils.h
-    ├── launch
-    │   ├── static_params.yaml
-    │   ├── start_all.launch
-    │   ├── start_lidar_detection.launch
-    │   └── start_rosbag_play_rviz.launch
-    ├── model
+    │   ├── list_creator.h
+    │   ├── pillar_utils.h
+    ├── launch
+    │   ├── static_params.yaml
+    │   ├── start_all.launch
+    │   ├── start_lidar_detection.launch
+    │   └── start_rosbag_play_rviz.launch
+    ├── model
     │   ├── lidar_detection.yml
-    │   └── FrozenGraphs
-    │        └──lidar_detection
-    │            └──lidar_detection.pb
-    ├── nodelet_plugins.xml
-    ├── package.xml
-    ├── rviz
-    │   └── point_cloud.rviz
-    └── src
-        ├── definitions.cpp
+    │   └── FrozenGraphs
+    │       └──lidar_detection
+    │           └──lidar_detection.pb
+    ├── nodelet_plugins.xml
+    ├── package.xml
+    ├── rviz
+    │   └── point_cloud.rviz
+    └── src
+        ├── definitions.cpp
         ├── detector.cpp
         ├── lidar_detection.cpp
         ├── list_creator.cpp
-        └── pillar_utils.cpp
+        └── pillar_utils.cpp
 ```
 
-Don't be overwhelmed by the amount of code and all the details of this implementation. We do not require you to understand every line of code. As previously mentioned, the 3D Object Detection algorithm is called PointPillars which is based on a Deep Neural Network. We do not explain more details of this model here but we refer interested readers to [https://arxiv.org/abs/1812.05784](https://arxiv.org/abs/1812.05784). 
+- **Key Directories and Files:**
+  - `include/`: Header files defining classes and utilities.
+  - `launch/`: ROS launch files for starting nodes and configurations.
+  - `model/`: Contains the PointPillars model configuration and frozen graph.
+  - `rviz/`: RViz configuration files.
+  - `src/`: Source code implementing detection algorithms and message handling.
 
-Now, it's time to launch the `lidar_detection` node. Navigate to `~/ws/catkin_workspace` and build/source your workspace again to ensure that everything is well prepared.
-```bash
-catkin build
-source devel/setup.bash
-```
+### Understanding the Detection Pipeline
 
-After this you can launch the `lidar_detection` node as well as the previous point cloud visualization. We provide a combined launch file which launches both tasks together.
+1. **Point Cloud Ingestion:**
+   - Raw LiDAR data is received from the `/points2` topic as `sensor_msgs/PointCloud2` messages.
+
+2. **PointPillars Inference:**
+   - The PointPillars deep neural network processes the point cloud to identify and classify objects.
+   - Outputs include bounding boxes with associated class probabilities.
+
+3. **Bounding Box and Object List Creation:**
+   - Detected objects are encapsulated into `IkaObject` messages, detailing their state vectors and classifications.
+   - These objects are aggregated into `IkaObjectList` messages for efficient transmission.
+
+4. **Visualization:**
+   - Detected objects are visualized in RViz with bounding boxes, color-coded by class type.
+
+*Note:* Detailed understanding of the PointPillars model is beyond the scope of this workshop. Interested participants are encouraged to refer to the original [PointPillars paper](https://arxiv.org/abs/1812.05784) for in-depth knowledge.
+
+### Launching the Detection Node
+
+To initiate the object detection process, execute the combined launch file that starts both the `rosbag play` and the `lidar_detection` nodes:
+
 ```bash
 roslaunch lidar_detection start_all.launch
 ```
 
-**Note** that the bag file is being replayed with a rate of `0.1` as the inference of the neural net for object detection is quite time demanding without using a GPU. Depending on the performance of you computer you might increase that factor. 
+*Note:* The bag file playback rate is set to `0.1` to accommodate the computational demands of the neural network inference. Depending on your system's performance, you may adjust this rate for optimal processing.
 
-Now, the `lidar_detection` node should be running and the RVIZ window should have popped up. Let's configure RVIZ to visualize the `ikaObjectLists` messages.
+### Visualizing Detected Objects in RViz
 
-### Visualize Object List
+Once the detection node is running, configure RViz to display the detected objects:
 
-Click on *ADD* --> *By Topic* --> *Select `/lidar_detection/object_list/IkaObjectList`* --> *Ok*
+1. **Add IkaObjectList Display:**
+   - Click on **ADD** in RViz.
+   - Select **By Topic**.
+   - Choose `/lidar_detection/object_list/IkaObjectList`.
+   - Click **OK**.
 
-<img src="../images/section_2/object_detection/rviz_select.png" alt="Description of image" />
+   ![fag1](../images/section_2/object_detection/rviz_select.PNG)
 
-Now, the detections should be visible and you should see something similar to this.
+2. **Resulting Visualization:**
+   - Detected objects are displayed with bounding boxes.
+   - Objects are color-coded based on their classified type (e.g., cars, pedestrians).
 
-<img src="../images/section_2/object_detection/task.png" alt="Description of image" />
+   ![fag1](../images/section_2/object_detection/task.PNG)
 
+*Issue Encountered:* Initially, bounding boxes may not align accurately, and all objects might be classified as `UNKNOWN`. These issues will be addressed in the subsequent tasks.
 
-Unfortunately, there's something wrong. The bounding boxes do not fit the objects very well and all objects are classified as `UNKNOWN`, although we can clearly see vehicles and pedestrians in the point clouds. Let's fix this issue in the two upcoming tasks.
+## Tasks
 
-## Task 1
-As you have seen in the previous task, the output of the object detection has some flaws. We forgot to set the correct size of the object boxes and the heading angle. In this task you will fix that problem and assign the correct values to the `IkaObject` message.
+### Task 1: Correcting Bounding Box Dimensions and Orientation
 
-Open the file `list_creator.cpp` and navigate to the following code snipped.
-```c++
-// set object position
-object.fMean[(int)definitions::ca_model::posX] = bounding_box.center(0);
-object.fMean[(int)definitions::ca_model::posY] = bounding_box.center(1);
+**Objective:** Ensure that detected objects have accurate bounding box dimensions and correct heading angles by properly assigning values from the detection model to the `IkaObject` message.
 
- ...  
+#### Steps:
 
+1. **Navigate to `list_creator.cpp`:**
 
-// START TASK 1 CODE  
+   Open the `list_creator.cpp` file located in `~/ws/catkin_workspace/src/workshops/section_2/lidar_detection/src/`.
 
-// set object dimensions and fHeading
-object.fMean[(int)definitions::ca_model::length] = 2;
-object.fMean[(int)definitions::ca_model::width] = 2;
-object.fMean[(int)definitions::ca_model::height] = 2;
+2. **Locate the Code Snippet:**
 
-...
-     
-// set yaw angle
-object.fMean[(int)definitions::ca_model::heading] = 0;
+   Identify the section responsible for setting the object position and dimensions:
 
-// END TASK 1 CODE 
-```
+   ```cpp
+   // set object position
+   object.fMean[(int)definitions::ca_model::posX] = bounding_box.center(0);
+   object.fMean[(int)definitions::ca_model::posY] = bounding_box.center(1);
 
-You can see that two different variables are used:
-- `object`: Instance of [IkaObject.msg](#ObjectStateDefinition)
-- `bounding_box`: Instance of struct `BoundingBoxCenter`. The definition of this struct is given in file `definitions.h`:
+   ...  
 
-```c++
-struct BoundingBoxCenter
-{
-  Eigen::Vector2d center;
-  float z;
-  float length;
-  float width;
-  float height;
-  float yaw;
+   // START TASK 1 CODE  
 
-  float score;
-  int class_idx;
-  std::string class_name;
-};
-``` 
-You may have noticed, that position of the object is correctly assigned, but we did not assign the dimensions and heading angle of the object correctly. However, the detection algorithm stores its estimates in `bounding_box`.
+   // set object dimensions and fHeading
+   object.fMean[(int)definitions::ca_model::length] = 2;
+   object.fMean[(int)definitions::ca_model::width] = 2;
+   object.fMean[(int)definitions::ca_model::height] = 2;
 
-Now, fix the problem and assign the quantities of `bounding_box` to `object`. Modify the code just in between the brackets to avoid any problems.
+   ...
+        
+   // set yaw angle
+   object.fMean[(int)definitions::ca_model::heading] = 0;
 
-**Note:** After your implementation, you have to rebuild the `lidar_detection` package, before starting everything again:
-1. Compile the code: `catkin build`
-2. Launch the node: `roslaunch lidar_detection start_all.launch`
-3. Reconfigure RVIZ to display the `ikaObjectList`
+   // END TASK 1 CODE 
+   ```
 
-Note: You may also store the current RVIZ configuration with `File` -> `Save Config` and load the config via the launch file or with `Open Config` in order to avoid the third step.
+3. **Understand the Variables:**
 
-In case you correctly implemented the code block, you can see that the detected objects are associated with the estimated bounding box dimensions.
+   - **`object`:** Instance of `IkaObject.msg`.
+   - **`bounding_box`:** Instance of `BoundingBoxCenter` struct defined in `definitions.h`:
 
-## Task 2
-In the previous task, you corrected the dimensions and orientation of the bounding box. But the object boxes in RVIZ still do not show a correct classification of the detected objects. All objects are still associated with class `UNKNOWN`. Now, lets tackle this problem:
+     ```cpp
+     struct BoundingBoxCenter
+     {
+       Eigen::Vector2d center;
+       float z;
+       float length;
+       float width;
+       float height;
+       float yaw;
 
-Inspect the file `detector.cpp` and search for the `TASK 2 CODE` brackets. This snippets calculates the `class_idx` of a bounding box, which should represent the index of the most probable class value, based on all predicted `class_scores`.
-```c++
-// START TASK 2 CODE
+       float score;
+       int class_idx;
+       std::string class_name;
+     };
+     ```
 
-int class_idx = -1;
+   - **Issue:** The bounding box dimensions (`length`, `width`, `height`) and the `heading` angle are hardcoded and do not reflect the values from `bounding_box`.
 
-// END TASK 2 CODE
-```
-Your task is now to compute the correct value for `class_idx`.
+4. **Implement the Corrections:**
 
-Hints:
-- You can use `std::max_element` to find the position of the maximum of an array.
-- In this example the position of the maximum can be used as the new `class_idx`.
+   Modify the code between the `// START TASK 1 CODE` and `// END TASK 1 CODE` comments to assign the correct values from `bounding_box`:
 
-After your implementation, you have to rebuild the `lidar_detection` package, before starting it again:
-1. Compile the code: `catkin build`
-2. Launch the node: `roslaunch lidar_detection start_all.launch`
-3. Reconfigure RVIZ to display the `ikaObjectList`
+   ```cpp
+   // START TASK 1 CODE  
 
-Note: You may also store the current RVIZ configuration with `File` -> `Save Config` and load the config via the launch file or with `Open Config` in order to avoid the third step.
+   // Set object dimensions and heading using bounding_box data
+   object.fMean[(int)definitions::ca_model::length] = bounding_box.length;
+   object.fMean[(int)definitions::ca_model::width] = bounding_box.width;
+   object.fMean[(int)definitions::ca_model::height] = bounding_box.height;
 
-In case you correctly implemented the function, you can see that the detected objects are associated with the estimated classes.
+   // Set yaw angle from bounding_box
+   object.fMean[(int)definitions::ca_model::heading] = bounding_box.yaw;
 
+   // END TASK 1 CODE 
+   ```
 
-<img src="../images/section_2/object_detection/result.png" alt="Description of image" />
+5. **Rebuild the `lidar_detection` Package:**
 
+   After saving the changes, execute the following commands to rebuild the package:
 
-**Note**: You will notice that due to the correct class assignment, much less false positive detections occur. This is because the correct score threshold can be applied which improves the overall performance a lot!
+   ```bash
+   cd ~/catkin_workspace
+   catkin build lidar_detection
+   source devel/setup.bash
+   ```
+
+6. **Launch the Detection Node:**
+
+   Restart the detection node to apply the changes:
+
+   ```bash
+   roslaunch lidar_detection start_all.launch
+   ```
+
+7. **Visualize the Updated Bounding Boxes:**
+
+   - If RViz is not already running, execute the launch file again.
+   - Observe that the bounding boxes now reflect accurate dimensions and orientations based on the detection model's output.
+
+   *Expected Visualization:*
+
+   ![fag1](../images/section_2/object_detection/result.PNG)
+
+   *Note:* The bounding boxes should align more accurately with the detected objects, and classes should start to populate correctly.
+
+### Task 2: Assigning Correct Object Classes
+
+**Objective:** Ensure that detected objects are correctly classified by assigning the appropriate `class_idx` based on the highest class probability from the detection model.
+
+#### Steps:
+
+1. **Navigate to `detector.cpp`:**
+
+   Open the `detector.cpp` file located in `~/ws/catkin_workspace/src/workshops/section_2/lidar_detection/src/`.
+
+2. **Locate the Code Snippet:**
+
+   Find the section marked for Task 2, responsible for determining the object's class index:
+
+   ```cpp
+   // START TASK 2 CODE
+   
+   int class_idx = -1;
+   
+   // END TASK 2 CODE
+   ```
+
+3. **Understand the Objective:**
+
+   The goal is to assign `class_idx` to the index of the class with the highest probability score from the detection model's output.
+
+4. **Implement the Class Index Assignment:**
+
+   Replace the placeholder code with logic that identifies the class with the maximum score using `std::max_element`. Here's how to implement it:
+
+   ```cpp
+   // START TASK 2 CODE
+   
+   // Find the index of the class with the highest score
+   auto max_it = std::max_element(bounding_box.class_scores.begin(), bounding_box.class_scores.end());
+   class_idx = std::distance(bounding_box.class_scores.begin(), max_it);
+   
+   // END TASK 2 CODE
+   ```
+
+   - **Explanation:**
+     - `bounding_box.class_scores` is assumed to be a `std::vector<float>` containing the probability scores for each class.
+     - `std::max_element` locates the iterator pointing to the highest score.
+     - `std::distance` calculates the index of this maximum score, which corresponds to the `class_idx`.
+
+5. **Rebuild the `lidar_detection` Package:**
+
+   After saving the changes, execute the following commands to rebuild the package:
+
+   ```bash
+   cd ~/catkin_workspace
+   catkin build lidar_detection
+   source devel/setup.bash
+   ```
+
+6. **Launch the Detection Node:**
+
+   Restart the detection node to apply the changes:
+
+   ```bash
+   roslaunch lidar_detection start_all.launch
+   ```
+
+7. **Visualize the Correctly Classified Objects:**
+
+   - If RViz is not already running, execute the launch file again.
+   - Detected objects should now display their correct classifications (e.g., `CAR`, `PEDESTRIAN`, `TRUCK`, `BICYCLE`) instead of `UNKNOWN`.
+
+   *Expected Visualization:*
+
+   ![fag1](../images/section_2/object_detection/result.PNG)
+
+   *Observation:* Correct class assignments reduce false positives and enhance the overall detection performance.
 
 ## Wrap-up
-* You learned the basics about 3D object detection
-* You learned about the **IkaObject** and **IkaObjectLists** message definitions
-* You learned how to launch a **ROS node**
-* You learned to use **RVIZ** to visualize **LiDAR point clouds**
-* You learned to use **RVIZ** to visualize **detected objects**
+
+In this workshop, you have:
+
+- **Explored 3D Object Detection Basics:**
+  - Understood how LiDAR data is utilized for object detection in ROS.
+  
+- **Mastered ROS Object Definitions:**
+  - Learned about `IkaObject.msg` and `IkaObjectList.msg` structures.
+  
+- **Visualized LiDAR Point Clouds:**
+  - Utilized RViz to display and interpret raw LiDAR point cloud data.
+  
+- **Launched and Operated ROS Nodes:**
+  - Executed ROS nodes for point cloud playback and object detection.
+  
+- **Visualized Detected Objects:**
+  - Configured RViz to display detected objects with accurate bounding boxes and classifications.
+  
+- **Enhanced Detection Accuracy:**
+  - Corrected bounding box dimensions and orientations.
+  - Implemented class index assignment to ensure accurate object classifications.
+
+These skills form the foundation for advanced perception tasks in autonomous systems, enabling vehicles to navigate safely and efficiently by accurately detecting and classifying surrounding objects.
+
+## References
+
+- **PointPillars Paper:** [https://arxiv.org/abs/1812.05784](https://arxiv.org/abs/1812.05784)
+  
+  The original research paper detailing the PointPillars model used for efficient and accurate object detection in LiDAR point clouds.

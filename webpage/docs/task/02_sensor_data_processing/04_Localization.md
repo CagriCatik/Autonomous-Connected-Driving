@@ -1,4 +1,6 @@
-## Combining GNSS and LiDAR-Odometry for frequent pose estimation
+# Localization
+
+**Combining GNSS and LiDAR-Odometry for Frequent Pose Estimation**
 
 In this workshop, we will perform __localization__ based on GNSS and LiDAR measurements. To achieve a high frequent pose estimate, we will fuse both sources of information.
 
@@ -128,8 +130,7 @@ ros2 bag play localization.db3 --clock
 
 If everything is configured correctly, the output in the RViz window should look like the following:
 
-<img src="../images/section_2/localization/lidar_odometry_output.PNG" alt="Description of image" />
-
+![fag1](../images/section_2/localization/lidar_odometry_output.PNG)
 
 The image shows the accumulated pointclouds and the estimated vehicle trajectory (blue line) that is derived via scan-matching through the ICP algorithm.
 
@@ -402,7 +403,7 @@ ros2 bag play localization.db3 --clock
 
 If everything is implemented correctly, the output in the RViz window should look like the following:
 
-<img src="../images/section_2/localization/localization_rviz.PNG" alt="Description of image" />
+![fag1](../images/section_2/localization/localization_rviz.PNG)
 
 
 The red arrow in the RViz 3D-View visualizes the ground truth pose of the vehicle, while the purple sphere shows the corresponding transformed GNSS position of the vehicle. You will quickly notice that the GNSS position is published at a lower frequency compared to the ground-truth position, resulting in the visible position error in the image.
@@ -445,7 +446,7 @@ void GNSSLocalizationNode::estimateGNSSYawAngle(const geometry_msgs::msg::PointS
     // END TASK 4 CODE HERE
 }
 ```
-<!-- omit in toc -->
+
 #### Hints:
 - Use the description in the comment above the function header to implement the corresponding functionality.
 - You may use the illustration below to derive the trigonometric equations to calculate the yaw angle
@@ -455,11 +456,11 @@ void GNSSLocalizationNode::estimateGNSSYawAngle(const geometry_msgs::msg::PointS
 - For `roll` and `pitch` use a value of `0`
 - Since the orientation in a `geometry_msgs::msg::PoseStamped` message is of type `geometry_msgs::msg::Quaternion`, we need to convert the `tf2::Quaternion` object into an `geometry_msgs::msg::Quaternion`. For this purpose, the `tf2_geometry_msgs` package offers the `tf2::toMsg(q)` which requires a `tf2::Quaternion` as function argument and returns the corresponding `geometry_msgs::msg::Quaternion`.
 
-<img src="../images/section_2/localization/yaw_estimation_illustration.PNG" alt="Description of image" />
+![fag1](../images/section_2/localization/yaw_estimation_illustration.PNG)
 
 
-<!-- omit in toc -->
 #### Testing:
+
 Again, we will test the correct implementation by running the compiled ROS 2 node. First, make sure that the implemented code compiles without errors. For this purpose, please run:
 
 ```bash
@@ -496,8 +497,7 @@ ros2 bag play localization.db3 --clock
 
 If everything is implemented correctly, the output in the RViz window should look like the following:
 
-<img src="../images/section_2/localization/yaw_estimate_rviz.PNG" alt="Description of image" />
-
+![fag1](../images/section_2/localization/yaw_estimate_rviz.PNG)
 
 Again, the red arrow in the RViz 3D-View visualizes the ground truth pose of the vehicle, while the purple sphere shows the corresponding transformed GNSS position of the vehicle. Now, in addition, you will see a purple arrow that indicates the estimated yaw angle of the vehicle.
 
@@ -561,8 +561,7 @@ As described before, the goal of this task is to implement the content of the fu
 
 The main implementation task for you is to transform the incremental translations into the map frame. Use the illustration below to solve the task.
 
-<img src="../images/section_2/localization/map_transform_illustration.PNG" alt="Description of image" />
-
+![fag1](../images/section_2/localization/map_transform_illustration.PNG)
 
 Referring to the illustration, $dx'$ and $dy'$ correspond to the variables `delta_translation.x` and `delta_translation.y` which are a given input. What we're actually interested in are $dx_{map}$ and $dy_{map}$. We can derive these variables using trigonometric equations. The yaw angle $\psi'$ corresponds to the variable `yaw` that is provided by the function `getYawFromQuaternion` (see code below).
 
@@ -653,13 +652,11 @@ ros2 bag play localization.db3 --clock
 
 In our case, make sure to enable the visualization of the `Predicted Pose` in the `Displays` Section of the RViz window by checking the corresponding check box.
 
-<img src="../images/section_2/localization/rviz_displays.PNG" alt="Description of image" />
-
+![fag1](../images/section_2/localization/rviz_displays.PNG)
 
 If everything is implemented correctly, the output in the RViz window should somehow look like the following:
 
-<img src="../images/section_2/localization/rviz_final_result.PNG" alt="Description of image" />
-
+![fag1](../images/section_2/localization/rviz_final_result.PNG)
 
 Next to the red (ground truth) and purple arrow (estimated GNSS pose), you will now see a green arrow indicating the predicted pose of the vehicle that results from combining the GNSS estimate with the odometry input.
 

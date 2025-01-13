@@ -1,285 +1,480 @@
-# SPaT Processing
+# SPaT/MAP Processing for Trajectory Planning
 
 ![ROS1](https://img.shields.io/badge/ROS1-blue)
 
-## SPaT/MAP processing for trajectory planning
+## Introduction
 
-In contrast to the previous subsection, where your computer acted as a cloud and implemented a collective function, in the following tasks you will implement a supportive function that allows the trajectory planning to handle traffic lights.
+In the realm of autonomous driving, effective trajectory planning is paramount for ensuring safe and efficient navigation. Trajectory planning must dynamically adapt to real-time traffic conditions, including traffic light states. This documentation delves into the integration of Signal Phase and Timing (SPaT) and Map (MAP) data into trajectory planning using the Robot Operating System (ROS1). By leveraging SPaT/MAP messages, the trajectory planner can make informed decisions based on the current and future states of traffic signals.
 
-For this purpose, we have added a pedestrian traffic light to the ika test track known from the previous sections. The main goal of this task is to visualize the SPaT/MAP data and adapt the trajectory planning from Section 4 so that it can react to the traffic light.
+### Objectives
 
+- **Visualize SPaT/MAP Data:** Display traffic light states and intersection topologies in RViz.
+- **Integrate Traffic Light Data:** Modify the trajectory planner to respond to traffic light states.
+- **Enhance Situational Awareness:** Visualize Cooperative Awareness Messages (CAM) from other vehicles to improve decision-making.
 
-## Task 1: Configure the bridge so that you receive the messages (SPATEM/MAPEM) from the traffic light
-If not already done, you should first build your workspace.
+This guide is structured to cater to both beginners and advanced users, providing step-by-step instructions, in-depth explanations, and relevant code snippets to facilitate seamless implementation.
+
+## Prerequisites
+
+Before diving into SPaT/MAP processing, ensure that you have the following set up:
+
+- **ROS1:** Familiarity with ROS1 and its fundamental concepts.
+- **Catkin Workspace:** Properly configured ROS workspace.
+- **Dependencies:** Required ROS packages and dependencies as outlined in the [dependencies](https://github.com/ika-rwth-aachen/acdc/tree/main/catkin_workspace/src/dependencies/definitions/msg) repository.
+- **IKA Test Track Setup:** Access to the IKA test track environment with a pedestrian traffic light integrated.
+
+## Task 1: Configure the Bridge to Receive SPaT/MAP Messages from the Traffic Light
+
+### Overview
+
+To enable trajectory planning to respond to traffic lights, you first need to configure a bridge that subscribes to SPaT and MAP messages published by the traffic light system. These messages are transmitted via MQTT to a broker and decoded into ROS message formats.
+
+### Steps
+
+1. **Build Your Workspace**
+
+   Ensure that your ROS workspace is built and sourced correctly.
+
+   ```bash
+   catkin build
+   source devel/setup.bash # Execute this line in each terminal you open subsequently
+   ```
+
+2. **Understand Message Formats**
+
+   The traffic light publishes its state and intersection topology as SPaT (`v2x_SPAT`) and MAP (`v2x_MAP`) messages via MQTT. Detailed ROS message definitions can be found in the [definitions](https://github.com/ika-rwth-aachen/acdc/tree/main/catkin_workspace/src/dependencies/definitions/msg) directory.
+
+3. **Configure the MQTT Client**
+
+   Utilize the **mqtt_client** package to subscribe to the relevant MQTT topics. You can either create a new configuration or extend an existing one based on your setup.
+
+   - **Broker Details:**
+     - **Address:** `broker.hivemq.com`
+     - **Port:** Default MQTT port (1883)
+     - **Credentials:** Not required for this public broker
+
+   - **Topics to Subscribe:**
+     - **SPaT Messages:** `ika_acdc_22/SPATEM`
+     - **MAP Messages:** `ika_acdc_22/MAPEM`
+
+   Update your MQTT configuration file with the above parameters.
+
+4. **Launch the MQTT Bridge**
+
+   Start the MQTT bridge using your configured launch file.
+
+   ```bash
+   roslaunch mqtt_launchpack your_launch_file.launch # Replace 'your_launch_file' with your actual launch file name
+   ```
+
+   **Expected Output:**
+
+   ```
+   Connected to broker at 'tcp://broker.hivemq.com:1883'
+   ```
+
+5. **Verify Message Reception**
+
+   Use `rqt` to inspect the subscribed ROS topics and confirm that SPaT and MAP messages are being received.
+
+   ```bash
+   rqt
+   ```
+
+   Navigate to the **Topics** section and verify the incoming messages on `ika_acdc_22/SPATEM` and `ika_acdc_22/MAPEM`.
+
+### Code Snippet
+
 ```bash
 catkin build
-source devel/setup.bash # make sure to execute this line in each of the following terminals!
+source devel/setup.bash
+roslaunch mqtt_launchpack your_launch_file.launch
 ```
 
-The connected traffic light publishs its state and the corresponding intersection topology as SPATEM resp. MAPEM via MQTT to the broker from the last subsection. The ASN.1 decoding has already been done on the server, so the messages are in the following formats:
-- SPATEM: `v2x_SPAT`
-- MAPEM: `v2x_MAP`
+## Task 2: Visualize SPaT/MAP Messages in RViz
 
-You can take a closer look at all ROS message formats in this [folder](https://github.com/ika-rwth-aachen/acdc/tree/main/catkin_workspace/src/dependencies/definitions/msg).
+### Overview
 
-To receive the messages you have to use the **mqtt_client**, which you should know from the last subsection.
-Analogous to the [procedure](https://github.com/ika-rwth-aachen/acdc/wiki/Section-5-Cloud-Based-Object-Fusion#task-1-configure-the-bridge-so-that-you-receive-the-two-object-lists) described there, you have to create a new configuration or extend your existing one accordingly. Use the following information for setting the parameters:
-- the broker runs on a public server with this address `broker.hivemq.com`
-- you don't need any credentials to connect to the broker
-- you can subscribe to the messages on the following topics:
-  - Signal Phase and Timing Message (SPATEM): `ika_acdc_22/SPATEM`
-  - MAP Message (MAPEM): `ika_acdc_22/MAPEM`
+Visualization of SPaT and MAP messages is crucial for understanding the current traffic signal states and intersection layouts. RViz, ROS's powerful visualization tool, will be used to display this information.
 
-If you are done with that, you can start your launch file by:
-```bash
-roslaunch mqtt_launchpack ${YourLaunchFile}.launch # make sure you have included the right parameter file
-```
+### Steps
 
-If everything was done correctly, the node should have started with the information `Connected to broker at 'tcp://broker.hivemq.com:1883'`. Afterwards you can check with `rqt` if the messages arrive on the ROS topics you have chosen.
+1. **Prepare Visualization Nodes**
 
+   Nodes required for visualization have been pre-configured in the Section 4 & Section 5 folders. Your task involves implementing specific parts to handle SPaT and MAP messages.
 
-## Task 2: Visualize the messages (SPATEM/MAPEM) in RVIZ
-We have already prepared the nodes in the section 4 & section 5 folder, so you only have to implement the relevant parts.
+2. **Configure ETSI Visualization Node**
 
-To visualize the messages, you must first configure the `etsi_visualization` node with your chosen SPATEM/MAPEM ROS topic. You can set the necessary parameters in [start_ETSIViz.launch](https://github.com/ika-rwth-aachen/acdc/blob/main/catkin_workspace/src/workshops/section_5/etsi_visualization/launch/start_ETSIViz.launch#L4).
+   The `etsi_visualization` node needs to be configured with the appropriate ROS topics for SPaT and MAP messages. Modify the `start_ETSIViz.launch` file to set the correct topics.
 
--------
-### MAPEM visualization
-Now we want to start visualizing our received MAP messages. Therefore you have to fill the gap at [Line 29 in MAPViz.cpp](https://github.com/ika-rwth-aachen/acdc/blob/main/catkin_workspace/src/workshops/section_5/etsi_visualization/src/MAPViz.cpp#L29).
-```c++
-// ### START CODE HERE ###
-// Identify number of intersections in message
-int n_intersections = 0; // Task
-// ### END CODE HERE ###
-```
-If you don't know exactly how a MAPEM is structured, it's best to look at the [definitions](https://github.com/ika-rwth-aachen/acdc/tree/main/catkin_workspace/src/dependencies/definitions/msg/v2x_MAP.msg) or the [ETSI standard](https://www.etsi.org/deliver/etsi_ts/103300_103399/103301/01.03.01_60/ts_103301v010301p.pdf).
+   ```xml
+   <!-- Example parameter setting in start_ETSIViz.launch -->
+   <param name="spat_topic" value="ika_acdc_22/SPATEM"/>
+   <param name="map_topic" value="ika_acdc_22/MAPEM"/>
+   ```
 
-If you are done with that, you can rebuild your workspace and start the predefined V2X launchfile for the trajectory planner. It already includes the launchfile for the ETSI visualization.
-```bash
-catkin build
-roslaunch trajectory_planner vehicle_guidance_v2x.launch
-```
-If everything works correctly, the visualization will look like this:
+   Refer to the [start_ETSIViz.launch](https://github.com/ika-rwth-aachen/acdc/blob/main/catkin_workspace/src/workshops/section_5/etsi_visualization/launch/start_ETSIViz.launch#L4) for exact parameter placements.
 
-![spat_empty](../images/spat_empty.png)
+3. **MAPEM Visualization**
 
-As you can see, the visualization has been extended with some markers for the MAPEM. The position of the traffic lights are shown by the circle markers, which are currently displayed in black, because you have not interpreted the SPaT message yet. The trajectory planner also still acts as in Section 4 and is not influenced by the traffic lights.
+   Implement the MAPEM visualization by modifying the `MAPViz.cpp` file.
 
---------
+   - **File to Modify:** [MAPViz.cpp](https://github.com/ika-rwth-aachen/acdc/blob/main/catkin_workspace/src/workshops/section_5/etsi_visualization/src/MAPViz.cpp#L29)
+   
+   - **Task:** Identify the number of intersections in the MAPEM message.
 
+   ```c++
+   // ### START CODE HERE ###
+   // Identify number of intersections in message
+   int n_intersections = msg.intersections.size(); // Task
+   // ### END CODE HERE ###
+   ```
 
-### SPATEM visualization
-Now you will face the SPaT message. Therefore you have to fill the `SignalGroup` struct with the information from the received SPAT messages.
-```c++
-struct SignalGroup
-{
-  uint8_t sg_id; // signal group id
-  uint8_t current_state; // current state of signal group
-  uint16_t next_change; // time for next signal state change (timing_likelyTime)
-};
-```
-Fill in the correct solution for the [marked lines in SPATViz.cpp](https://github.com/ika-rwth-aachen/acdc/blob/main/catkin_workspace/src/workshops/section_5/etsi_visualization/src/SPATViz.cpp#L57). You can use the expression for the `current_state` as an example. 
-```c++
-// ### START CODE HERE ###
-sg.current_state = spat_intsctn.states[m].state_time_speed[0].eventState; // Get first element of state_time_speed
-sg.sg_id = 0; // Task
-sg.next_change = 0; // Task
-// ### END CODE HERE ###
-```
-If you don't know exactly how a SPATEM is structured, it's best to look at the [definitions](https://github.com/ika-rwth-aachen/acdc/tree/main/catkin_workspace/src/dependencies/definitions/msg/v2x_SPAT.msg) or the [ETSI standard](https://www.etsi.org/deliver/etsi_ts/103300_103399/103301/01.03.01_60/ts_103301v010301p.pdf).
+   - **Reference Materials:**
+     - [v2x_MAP.msg Definitions](https://github.com/ika-rwth-aachen/acdc/tree/main/catkin_workspace/src/dependencies/definitions/msg/v2x_MAP.msg)
+     - [ETSI MAP Standard](https://www.etsi.org/deliver/etsi_ts/103300_103399/103301/01.03.01_60/ts_103301v010301p.pdf)
 
-After that you also have to visualize the current state of the traffic light in place of the black circles. Therefore, solve the task at the [other marked lines in SPATViz.cpp](https://github.com/ika-rwth-aachen/acdc/blob/main/catkin_workspace/src/workshops/section_5/etsi_visualization/src/SPATViz.cpp#L129). If you don't know exactly which values the state of a signal group can take, have a look at the last video.
-```c++
-// ### START CODE HERE ###
-// Set marker color depending on signal group state
-// The signal group state is given by the function variable "state"
-marker.color.r = 0.0;
-marker.color.g = 0.0;
-marker.color.b = 0.0;
-// ### END CODE HERE ###
-```
-Afterwards you have to rebuild the workspace and restart the trajectory planner.
-```bash
-catkin build
-roslaunch trajectory_planner vehicle_guidance_v2x.launch
-```
+4. **Rebuild and Launch Trajectory Planner**
 
-If the implementation is successful, the visualization should show the same states for the four lanes and the opposite states for the two pedestrian directions as well as a timer with the time until the next signal change. For example like this:
+   After implementing the MAPEM visualization:
 
-![spat_filled](../images/spat_filled.png)
+   ```bash
+   catkin build
+   roslaunch trajectory_planner vehicle_guidance_v2x.launch
+   ```
 
+   **Expected Visualization:**
 
+   ![spat_empty](../images/spat_empty.png)
 
-## Task 3: Modify the trajectory planner, so it can react to the traffic lights
-Now that MAPEM and SPATEM of the traffic light have been visualized, you have to let the trajectory planner know how to react to it. For this, you have again to adjust the topics for the messages in [vehicle_guidance_v2x.launch](https://github.com/ika-rwth-aachen/acdc/blob/main/catkin_workspace/src/workshops/section_4/trajectory_planner/launch/vehicle_guidance_v2x.launch#L59).
+   The RViz window should display traffic light positions as black circles, indicating that SPaT messages are yet to influence the trajectory planner.
 
-After that, you have to interpret the messages in their related subscribers. For that, open the [v2x_planner_interface.cpp](https://github.com/ika-rwth-aachen/acdc/blob/main/catkin_workspace/src/workshops/section_4/trajectory_planner/src/v2x_planner_interface.cpp) and fill in the marked gaps. Thereby you can use the implementations from the `etsi_visualization` as a reference. In sum, you have to transfer the received messages into a traffic light struct which is built like this:
-```c++
-struct TrafficLight
-{
-  int stationID;
-  std::vector<geometry_msgs::Point> ingress_lane;
-  int sig_id;
-  int tl_id;
-  bool red;
-  ros::Time last_spat;
-};
-```
+5. **SPATEM Visualization**
 
----------
+   Implement the SPATEM visualization by modifying the `SPATViz.cpp` file.
 
+   - **File to Modify:** [SPATViz.cpp](https://github.com/ika-rwth-aachen/acdc/blob/main/catkin_workspace/src/workshops/section_5/etsi_visualization/src/SPATViz.cpp#L57)
+   
+   - **Tasks:**
+     - Populate the `SignalGroup` struct with SPaT data.
+     - Visualize the current state of traffic lights based on SPaT messages.
 
-### Process MAPEM
-At best, start this task with the MAPEM callback function. With the help of the MAPEM, you can get information about the `ingress_lane`, `sig_id` and `tl_id`. This is important so that the vehicle knows where the traffic lights are and to which lane(s) they refer. So open the [v2x_planner_interface.cpp at line 73](https://github.com/ika-rwth-aachen/acdc/blob/main/catkin_workspace/src/workshops/section_4/trajectory_planner/src/v2x_planner_interface.cpp#L73) and fill the two gaps.
+   ```c++
+   // ### START CODE HERE ###
+   sg.current_state = spat_intsctn.states[m].state_time_speed[0].eventState; // Get first element of state_time_speed
+   sg.sg_id = spat_intsctn.states[m].signalGroup; // Task: Assign signal group ID
+   sg.next_change = spat_intsctn.states[m].state_time_speed[0].eventTime; // Task: Assign time for next state change
+   // ### END CODE HERE ###
+   ```
 
-```c++
-// ### START CODE HERE ###
-// Identify number of intersections in message
-int n_intersections = 0; // Task
-// ### END CODE HERE ###
+   - **Color Coding Traffic Lights:**
 
-// Loop all intersections in message
-for(int i = 0; i < n_intersections; i++) {
-  definitions::v2x_MAP_Intersection intsctn = msg.intersections[i];
+   ```c++
+   // ### START CODE HERE ###
+   // Set marker color depending on signal group state
+   // The signal group state is given by the function variable "state"
+   if (state == RED) {
+       marker.color.r = 1.0;
+       marker.color.g = 0.0;
+       marker.color.b = 0.0;
+   } else if (state == GREEN) {
+       marker.color.r = 0.0;
+       marker.color.g = 1.0;
+       marker.color.b = 0.0;
+   } else if (state == YELLOW) {
+       marker.color.r = 1.0;
+       marker.color.g = 1.0;
+       marker.color.b = 0.0;
+   } else {
+       marker.color.r = 0.0;
+       marker.color.g = 0.0;
+       marker.color.b = 0.0;
+   }
+   // ### END CODE HERE ###
+   ```
 
-  // Loop all lanes to get signal groups and traffic light positions
-  for(int m = 0; m < intsctn.adjacent_lanes.size(); m++) {
+6. **Rebuild and Relaunch**
 
-    definitions::v2x_MAP_Lane lane = intsctn.adjacent_lanes[m];
-    
-    // ### START CODE HERE ###
-    // only ingress lanes can consider traffic signals -> skip all egress lanes
-    bool is_egress_lane = true; // Task          
-    if (is_egress_lane){
-      continue;
-    }
-    // ### END CODE HERE ###
+   After completing the SPATEM visualization:
 
-    ...
+   ```bash
+   catkin build
+   roslaunch trajectory_planner vehicle_guidance_v2x.launch
+   ```
 
-  }
-}
-```
-After solving this first part of the task (and rebuilding the workspace), the vehicle should always stop before the traffic light, but not start again.
+   **Expected Visualization:**
 
-----------
+   ![spat_filled](../images/spat_filled.png)
 
+   Traffic lights should now display colors corresponding to their current states, along with timers indicating the time until the next state change.
 
-### Process SPATEM
-The final part of this task is to also interpret the SPaT messages so that the vehicle will move on again. Therefore open the [v2x_planner_interface.cpp at line 41](https://github.com/ika-rwth-aachen/acdc/blob/main/catkin_workspace/src/workshops/section_4/trajectory_planner/src/v2x_planner_interface.cpp#L41) and fill the last two gaps.
-```c++
-// ### START CODE HERE ###
-// Identify number of intersections in message
-int n_intersections = 0; // Task
-// ### END CODE HERE ###
+## Task 3: Modify the Trajectory Planner to React to Traffic Lights
 
-// Loop all intersections in message
-for(int i = 0; i < n_intersections; i++) {
-  definitions::v2x_SPAT_IntersectionState spat_intsctn = msg.spatData_intersections[i];
-  // Loop all movement states to get signal groups
-  for(int m = 0; m < spat_intsctn.states.size(); m++) {
-    //Loop all traffic lights stored in the map data
-    for(int k = 0; k<trafficlights.size(); k++)
-    {
-      if(trafficlights[k].stationID == msg.header_stationID && trafficlights[k].sig_id == spat_intsctn.states[m].signalGroup)
-      {
-        trafficlights[k].last_spat = ros::Time::now();
+### Overview
 
-        // ### START CODE HERE ###
-        // Check if signal state is red or not (hint: use an if condition)
-        trafficlights[k].red = true; // Task
-        // ### END CODE HERE ###
-      }
-    }
-  }
-}
-```
+With SPaT and MAP messages now visualized, the next step is to enable the trajectory planner to make decisions based on traffic light states. This involves interpreting SPaT/MAP data and adjusting the vehicle's trajectory accordingly.
 
-Remember: If you have problems with the implementation, you can use the [SPATEM](https://github.com/ika-rwth-aachen/acdc/blob/main/catkin_workspace/src/workshops/section_5/etsi_visualization/src/SPATViz.cpp#L27)/[MAPEM subscriber](https://github.com/ika-rwth-aachen/acdc/blob/main/catkin_workspace/src/workshops/section_5/etsi_visualization/src/MAPViz.cpp#L25) from the spat visualization as a reference. You can also look again in the last video how a SPATEM is defined, or look at the received SPATEM/MAPEM in `rqt`.
+### Steps
 
-------
+1. **Adjust Topics in Launch File**
 
-When you are ready with your implementation, save your code rebuild the workspace and start the trajectory planner:
-```bash
-catkin build
-roslaunch trajectory_planner vehicle_guidance_v2x.launch
-```
+   Update the `vehicle_guidance_v2x.launch` file to include the SPaT and MAP ROS topics.
 
-The trajectory planner should now react correctly to the traffic lights! The visualization will look something like this:
+   - **File to Modify:** [vehicle_guidance_v2x.launch](https://github.com/ika-rwth-aachen/acdc/blob/main/catkin_workspace/src/workshops/section_4/trajectory_planner/launch/vehicle_guidance_v2x.launch#L59)
 
-![trajectory_planner_v2x](../images/tp_spat_map.gif)
+   ```xml
+   <!-- Example parameter settings -->
+   <param name="spat_topic" value="ika_acdc_22/SPATEM"/>
+   <param name="map_topic" value="ika_acdc_22/MAPEM"/>
+   ```
 
-If you notice incorrect behavior of the trajectory planner, feel free to adjust the weights of the cost terms and see how the behavior changes. This will let you change the parameterization during the simulation:
-```bash
-rosrun rqt_reconfigure rqt_reconfigure
-```
+2. **Implement Message Interpretation in Subscribers**
 
-![dyn_reconfigure](../images/sec6_dyn_reconfi.png)
+   Open the `v2x_planner_interface.cpp` file to handle SPaT and MAP messages.
 
+   - **File to Modify:** [v2x_planner_interface.cpp](https://github.com/ika-rwth-aachen/acdc/blob/main/catkin_workspace/src/workshops/section_4/trajectory_planner/src/v2x_planner_interface.cpp)
 
-## Task 4: Visualize other vehicles via Cooperative Awareness Messages (CAM)
-In this last task of this workshop, we will focus on the Cooperative Awareness Message (CAM). Therefore you have to know that, using `vehicle_guidance_v2x.launch`, you already start the node which publishes your live position as CAM to the known MQTT broker when driving on the ika test track ([etsi_message_generation](https://github.com/ika-rwth-aachen/acdc/tree/main/catkin_workspace/src/workshops/section_5/etsi_message_generation)). Your task will now be to visualize the CAMs of other students (their live position) in RVIZ.
-Since we also have a simulation running permanently and therefore also send a CAM to the broker, you should always see at least one other vehicle on the track - if implemented correctly.
+3. **Process MAPEM Messages**
 
-First you have to make sure that you receive the CAMs of the others. For this, extend the `mqtt_client` configuration from [Task 1](#task-1-configure-the-bridge-so-that-you-receive-the-messages-spatemmapem-from-the-traffic-light). You can subscribe to the messages on the following MQTT topic:
--  `ika_acdc_22/CAM`
-Set `/CAM` as corresponding ROS topic. You can also chose another one, but then note that you also have to change it in the [start_ETSIViz.launch](https://github.com/ika-rwth-aachen/acdc/blob/main/catkin_workspace/src/workshops/section_5/etsi_visualization/launch/start_ETSIViz.launch#L4) accordingly.
+   - **Locate Callback Function:** Start with the MAPEM callback function around line 73.
 
-Now start your launchfile from [Task 1](#task-1-configure-the-bridge-so-that-you-receive-the-messages-spatemmapem-from-the-traffic-light) with the extended configuration and check in `rqt` if there are any messages on the CAM ROS topic.
-```bash
-roslaunch mqtt_launchpack ${YourLaunchFile}.launch # make sure you have included the right parameter file
-```
-If this is the case, these messages must now be interpreted. For this you have to fill the [marked code lines in ETSIViz.cpp](https://github.com/ika-rwth-aachen/acdc/blob/main/catkin_workspace/src/workshops/section_5/etsi_visualization/src/ETSIViz.cpp#L84) with the content from the received CAMs.
+   - **Identify Number of Intersections:**
 
-Note: The velocity is only given absolutely in the CAM, but must be split into x and y direction for our object definition. Use trigonometric functions for this. The following picture will help you.
+   ```c++
+   // ### START CODE HERE ###
+   // Identify number of intersections in message
+   int n_intersections = msg.intersections.size(); // Task
+   // ### END CODE HERE ###
+   ```
 
-![task4_velocity](../images/task4_velocity.png)
+   - **Loop Through Intersections and Lanes:**
 
-```c++
-// ### START CODE HERE
-// fill with information from message
-// use helping comments from Wiki
-obj.IdInternal = 0; // stationID               // Task
-float lon = 0;      // longitude (x)           // Task
-float lat = 0;      // latitude (y)            // Task
-float v_x = 0;      // velocity in x direction // Task
-float v_y = 0;      // velocity in y direction // Task
-// ### END CODE HERE
-```
+   ```c++
+   for(int i = 0; i < n_intersections; i++) {
+       definitions::v2x_MAP_Intersection intsctn = msg.intersections[i];
 
-If you don't know exactly how a CAM is structured, it's best to look at the [definitions](https://github.com/ika-rwth-aachen/acdc/tree/main/catkin_workspace/src/dependencies/definitions/msg/v2x_CAM.msg) or the [ETSI standard](https://www.etsi.org/deliver/etsi_en/302600_302699/30263702/01.04.01_60/en_30263702v010401p.pdf).
+       // Loop all lanes to get signal groups and traffic light positions
+       for(int m = 0; m < intsctn.adjacent_lanes.size(); m++) {
+           definitions::v2x_MAP_Lane lane = intsctn.adjacent_lanes[m];
+           
+           // ### START CODE HERE ###
+           // Only ingress lanes can consider traffic signals -> skip all egress lanes
+           bool is_egress_lane = lane.direction == "egress"; // Task
+           if (is_egress_lane){
+               continue;
+           }
+           // ### END CODE HERE ###
 
-If everything was implemented correctly, you should now always see at least one other vehicle including its speed vector (light blue) driving on the track. The more students are driving on the track at the same time, the more vehicles you will see!
+           // Further processing...
+       }
+   }
+   ```
 
-Note: The CAMs are only visualized, the trajectory planner does not react to the other vehicles.
+   **Explanation:**
 
-Your visualization could look like this, for example:
+   - **Ingress vs. Egress Lanes:** Only ingress lanes (lanes leading into an intersection) are relevant for traffic signal considerations. Egress lanes can be skipped as they are not directly influenced by traffic lights.
 
-![tp_with_cam](../images/tp_with_cam.gif)
+4. **Process SPATEM Messages**
 
+   - **Locate Callback Function:** Move to the SPATEM callback function around line 41.
+
+   - **Identify Number of Intersections:**
+
+   ```c++
+   // ### START CODE HERE ###
+   // Identify number of intersections in message
+   int n_intersections = msg.spatData_intersections.size(); // Task
+   // ### END CODE HERE ###
+   ```
+
+   - **Loop Through Intersections and Signal Groups:**
+
+   ```c++
+   for(int i = 0; i < n_intersections; i++) {
+       definitions::v2x_SPAT_IntersectionState spat_intsctn = msg.spatData_intersections[i];
+       // Loop all movement states to get signal groups
+       for(int m = 0; m < spat_intsctn.states.size(); m++) {
+           // Loop all traffic lights stored in the map data
+           for(int k = 0; k < trafficlights.size(); k++) {
+               if(trafficlights[k].stationID == msg.header_stationID && 
+                  trafficlights[k].sig_id == spat_intsctn.states[m].signalGroup) {
+                   
+                   trafficlights[k].last_spat = ros::Time::now();
+
+                   // ### START CODE HERE ###
+                   // Check if signal state is red or not
+                   if(spat_intsctn.states[m].state_time_speed[0].eventState == RED) {
+                       trafficlights[k].red = true;
+                   } else {
+                       trafficlights[k].red = false;
+                   }
+                   // ### END CODE HERE ###
+               }
+           }
+       }
+   }
+   ```
+
+   **Explanation:**
+
+   - **Signal State Interpretation:** The `eventState` indicates the current state of the traffic light. By checking if it's red, the trajectory planner can decide whether to stop or proceed.
+
+5. **Update Traffic Light Struct**
+
+   Ensure that the `TrafficLight` struct accurately reflects the traffic light's state.
+
+   ```c++
+   struct TrafficLight
+   {
+       int stationID;
+       std::vector<geometry_msgs::Point> ingress_lane;
+       int sig_id;
+       int tl_id;
+       bool red;
+       ros::Time last_spat;
+   };
+   ```
+
+6. **Rebuild and Relaunch Trajectory Planner**
+
+   After implementing the message interpretation:
+
+   ```bash
+   catkin build
+   roslaunch trajectory_planner vehicle_guidance_v2x.launch
+   ```
+
+   **Expected Behavior:**
+
+   - **Vehicle Stops at Red Lights:** The vehicle should halt before the traffic light when it turns red.
+   - **Vehicle Proceeds on Green:** Once the light turns green, the vehicle should resume movement.
+
+   **Visualization:**
+
+   ![trajectory_planner_v2x](../images/tp_spat_map.gif)
+
+7. **Adjusting Trajectory Planner Parameters**
+
+   If the trajectory planner exhibits incorrect behavior, fine-tune the cost parameters using dynamic reconfiguration.
+
+   ```bash
+   rosrun rqt_reconfigure rqt_reconfigure
+   ```
+
+   ![dyn_reconfigure](../images/sec6_dyn_reconfi.png)
+
+## Task 4: Visualize Other Vehicles via Cooperative Awareness Messages (CAM)
+
+### Overview
+
+Cooperative Awareness Messages (CAM) enhance situational awareness by providing real-time information about nearby vehicles. Visualizing CAMs allows the trajectory planner to be aware of other vehicles on the road, fostering safer navigation.
+
+### Steps
+
+1. **Understand CAMs**
+
+   CAMs are broadcasted by vehicles to share their live positions, velocities, and other pertinent data. These messages are published via MQTT and can be visualized in RViz.
+
+2. **Subscribe to CAM Messages**
+
+   Extend your MQTT client configuration to subscribe to the CAM topic.
+
+   - **MQTT Topic:**
+     - `ika_acdc_22/CAM`
+   
+   - **Corresponding ROS Topic:**
+     - `/CAM` (modifiable based on preference)
+
+   Update the MQTT configuration accordingly.
+
+3. **Verify CAM Message Reception**
+
+   Launch the MQTT bridge with the updated configuration and verify message reception using `rqt`.
+
+   ```bash
+   roslaunch mqtt_launchpack your_launch_file.launch
+   ```
+
+   In `rqt`, check the `/CAM` topic to ensure CAM messages are being received.
+
+4. **Implement CAM Visualization**
+
+   Modify the `ETSIViz.cpp` file to interpret and visualize CAM messages.
+
+   - **File to Modify:** [ETSIViz.cpp](https://github.com/ika-rwth-aachen/acdc/blob/main/catkin_workspace/src/workshops/section_5/etsi_visualization/src/ETSIViz.cpp#L84)
+
+   - **Tasks:**
+     - Extract vehicle positions and velocities from CAM messages.
+     - Convert absolute velocities into x and y components using trigonometric functions.
+     - Populate the `obj` structure with CAM data.
+
+   ```c++
+   // ### START CODE HERE
+   // Fill with information from message
+   obj.IdInternal = msg.stationID; // stationID
+   float lon = msg.position.longitude; // longitude (x)
+   float lat = msg.position.latitude; // latitude (y)
+   
+   // Convert speed and heading to velocity components
+   float speed = msg.speed; // Assuming speed is provided in m/s
+   float heading = msg.heading; // Assuming heading is in degrees
+   float radians = heading * (M_PI / 180.0); // Convert to radians
+   
+   float v_x = speed * cos(radians); // velocity in x direction
+   float v_y = speed * sin(radians); // velocity in y direction
+   // ### END CODE HERE
+   ```
+
+   **Explanation:**
+
+   - **Position Extraction:** Obtain the vehicle's current position from the CAM message.
+   - **Velocity Calculation:** Convert the vehicle's speed and heading into x and y velocity components for accurate visualization.
+
+5. **Rebuild and Relaunch**
+
+   After implementing CAM visualization:
+
+   ```bash
+   catkin build
+   roslaunch trajectory_planner vehicle_guidance_v2x.launch
+   ```
+
+   **Expected Visualization:**
+
+   ![tp_with_cam](../images/tp_with_cam.gif)
+
+   The RViz window should display other vehicles on the track with their respective velocity vectors. The number of vehicles corresponds to the number of CAMs being broadcasted, including those from other students and the simulation.
+
+6. **Note on Trajectory Planner Behavior**
+
+   - **Visualization Only:** The current implementation visualizes CAMs but does not incorporate them into the trajectory planning logic.
+   - **Future Enhancements:** To enable the trajectory planner to react to other vehicles, additional logic needs to be integrated to consider CAM data in decision-making processes.
 
 ## Wrap-up
-In this workshop you learned...
-- how to interpret different ETSI messages.
-  - SPAT
-  - MAPEM
-  - CAM
-- how to use these messages to improve the trajectory planner from section 4.
 
+In this workshop, you have acquired the skills to integrate and process SPaT/MAP messages for enhancing trajectory planning in autonomous vehicles. Specifically, you have learned how to:
+
+- **Interpret ETSI Messages:**
+  - **SPaT (Signal Phase and Timing):** Understand and utilize traffic signal states and timing information.
+  - **MAP (Map):** Grasp intersection topologies and traffic light positions.
+  - **CAM (Cooperative Awareness Message):** Visualize and interpret data from other vehicles to improve situational awareness.
+
+- **Enhance Trajectory Planner:**
+  - Modify the trajectory planner to respond dynamically to traffic light states.
+  - Visualize and incorporate real-time data from the environment to make informed navigation decisions.
+
+By integrating SPaT/MAP/CAM data, the trajectory planner becomes more robust, enabling safer and more efficient autonomous navigation through dynamic traffic conditions.
 
 ## References
-- [mqtt_client](https://github.com/ika-rwth-aachen/mqtt_client)
-- [broker.hivemq.com](https://broker.hivemq.com/)
-- [ETSI standards](https://www.etsi.org/committee/its)
-- [ROS](https://www.ros.org)
-- [Flatland](https://github.com/avidbots/flatland)
-- [Control Toolbox](s)
-```
-@article{adrlCT,
-  title={The control toolbox — An open-source C++ library for robotics, optimal and model predictive control},
-  author={Markus Giftthaler and Michael Neunert and Markus St{\"a}uble and Jonas Buchli},
-  journal={2018 IEEE International Conference on Simulation, Modeling, and Programming for Autonomous Robots (SIMPAR)},
-  year={2018},
-  pages={123-129}
-}
-```
+
+- [mqtt_client Repository](https://github.com/ika-rwth-aachen/mqtt_client)
+- [HiveMQ Public Broker](https://broker.hivemq.com/)
+- [ETSI Standards for V2X Communication](https://www.etsi.org/committee/its)
+- [Robot Operating System (ROS) Official Website](https://www.ros.org)
+- [Flatland Simulator](https://github.com/avidbots/flatland)
+- [Control Toolbox](#) <!-- The link seems incomplete in the original content -->
+- [SPATEM Definitions](https://github.com/ika-rwth-aachen/acdc/tree/main/catkin_workspace/src/dependencies/definitions/msg/v2x_SPAT.msg)
+- [MAPEM Definitions](https://github.com/ika-rwth-aachen/acdc/tree/main/catkin_workspace/src/dependencies/definitions/msg/v2x_MAP.msg)
+- [CAM Definitions](https://github.com/ika-rwth-aachen/acdc/tree/main/catkin_workspace/src/dependencies/definitions/msg/v2x_CAM.msg)
+- [ETSI SPaT Standard](https://www.etsi.org/deliver/etsi_ts/103300_103399/103301/01.03.01_60/ts_103301v010301p.pdf)
+- [ETSI MAP Standard](https://www.etsi.org/deliver/etsi_ts/103300_103399/103301/01.03.01_60/ts_103301v010301p.pdf)

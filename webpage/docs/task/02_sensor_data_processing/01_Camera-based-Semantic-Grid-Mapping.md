@@ -1,8 +1,8 @@
 # Camera-based Semantic Grid Mapping
 
-![ROS2](https://img.shields.io/badge/ROS2-red)
+## ![ROS2](https://img.shields.io/badge/ROS2-red)  Instructions
 
-## Perform Camera-based Semantic Grid Mapping using geometry-based inverse perspective mapping
+**Perform Camera-based Semantic Grid Mapping using geometry-based inverse perspective mapping**
 
 In this workshop, we will perform __semantic grid mapping__ based on images taken by vehicle-mounted cameras. 
 The approach will make use of inverse perspective mapping (IPM).
@@ -16,7 +16,7 @@ The learning goals of this workshop are ...
 - Learn how to use the tf2 library
 - Learn how to visualize the output of semantic grid mapping
 
-## Introduction to this workshop
+### Introduction to this workshop
 
 We prepared a rosbag with camera data for you to use.
 
@@ -85,17 +85,19 @@ Topic: /tf | Type: tf2_msgs/msg/TFMessage | Count: 1788 | Serialization Format: 
 You can see that the rosbag has a duration of 7.5 seconds and contains segmented images of type `sensor_msgs/msg/Image` and corresponding `sensor_msgs/msg/CameraInfo` messages. 
 We will use these camera images in this assignment in order to apply semantic grid mapping.
 
-## ROS2's `sensor_msgs/msg/Image` Message
+### ROS2's `sensor_msgs/msg/Image` Message
 
 The message definition [sensor_msgs/msg/Image](https://docs.ros2.org/latest/api/sensor_msgs/msg/Image.html) is ROS2's standard image message format. It is used for all kind of camera image message types and can be used seamlessly with many different ROS2 visualization and image processing tools. Please read the documentation about the [detailed message format](https://docs.ros2.org/latest/api/sensor_msgs/msg/Image.html) and it's content.
 Message
-## ROS2's `sensor_msgs/msg/CameraInfo` Message
+
+### ROS2's `sensor_msgs/msg/CameraInfo` Message
 
 The message definition [sensor_msgs/msg/CameraInfo](hhttps://docs.ros2.org/latest/api/sensor_msgs/msg/CameraInfo.html) is ROS2's standard camera info message format. It is send together with `sensor_msgs/msg/Image` to provide additional information about the current camera image such as __camera calibration parameters__. Feel free to read the documentation about the [detailed message format](https://docs.ros2.org/latest/api/sensor_msgs/msg/CameraInfo.html).
 
 
 
-## Task 1: Explore the semantic grid mapping package and build and source the package
+### Task 1: Explore the semantic grid mapping package and build and source the package
+
 The code for the camera-based semantic grid mapping node can be found in the directory `colcon_workspace_src/section_2/camera_based_semantic_grid_mapping_r2`. 
 
 The main source code is located in the directory `camera_based_semantic_grid_mapping_r2`. The launch file are located in directory `launch`and parameters are located in `config`. Feel free to read all the code, parameters and launch files.
@@ -114,7 +116,7 @@ source install/setup.bash
 Perfect! Now you will be able to perform semantic grid mapping using camera images with this package. Let's go to the next task.
 
 
-## Task 2: Replay rosbag and run the camera-based grid mapping node
+### Task 2: Replay rosbag and run the camera-based grid mapping node
 
 We have already prepared a launch file for you to execute the camera-based semantic grid mapping package. Please read through the following lines of code carefully. 
 
@@ -215,7 +217,7 @@ ros2 launch camera_based_semantic_grid_mapping_r2 semantic_grid_mapping.launch.p
 
 The `image_view` node should show you the semantically segmented images of the right and left forward facing cameras. They are sufficient for testing the node, for now.
 
-<img src="../images/visualization.PNG" alt="Description of image" />
+![fag1](../images/visualization.PNG)
 
 
 However, the Bird's Eye View (BEV) image is not shown. This is because the node doesn't yet subscribe to the correct images and cameras info topics yet.   
@@ -223,7 +225,8 @@ However, the Bird's Eye View (BEV) image is not shown. This is because the node 
 In the following tasks, you will need to modify code in __"semantic_grid_mapping.py"__. After finishing all tasks, you will have completed the semantic grid mapping node.
 
 
-## Task 3: Synchronize the subscribers 
+### Task 3: Synchronize the subscribers
+
 As we want to combine images from multiple cameras to produce a BEV image, these images need to be from the same time step.
 
 For the purpose of synchronizing the image topics, we will use __`message_filters`__.
@@ -276,12 +279,12 @@ ros2 launch camera_based_semantic_grid_mapping_r2 semantic_grid_mapping.launch.p
 A visualization window for the BEV image should appear.
 However, the BEV image looks like this: 
 
-<img src="../images/bev_wrong.PNG" alt="Description of image" />
+![fag1](../images/bev_wrong.PNG)
 
 Some parts of the code are still missing!
 
+### Task 4: Extract the camera intrinsic matrix from the CameraInfo message
 
-## Task 4: Extract the camera intrinsic matrix from the CameraInfo message
 The goal of this task is to get the intrinsic matrices `K` of the cameras. 
 
 For this purpose, you have to modify the following lines in the function __compute_bev__ by __replacing__ `PLACE_HOLDER_INTRINSIC` with your code.
@@ -292,13 +295,13 @@ For this purpose, you have to modify the following lines in the function __compu
 PLACE_HOLDER_INTRINSIC = [100., 0., 0., 0., 100., 0., 0., 0., 100.] # comment this line in your solution
 K = np.reshape(PLACE_HOLDER_INTRINSIC, (3,3)) # replace the placeholder and use the actual camera intrinsics
 ```
-#### hints:
+##### hints:
 - The `CameraInfo` message is provided in the variable `cam_info_msg`. 
 - In the __CameraInfo__ message, the intrinsic matrix is named __k__.
 
 
 
-## Task 5: Calculate the camera extrinsic matrix
+### Task 5: Calculate the camera extrinsic matrix
 The goal of this task is to compute extrinsic matrices of the cameras based on information in the `CameraInfo` messages.
 
 The extrinsic matrix transforms the camera's coordinate frame to the vehicle's coordinates frame.
@@ -316,7 +319,7 @@ Replace the `None` placeholders in the function `compute_bev()` in __"semanctic_
 # transform = self.tfBuffer.lookup_transform(None, None, None) # uncomment and adjust
 ```
 
-#### Hints:
+##### Hints:
 - The vehicle's base link frame name is saved in `self.vehicle_base_link`.
 - The camera frame name can be found in the `CameraInfo` topic.
 - Look up the transformation at the common time `common_time`.
@@ -385,29 +388,30 @@ Rerun the node :
 ros2 launch camera_based_semantic_grid_mapping_r2 semantic_grid_mapping.launch.py 
 ```
 
-## Result
+### Result
+
 After completing the `compute_bev` function and restarting the node, you should see the following output.
 
-<img src="../images/carla_bev.PNG" alt="Description of image" />
-
+![fag1](../images/carla_bev.PNG)
 
 Congratulations!
 
 **Optional additional task**: Create an RVIZ configuration and a launch file that starts the semantic grid mapping node and RVIZ with your RVIZ configuration. Display all 8 images from the camera persepctive and the BEV image, if the performance of your computer permits!
 
-## Wrap-up
+### Wrap-up
 - You learned how to synchronize subscribers.
 - You learned how `CameraInfo` messages can be used to extract the camera parameters.
 - You learned how to perform coordinate transformations using ROS libraries like `tf2` and `tf_conversions`. 
 - You have completed a simple Python ROS package for camera-based semantic grid mapping.
 - Feel free to explore the rest of the code for a deeper understanding of the semantic grid mapping package.
 
+---
 
-## ROS1 Instructions
-![ROS1](https://img.shields.io/badge/ROS1-blue)
+## ![ROS1](https://img.shields.io/badge/ROS1-blue) Instructions
 
-<!-- omit in toc -->
-## Perform Camera-based Semantic Grid Mapping using geometry-based inverse perspective mapping
+
+
+
 
 In this workshop, we will perform __semantic grid mapping__ based on images taken by vehicle-mounted cameras. 
 The approach will make use of inverse perspective mapping (IPM).
@@ -421,8 +425,8 @@ The learning goals of this workshop are ...
 - Learn how to use the tf2 library
 - Learn how to visualize the output of semantic grid mapping
 
-<!-- omit in toc -->
-## Introduction to this workshop
+
+### Introduction to this workshop
 
 We prepared a rosbag with camera data for you to use.
 
@@ -475,18 +479,21 @@ topics:      /carla/ego_vehicle/rgb_view/camera_info                            
 
 You can see that the rosbag has a duration of 7.5 seconds and contains segmented images of type `sensor_msgs/Image` and corresponding `sensor_msgs/CameraInfo` messages. 
 We will use these camera images in this assignment in order to apply semantic grid mapping.
-<!-- omit in toc -->
-### ROS `sensor_msgs/Image` Message
+
+
+#### ROS `sensor_msgs/Image` Message
 
 The message definition [sensor_msgs/Image](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/Image.html) is ROS' image message format. This message type provides a way to send images `sensor_msgs/Image` that can be used seamlessly with many different ROS visualization and image processing tools. Please read the documentation about the [detailed message format](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/Image.html) and its content.
 
-<!-- omit in toc -->
-### ROS `sensor_msgs/CameraInfo`
+
+
+#### ROS `sensor_msgs/CameraInfo`
 
 The message definition [sensor_msgs/CameraInfo](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/CameraInfo.html) is ROS' standard camera info message format. It is sent together with `sensor_msgs/Image` or `sensor_msgs/CompressedImage` to provide additional information about the current camera image such as __camera calibration parameters__. Please read the documentation about the [detailed message format](https://docs.ros.org/en/melodic/api/sensor_msgs/html/msg/CameraInfo.html).
 
-<!-- omit in toc -->
-## Task 1: Explore the semantic grid mapping package and build and source the package
+
+### Task 1: Explore the semantic grid mapping package and build and source the package
+
 The code for the camera-based semantic grid mapping node can be found in the directory `workshops/section_2/camera_based_semantic_grid_mapping`. 
 
 The main source code is located in the directory `src`. The launch file and parameters are located in directory `launch`. Feel free to read all the code, parameters and launch files.
@@ -504,8 +511,8 @@ source devel/setup.bash
 
 Perfect! Now you will be able to perform semantic grid mapping using camera images with this package. Let's go to the next task.
 
-<!-- omit in toc -->
-## Task 2: Replay rosbag and run the camera-based grid mapping node
+
+### Task 2: Replay rosbag and run the camera-based grid mapping node
 
 We have already prepared a launch file for you to execute the camera-based semantic grid mapping package. Please read through the following lines of code carefully. 
 
@@ -583,16 +590,15 @@ roslaunch camera_based_semantic_grid_mapping start_all.launch
 
 The `image_view` node should show you the semantically segmented images of the right and left forward facing cameras. They are sufficient for testing the node, for now.
 
-
-<img src="../images/visualization.PNG" alt="Description of image" />
+![fag1](../images/visualization.PNG)
 
 
 However, the Bird's Eye View (BEV) image is not shown. This is because the node doesn't yet subscribe to the correct images and cameras info topics yet.   
 
 In the following tasks, you will need to modify code in __"semantic_grid_mapping.py"__. After finishing all tasks, you will have completed the semantic grid mapping node.
 
-<!-- omit in toc -->
-## Task 3: Synchronize the subscribers 
+
+### Task 3: Synchronize the subscribers 
 As we want to combine images from multiple cameras to produce a BEV image, these images need to be from the same time step.
 
 For the purpose of synchronizing the image topics, we will use __`message_filters`__.
@@ -645,12 +651,13 @@ roslaunch camera_based_semantic_grid_mapping start_all.launch
 A visualization window for the BEV image should appear.
 However, the BEV image looks like this: 
 
-<img src="../images/bev_wrong.PNG" alt="Description of image" />
+![fag1](../images/bev_wrong.PNG)
+
 
 Some parts of the code are still missing!
 
-<!-- omit in toc -->
-## Task 4: Extract the camera intrinsic matrix from the CameraInfo message
+
+### Task 4: Extract the camera intrinsic matrix from the CameraInfo message
 The goal of this task is to get the intrinsic matrices `K` of the cameras. 
 
 For this purpose, you have to modify the following lines in the function __compute_bev__ by __replacing__ `PLACE_HOLDER_INTRINSIC` with your code.
@@ -660,14 +667,14 @@ For this purpose, you have to modify the following lines in the function __compu
 PLACE_HOLDER_INTRINSIC = [100., 0., 0., 0., 100., 0., 0., 0., 100.] # comment this line in your solution
 K = np.reshape(PLACE_HOLDER_INTRINSIC, (3,3)) # replace the placeholder and use the actual camera intrinsics
 ```
-<!-- omit in toc -->
-#### hints:
+
+##### hints:
 - The `CameraInfo` message is provided in the variable `cam_info_msg`. 
 - In the __CameraInfo__ message, the intrinsic matrix is named __K__.
 
 
-<!-- omit in toc -->
-## Task 5: Calculate the camera extrinsic matrix
+
+### Task 5: Calculate the camera extrinsic matrix
 The goal of this task is to compute extrinsic matrices of the cameras based on information in the `CameraInfo` messages.
 
 The extrinsic matrix transforms the camera's coordinate frame to the vehicle's coordinates frame.
@@ -685,7 +692,7 @@ Replace the `None` placeholders in the function `compute_bev()` in __"semanctic_
 # transform = self.tfBuffer.lookup_transform(None, None, None) # uncomment and adjust
 ```
 <!-- omit in toc -->
-#### Hints:
+##### Hints:
 - The vehicle's base link frame name is saved in `self.vehicle_base_link`.
 - The camera frame name can be found in the `CameraInfo` topic.
 - Look up the transformation at the common time `common_time`.
@@ -754,16 +761,18 @@ Rerun the node :
 roslaunch camera_based_semantic_grid_mapping start_all.launch
 ```
 <!-- omit in toc -->
-## Result
+### Result
 After completing the `compute_bev` function and restarting the node, you should see the following output.
 
-<img src="../images/carla_bev.PNG" alt="Description of image" />
+
+![fag1](../images/carla_bev.PNG)
+
 
 Congratulations!
 
 **Optional additional task**: Create an RVIZ configuration and a launch file that starts the semantic grid mapping node and RVIZ with your RVIZ configuration. Display all 8 images from the camera persepctive and the BEV image, if the porformance of your computer permits!
-<!-- omit in toc -->
-## Wrap-up
+
+### Wrap-up
 - You learned how to synchronize subscribers.
 - You learned how `CameraInfo` messages can be used to extract the camera parameters.
 - You learned how to perform coordinate transformations using ROS libraries like `tf2` and `tf_conversions`. 

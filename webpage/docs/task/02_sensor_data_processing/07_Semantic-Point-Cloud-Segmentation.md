@@ -1,8 +1,9 @@
-# Perform Deep Learning based Semantic Point Cloud Segmentation
+# Perform Deep Learning Based Semantic Point Cloud Segmentation
 
 ![ROS2](https://img.shields.io/badge/ROS2-red)
 
-<img src="../images/video2.gif" alt="Description of image" />
+
+![fag](../images/video2.gif)
 
 In this workshop, we will perform __semantic point cloud segmentation__ on raw LiDAR data using the deep learning model from the notebooks. In particular, we will take a recording from our test vehicle which is equipped with a Velodyne VLP-32C and we will apply our detection model on the raw sensor data.
 
@@ -200,9 +201,7 @@ ros2 launch pointcloud_segmentation_r2 pointcloud_segmentation_r2.launch.py
 
 You should see now the model's prediction as shown in the image below. 
 
-
 <img src="../images/uploads/4a7ce26ec2d312a8a6396adaab190936/image.png" alt="Description of image" />
-
 
 
 ## Review of file pointcloud_segmentation.py

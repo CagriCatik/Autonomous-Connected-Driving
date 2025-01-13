@@ -1,9 +1,8 @@
-# Perform Deep Learning based semantic image segmentation applied on camera images
+# Semantic Image Segmentation Applied on Camera Images
 
-[ROS2](https://img.shields.io/badge/ROS2-red)
+![ROS2](https://img.shields.io/badge/ROS2-red)
 
-
-<img src="../images/image_segmentation.png" alt="Description of image" />
+![Image Segmentation](../images/image_segmentation.png)
 
 In this workshop, we will perform __semantic image segmentation__ on raw camera data using a deep learning model. In particular, we will take a recording from our test vehicle which is equipped with a on board camera and we will apply the segmentation model on the sensor data stream.
 
@@ -241,13 +240,12 @@ ros2 launch image_segmentation_r2 image_segmentation_r2.launch.py
 
 The `image_view` node should show you directly the camera image as shown in this image:
 
-<img src="../images/city.png" alt="Description of image" />
 
+![Image Segmentation](../images/city.png)
 
 However, the segmented image looks like this 
 
-<img src="../images/image_rect_segmented.png" alt="Description of image" />
-
+![Image Segmentation](../images/image_rect_segmented.png)
 
 Something is wrong. We have apparently a bug in the code !!! Let's solve this problem.
 
@@ -336,9 +334,7 @@ __Hints__
 ### Expected output
 After fixing the function `segmentation_map_to_rgb()`, you will see that the inference node now will publish correct RGB encoded segmentations of the camera image. You will obtain segmented images as shown here: 
 
-
-<img src="../images/sem_seg.png" alt="Description of image" />
-
+![Image Segmentation](../images/sem_seg.png)
 
 ## Wrap-up
 - You learned about the ROS2 definitions for camera images and camera info messages
@@ -349,10 +345,8 @@ After fixing the function `segmentation_map_to_rgb()`, you will see that the inf
 ## ROS1 Instructions
 ![ROS1](https://img.shields.io/badge/ROS1-blue)
 
+![Image Segmentation](../images/image_segmentation.png)
 
-<img src="../images/image_segmentation.png" alt="Description of image" />
-
-<!-- omit in toc -->
 #### Perform Deep Learning based semantic image segmentation applied on camera images
 
 In this workshop, we will perform __semantic image segmentation__ on raw camera data using a deep learning model. In particular, we will take a recording from our test vehicle which is equipped with a on board camera and we will apply the segmentation model on the sensor data stream.
@@ -363,7 +357,6 @@ The learning goals of this workshop are
 - Learn about a simple Python inference node for semantic image segmentation
 - Learn to visualize the output of semantic image segmentation
 
-<!-- omit in toc -->
 ### Start the Docker Environment
 
 Navigate to the local directory `${REPOSITORY}/docker` and execute `./ros1_run.sh`. This will start the Docker container, in which ROS and all required libraries are preinstalled. You can stop the container by pressing <kbd>Ctrl</kbd>+<kbd>C</kbd> in the terminal. If everything is setup correctly you will see the following:
@@ -406,7 +399,6 @@ rosuser@******:~/ws/catkin_workspace$
 
 The `acdc` folder is mounted from your host into the container. Note that your current working directory inside the container is `/home/rosuser/ws/catkin_workspace`.
 
-<!-- omit in toc -->
 ## Download and Inspect Bag file
 
 Download the file `left_camera_templergraben.bag` from [__here (1.2 GB)__](https://rwth-aachen.sciebo.de/s/sbSBamXYCfQw9kM).
@@ -438,18 +430,17 @@ topics:      /sensors/camera/left/camera_info    540 msgs    : sensor_msgs/Camer
 ```
 
 You can see that the rosbag has a duration of 18 seconds and contains 540 image frames of type `sensor_msgs/Image` and 540 corresponding `sensor_msgs/CameraInfo` messages. We will use these camera images in this assignment in order to apply image segmentation.
-<!-- omit in toc -->
+
 ## ROS' `sensor_msgs/Image` Message
 
 The message definition [sensor_msgs/Image](https://docs.ros.org/en/melodic/api/sensor_msgs/html/msg/Image.html) is ROS' standard image message format. It is used for all kind of camera image message types and can be used seamlessly with many different ROS visualization and image processing tools. Please read the documentation about the [detailed message format](https://docs.ros.org/en/melodic/api/sensor_msgs/html/msg/Image.html) and it's content.
 
-<!-- omit in toc -->
+
 ## ROS' `sensor_msgs/CameraInfo`
 
 The message definition [sensor_msgs/CameraInfo](https://docs.ros.org/en/melodic/api/sensor_msgs/html/msg/CameraInfo.html) is ROS' standard camera info message format. It is send together with `sensor_msgs/Image` to provide additional information about the current camera image such as __camera calibration parameters__. Feel free to read the documentation about the [detailed message format](https://docs.ros.org/en/melodic/api/sensor_msgs/html/msg/CameraInfo.html).
 
 
-<!-- omit in toc -->
 ## Build and source the package
 The code for the image segmentation inference node can be found in the directory `workshops/section_2/image_segmentation_py`. The structure of this __Python package__ is illustrated in the following:
 
@@ -491,7 +482,6 @@ source devel/setup.bash
 ```
 Perfect! Now you will be able to perform inference on camera images with this package. Let's go to the next section.
 
-<!-- omit in toc -->
 ## Replay rosbag and run image segmentation
 
 We have already prepared a launch file for you to execute the image segmentation. Please read carefully through the following lines of code. 
@@ -569,6 +559,7 @@ roslaunch image_segmentation_py start_all.launch
 
 The `image_view` node should show you directly the camera image as shown in this image:
 
+
 <img src="../images/96116c6f4b59104e706cb4b425d7afad/image.png" alt="Description of image" />
 
 However, the segmented image looks like this 
@@ -577,7 +568,6 @@ However, the segmented image looks like this
 
 Something is wrong. We have apparently a bug in the code !!! Let's solve this problem.
 
-<!-- omit in toc -->
 ## Review of file image_segmentation.py
 Before we start with the task, let's try to understand what happens in the file [`image_segmentation.py`](https://github.com/ika-rwth-aachen/acdc/blob/main/catkin_workspace/src/workshops/section_2/image_segmentation_py/src/image_segmentation.py).
 
@@ -622,8 +612,8 @@ The file `image_segmentation.py` contains the inference node for the image segme
     *Reads a xml file which is located in `models` and which contains information which class ID is associated with which RGB value and vice versa. It processes the xml file in such a way that it can be used to convert a segmentation map in to an RGB encoded image.*
 
 
-<!-- omit in toc -->
 ## Task 1: Implement conversion from segmentation map to RGB encoding 
+
 Unfortunately, the function `segmentation_map_to_rgb()` in the file [`image_segmentation.py`](https://github.com/ika-rwth-aachen/acdc/blob/main/catkin_workspace/src/workshops/section_2/image_segmentation_py/src/image_segmentation.py) wasn't implemented correctly. Open this file with your favorite code editor and let's have a look on this function.
 
 ```python
@@ -659,15 +649,14 @@ __Hints__
 * __Loop approach:__ Iterate over all class IDs in segmentation map and retrieve the corresponding RGB value for each class and place this triplet (R,G,B) at the correct location of the returned RGB image.
 * __Advanced vectorized approach:__ Should be the faster and more efficient implementation. Avoid using a loop, but rather rely on numpy's vectorized indexing operations!
 
-<!-- omit in toc -->
 #### Expected output
+
 After fixing the function `segmentation_map_to_rgb()`, you will see that the inference node now will publish correct RGB encoded segmentations of the camera image. You will obtain segmented images as shown here: 
 
 <img src="../images/uploads/f3f5b8942b8d2a32363ca9560bafdf14/image.png" alt="Description of image" />
 
-
-<!-- omit in toc -->
 ## Wrap-up
+
 - You learned about the ROS definitions for camera images and camera info messages
 - You learned about a simple Python ROS package for semantic image segmentation
 - You learned about encoding the segmentation map to the RGB encoding
