@@ -53,8 +53,7 @@ const config = {
         docs: {
           sidebarPath: "./sidebars.js",
           editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
-          // Add remark-math and rehype-katex plugins
+          "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
           remarkPlugins: [require("remark-math")],
           rehypePlugins: [require("rehype-katex")],
         },
