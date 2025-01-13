@@ -93,6 +93,6 @@ I utilize **Docusaurus** for structured documentation. Follow these steps to ser
 - **[edX Course Page](https://learning.edx.org/course/course-v1:RWTHx+ACDC+3T2023/home):** Enroll to access all materials.
 - **[ROS Resources](https://www.ros.org/):** Documentation and community support.
 
-## Acknowledgments
+## Acknowledgement
 
 This project is developed by the **Institute for Automotive Engineering (ika)** at RWTH Aachen University. Special thanks to all contributors and participants for advancing the field of automated and connected driving.

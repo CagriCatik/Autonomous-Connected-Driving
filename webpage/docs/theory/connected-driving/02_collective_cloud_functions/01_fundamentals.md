@@ -121,14 +121,6 @@ While collective cloud functions offer substantial benefits, several challenges 
   
 - **Scalability**: As vehicle connectivity expands, the volume of data generated will increase exponentially. Managing this growth requires scalable solutions that can handle expanding data volumes without degradation in performance.
 
-## Future Directions
-
-- **Edge Computing**: The adoption of fog computing architectures is expected to grow, addressing real-time requirements by processing data closer to the source and thereby reducing latency.
-  
-- **AI Integration**: Enhanced integration of artificial intelligence will lead to more sophisticated learning mechanisms, enabling predictive and adaptive functionalities that can respond dynamically to changing conditions.
-  
-- **Standardization**: The development of robust protocols for Vehicle-to-Everything (V2X) communication will be crucial for ensuring interoperability and seamless data exchange among diverse entities within the automated driving ecosystem.
-
 ## Conclusion
 
 Collective cloud functions are instrumental in propelling the advancement of automated and connected driving systems. By centralizing data processing, harnessing powerful cloud hardware, and enabling efficient data distribution, these functions significantly elevate vehicle intelligence and safety standards. Addressing existing challenges such as latency sensitivity, data relevance, and scalability will unlock new potentials in automated mobility, paving the way toward fully autonomous and interconnected transportation systems. As technology evolves, collective cloud functions will continue to play a critical role in shaping the future of automated driving.
