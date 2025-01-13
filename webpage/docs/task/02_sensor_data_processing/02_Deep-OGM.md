@@ -14,7 +14,7 @@ roslaunch pointcloud_ogm DeepISM.launch
 
 Rviz will show the lidar point cloud. If you enable the checkbox next to "Grid Map (DeepISM)" you will also see an occupancy grid map, but **there is something wrong**.
 
-<img src="../images/rviz_deepISM.PNG" alt="Description of image" />
+<img src="../images/rviz_deepISM.png" alt="Description of image" />
 
 
 Have a look at the code in `workshops/section_2/pointcloud_ogm/src/DeepISM.cpp`. The node performs the following steps:

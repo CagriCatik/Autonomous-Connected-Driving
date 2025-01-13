@@ -217,7 +217,7 @@ ros2 launch camera_based_semantic_grid_mapping_r2 semantic_grid_mapping.launch.p
 
 The `image_view` node should show you the semantically segmented images of the right and left forward facing cameras. They are sufficient for testing the node, for now.
 
-![fag1](../images/visualization.PNG)
+![visualization](../images/visualization.png)
 
 
 However, the Bird's Eye View (BEV) image is not shown. This is because the node doesn't yet subscribe to the correct images and cameras info topics yet.   
@@ -279,7 +279,7 @@ ros2 launch camera_based_semantic_grid_mapping_r2 semantic_grid_mapping.launch.p
 A visualization window for the BEV image should appear.
 However, the BEV image looks like this: 
 
-![fag1](../images/bev_wrong.PNG)
+![bev wrong](../images/bev_wrong.png)
 
 Some parts of the code are still missing!
 
@@ -392,7 +392,7 @@ ros2 launch camera_based_semantic_grid_mapping_r2 semantic_grid_mapping.launch.p
 
 After completing the `compute_bev` function and restarting the node, you should see the following output.
 
-![fag1](../images/carla_bev.PNG)
+![carla bev](../images/carla_bev.png)
 
 Congratulations!
 
@@ -590,7 +590,7 @@ roslaunch camera_based_semantic_grid_mapping start_all.launch
 
 The `image_view` node should show you the semantically segmented images of the right and left forward facing cameras. They are sufficient for testing the node, for now.
 
-![fag1](../images/visualization.PNG)
+![visualization](../images/visualization.png)
 
 
 However, the Bird's Eye View (BEV) image is not shown. This is because the node doesn't yet subscribe to the correct images and cameras info topics yet.   
@@ -651,7 +651,7 @@ roslaunch camera_based_semantic_grid_mapping start_all.launch
 A visualization window for the BEV image should appear.
 However, the BEV image looks like this: 
 
-![fag1](../images/bev_wrong.PNG)
+![bev wrong ros2](../images/bev_wrong.png)
 
 
 Some parts of the code are still missing!
@@ -765,10 +765,7 @@ roslaunch camera_based_semantic_grid_mapping start_all.launch
 After completing the `compute_bev` function and restarting the node, you should see the following output.
 
 
-![fag1](../images/carla_bev.PNG)
-
-
-Congratulations!
+![carla bev ros2](../images/carla_bev.png)
 
 **Optional additional task**: Create an RVIZ configuration and a launch file that starts the semantic grid mapping node and RVIZ with your RVIZ configuration. Display all 8 images from the camera persepctive and the BEV image, if the porformance of your computer permits!
 

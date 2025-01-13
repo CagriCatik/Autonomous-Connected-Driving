@@ -2,7 +2,7 @@
 
 ![ROS1](https://img.shields.io/badge/ROS1-blue)
 
-![fag1](../images/section_2/object_detection/header_object_detection.PNG)
+![fag1](../images/section_2/object_detection/header_object_detection.png)
 
 ## Overview
 
@@ -95,7 +95,7 @@ Trajectory optimization SUCCESSFUL after [...]s.
 
 #### Expected RViz Visualization:
 
-![fag1](../images/section_2/object_detection/rviz.PNG)
+![fag1](../images/section_2/object_detection/rviz.png)
 
 - **PointCloud2 Display:** Shows the raw LiDAR point cloud data.
 - **Adjust Visualization Settings:** Enhance visibility by modifying parameters such as `Size`, `Style`, `Decay Time`, and `Color Transformer` in the `PointCloud2` tab.
@@ -287,7 +287,7 @@ roslaunch lidar_detection start_rosbag_play_rviz.launch
 
 #### Expected RViz Window:
 
-![fag1](../images/section_2/object_detection/rviz.PNG)
+![fag1](../images/section_2/object_detection/rviz.png)
 
 - **PointCloud2 Display:** Visualizes the raw LiDAR point clouds.
 - **Customization:** Enhance visualization by adjusting settings such as `Size`, `Style`, `Decay Time`, and `Color Transformer` within the `PointCloud2` tab.
@@ -377,13 +377,13 @@ Once the detection node is running, configure RViz to display the detected objec
    - Choose `/lidar_detection/object_list/IkaObjectList`.
    - Click **OK**.
 
-   ![fag1](../images/section_2/object_detection/rviz_select.PNG)
+   ![fag1](../images/section_2/object_detection/rviz_select.png)
 
 2. **Resulting Visualization:**
    - Detected objects are displayed with bounding boxes.
    - Objects are color-coded based on their classified type (e.g., cars, pedestrians).
 
-   ![fag1](../images/section_2/object_detection/task.PNG)
+   ![fag1](../images/section_2/object_detection/task.png)
 
 *Issue Encountered:* Initially, bounding boxes may not align accurately, and all objects might be classified as `UNKNOWN`. These issues will be addressed in the subsequent tasks.
 
@@ -491,7 +491,7 @@ Once the detection node is running, configure RViz to display the detected objec
 
    *Expected Visualization:*
 
-   ![fag1](../images/section_2/object_detection/result.PNG)
+   ![fag1](../images/section_2/object_detection/result.png)
 
    *Note:* The bounding boxes should align more accurately with the detected objects, and classes should start to populate correctly.
 
@@ -565,7 +565,7 @@ Once the detection node is running, configure RViz to display the detected objec
 
    *Expected Visualization:*
 
-   ![fag1](../images/section_2/object_detection/result.PNG)
+   ![fag1](../images/section_2/object_detection/result.png)
 
    *Observation:* Correct class assignments reduce false positives and enhance the overall detection performance.
 

@@ -2,8 +2,6 @@
 
 ![ROS1](https://img.shields.io/badge/ROS1-blue)
 
-## Overview
-
 Occupancy grid mapping is a cornerstone technique in autonomous vehicle perception systems, enabling the creation of a probabilistic representation of the environment. By converting raw LiDAR point clouds into structured grid maps, vehicles can efficiently navigate, detect obstacles, and make informed decisions. This workshop delves into **geometric inverse sensor models** for generating occupancy grids from LiDAR data within the **Robot Operating System (ROS)** framework. Participants will gain hands-on experience in implementing and visualizing occupancy grid maps, understanding the nuances of sensor data processing, and leveraging ROS tools for effective perception.
 
 ## Learning Objectives
@@ -466,7 +464,7 @@ The **inverse sensor model (ISM)** translates sensor measurements (LiDAR point c
    - **Enable Grid Map Visualization:** In RViz, ensure that the "Grid Map (GeometricISM)" display is activated.
    - **Assess Occupancy Map:** The grid map should now display occupied cells (inferred from LiDAR reflections) and free cells, reflecting the environment's layout.
 
-   ![Image Segmentation](../images/section_2/object_detection/result.PNG)
+   ![Image Segmentation](../images/section_2/object_detection/result.png)
 
    *Observation:* The occupancy grid map accurately represents detected obstacles and open spaces, facilitating effective navigation and obstacle avoidance.
 
