@@ -39,15 +39,15 @@ A **geometric inverse sensor model** is a method that interprets sensor measurem
 
 **Core Concepts:**
 
-- **Sensor Position (\( S \)):** The origin point from which sensor measurements are taken.
-- **Reflection Point (\( R \)):** A point in space where the sensor detects a reflection, indicating a potential obstacle.
-- **Grid Cell (\( C \)):** A discrete unit within the occupancy grid map.
+- **Sensor Position ($S$):** The origin point from which sensor measurements are taken.
+- **Reflection Point ($R$):** A point in space where the sensor detects a reflection, indicating a potential obstacle.
+- **Grid Cell ($C$):** A discrete unit within the occupancy grid map.
 
 **Operational Principles:**
 
-1. **Occupied Cells:** Cells near the reflection points \( R \) are assigned high occupancy probabilities.
-2. **Free Cells:** Cells along the line from the sensor position \( S \) to \( R \) but not at \( R \) are assigned low occupancy probabilities, indicating free space.
-3. **Unknown Cells:** Cells beyond \( R \) retain their prior probability (often 50%), representing uncertainty.
+1. **Occupied Cells:** Cells near the reflection points $R$ are assigned high occupancy probabilities.
+2. **Free Cells:** Cells along the line from the sensor position $S$ to $R$ but not at $R$ are assigned low occupancy probabilities, indicating free space.
+3. **Unknown Cells:** Cells beyond $R$ retain their prior probability (often 50%), representing uncertainty.
 
 ### Mathematical Foundations
 
@@ -55,17 +55,17 @@ The geometric inverse sensor model is grounded in geometry and probability theor
 
 **Binary Bayes Filter:**
 
-To update the occupancy probabilities based on sensor measurements, the Binary Bayes Filter is employed. The filter updates the posterior probability of occupancy $\( P(O_k|z_{1:k}) \)$ for each cell $\( k \)$ using the following equation:
+To update the occupancy probabilities based on sensor measurements, the Binary Bayes Filter is employed. The filter updates the posterior probability of occupancy $$P(O_k|z_{1:k})$$ for each cell $$k$$ using the following equation:
+
 $$
-\[
 P(O_k|z_{1:k}) = \frac{P(z_k|O_k) \cdot P(O_k|z_{1:k-1})}{P(z_k|z_{1:k-1})}
-\]
 $$
+
 Where:
-- $\( P(O_k|z_{1:k}) \)$: Posterior probability of occupancy for cell \( k \).
-- $\( P(z_k|O_k) \)$: Likelihood of sensor measurement \( z_k \) given occupancy.
-- $\( P(O_k|z_{1:k-1}) \)$: Prior probability of occupancy before the current measurement.
-- $\( P(z_k|z_{1:k-1}) \)$: Normalizing constant ensuring probabilities sum to one.
+- $P(O_k|z_{1:k})$: Posterior probability of occupancy for cell $k$.
+- $P(z_k|O_k)$: Likelihood of sensor measurement $z_k$ given occupancy.
+- $P(O_k|z_{1:k-1})$: Prior probability of occupancy before the current measurement.
+- $P(z_k|z_{1:k-1})$: Normalizing constant ensuring probabilities sum to one.
 
 This Bayesian update allows for the integration of multiple sensor measurements over time, refining the occupancy estimates for each grid cell.
 
@@ -146,12 +146,12 @@ Output: Point cloud excluding ground points (isolated obstacles)
 **Process:**
 
 1. **Iterate Over Reflection Points:**
-   - For each reflection point \( R \) in the point cloud, perform the following:
+   - For each reflection point $R$ in the point cloud, perform the following:
    
 2. **Determine Affected Cells:**
-   - **Occupied Cell:** The cell containing \( R \) is assigned a high occupancy probability (e.g., 90%).
-   - **Free Cells:** All cells along the line from the sensor position \( S \) to \( R \) are assigned low occupancy probabilities (e.g., 10%).
-   - **Unknown Cells:** Cells beyond \( R \) retain their prior probability (e.g., 50%).
+   - **Occupied Cell:** The cell containing $R$ is assigned a high occupancy probability (e.g., 90%).
+   - **Free Cells:** All cells along the line from the sensor position $S$ to $R$ are assigned low occupancy probabilities (e.g., 10%).
+   - **Unknown Cells:** Cells beyond $R$ retain their prior probability (e.g., 50%).
 
 3. **Update Grid:**
    - Modify the occupancy probabilities of the affected cells based on the inverse sensor model.
@@ -167,20 +167,20 @@ Sensor Position (S) ----> Free Cells (Low Probability) ----> Occupied Cell (High
 **Objective:** Update the occupancy probabilities of grid cells by combining information from multiple sensor measurements over time.
 
 **Bayesian Update Equation:**
+
 $$
-\[
 P(O_k | z_{1:k}) = \frac{P(z_k | O_k) \cdot P(O_k | z_{1:k-1})}{P(z_k | z_{1:k-1})}
-\]
 $$
+
 **Implementation Steps:**
 
-1. **Prior Probability $(\( P_{\text{prior}} \))$:**
+1. **Prior Probability $P_{\text{prior}}$:**
    - Initialize to the cell's current occupancy probability.
 
-2. **Likelihood $(\( P(z_k | O_k) \))$:**
+2. **Likelihood $P(z_k | O_k)$:**
    - Based on the inverse sensor model (e.g., high for occupied, low for free).
 
-3. **Compute Posterior Probability $(\( P_{\text{posterior}} \))$:**
+3. **Compute Posterior Probability $P_{\text{posterior}}$:**
    - Apply the Bayesian update to combine prior and likelihood.
 
 4. **Iterate Over All Measurements:**

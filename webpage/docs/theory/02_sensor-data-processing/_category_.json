@@ -1,8 +1,8 @@
 {
-  "label": "Image Segmentation", 
+  "label": "Sensor Data Processing",
   "position": 2,
   "link": {
     "type": "generated-index",
-    "description": "README"
+    "description": " "
   }
 }
