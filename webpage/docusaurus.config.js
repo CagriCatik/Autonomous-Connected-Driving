@@ -158,11 +158,11 @@ const config = {
             items: [
               {
                 label: "C++",
-                to: "/docs/cpp/content",
+                to: "/docs/cpp/getting_started",
               },
               {
                 label: "Python",
-                to: "/docs/python/content",
+                to: "/docs/python/getting_started",
               },
             ],
           },
@@ -172,11 +172,11 @@ const config = {
             items: [
               {
                 label: "ROS",
-                to: "/docs/ros/content",
+                to: "/docs/ros/getting_started",
               },
               {
                 label: "ROS2",
-                to: "/docs/ros2/content",
+                to: "/docs/ros2/getting_started",
               },
             ],
           },
