@@ -5,13 +5,12 @@
 <meta name="generator" content="Docusaurus v3.7.0">
 <title data-rh="true">Sensor Data Processing | Automated and Connected Driving</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://cagricatik.github.io/Autonomous-Connected-Driving/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://cagricatik.github.io/Autonomous-Connected-Driving/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://cagricatik.github.io/Autonomous-Connected-Driving/docs/theory/sensor-data-processing/introduction"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Sensor Data Processing | Automated and Connected Driving"><meta data-rh="true" name="description" content="Sensor data processing is a cornerstone of autonomous vehicle functionality. It enables vehicles to perceive and interpret their environment, similar to human perception, ensuring safe and efficient operation. This document introduces the goals, categories, and challenges of sensor data processing, focusing on environment perception through electromagnetic and pressure wave detection."><meta data-rh="true" property="og:description" content="Sensor data processing is a cornerstone of autonomous vehicle functionality. It enables vehicles to perceive and interpret their environment, similar to human perception, ensuring safe and efficient operation. This document introduces the goals, categories, and challenges of sensor data processing, focusing on environment perception through electromagnetic and pressure wave detection."><link data-rh="true" rel="icon" href="/Autonomous-Connected-Driving/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://cagricatik.github.io/Autonomous-Connected-Driving/docs/theory/sensor-data-processing/introduction"><link data-rh="true" rel="alternate" href="https://cagricatik.github.io/Autonomous-Connected-Driving/docs/theory/sensor-data-processing/introduction" hreflang="en"><link data-rh="true" rel="alternate" href="https://cagricatik.github.io/Autonomous-Connected-Driving/docs/theory/sensor-data-processing/introduction" hreflang="x-default"><link rel="alternate" type="application/rss+xml" href="/Autonomous-Connected-Driving/blog/rss.xml" title="Automated and Connected Driving RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/Autonomous-Connected-Driving/blog/atom.xml" title="Automated and Connected Driving Atom Feed"><link rel="stylesheet" href="/Autonomous-Connected-Driving/assets/css/styles.ce2d5abf.css">
-<script src="/Autonomous-Connected-Driving/assets/js/runtime~main.897d4552.js" defer="defer"></script>
-<script src="/Autonomous-Connected-Driving/assets/js/main.20551814.js" defer="defer"></script>
+<script src="/Autonomous-Connected-Driving/assets/js/runtime~main.effd47cc.js" defer="defer"></script>
+<script src="/Autonomous-Connected-Driving/assets/js/main.8bb99436.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/Autonomous-Connected-Driving/"><div class="navbar__logo"><img src="/Autonomous-Connected-Driving/img/logo.png" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/Autonomous-Connected-Driving/img/logo.png" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate"></b></a><a class="navbar__item navbar__link" href="/Autonomous-Connected-Driving/docs/theory/introduction-tools/getting_started">Introduction &amp; Tools</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/Autonomous-Connected-Driving/docs/theory/sensor-data-processing/getting_started">Sensor Data Processing</a><a class="navbar__item navbar__link" href="/Autonomous-Connected-Driving/docs/theory/object-fusion-tracking/getting_started">Object Fusion and Tracking</a><a class="navbar__item navbar__link" href="/Autonomous-Connected-Driving/docs/theory/vehicle-guidance/getting_started">Vehicle Guidance</a><a class="navbar__item navbar__link" href="/Autonomous-Connected-Driving/docs/theory/connected-driving/getting_started">Connected Driving</a><a class="navbar__item navbar__link" href="/Autonomous-Connected-Driving/docs/task/getting_started">Tasks</a></div><div class="navbar__items navbar__items--right"><a class="navbar__item navbar__link" href="/Autonomous-Connected-Driving/docs/cpp/getting_started">C++</a><a class="navbar__item navbar__link" href="/Autonomous-Connected-Driving/docs/python/getting_started">Python</a><a class="navbar__item navbar__link" href="/Autonomous-Connected-Driving/docs/ros/getting_started">ROS</a><a class="navbar__item navbar__link" href="/Autonomous-Connected-Driving/docs/ros2/getting_started">ROS2</a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite" aria-pressed="false"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/Autonomous-Connected-Driving/docs/theory/sensor-data-processing/getting_started">Getting Started</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/Autonomous-Connected-Driving/docs/category/introduction-1">Introduction</a><button aria-label="Collapse sidebar category &#x27;Introduction&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/Autonomous-Connected-Driving/docs/theory/sensor-data-processing/introduction">Sensor Data Processing</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/Autonomous-Connected-Driving/docs/theory/sensor-data-processing/introduction/goals_challenges">Goals and Challenges of Environment Perception</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/Autonomous-Connected-Driving/docs/category/image-segmentation">Image Segmentation</a><button aria-label="Expand sidebar category &#x27;Image Segmentation&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/Autonomous-Connected-Driving/docs/category/semantic-point-cloud-segmentation">Semantic Point Cloud Segmentation</a><button aria-label="Expand sidebar category &#x27;Semantic Point Cloud Segmentation&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/Autonomous-Connected-Driving/docs/category/object-detection">Object Detection</a><button aria-label="Expand sidebar category &#x27;Object Detection&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/Autonomous-Connected-Driving/docs/category/point-cloud-ogm">Point Cloud OGM</a><button aria-label="Expand sidebar category &#x27;Point Cloud OGM&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/Autonomous-Connected-Driving/docs/category/camera-based-semantic-grid-mapping">Camera Based Semantic Grid Mapping</a><button aria-label="Expand sidebar category &#x27;Camera Based Semantic Grid Mapping&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/Autonomous-Connected-Driving/docs/category/localization">Localization</a><button aria-label="Expand sidebar category &#x27;Localization&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/Autonomous-Connected-Driving/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/Autonomous-Connected-Driving/docs/category/introduction-1"><span itemprop="name">Introduction</span></a><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">Sensor Data Processing</span><meta itemprop="position" content="2"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Sensor Data Processing</h1></header>
 <p>Sensor data processing is a cornerstone of autonomous vehicle functionality. It enables vehicles to perceive and interpret their environment, similar to human perception, ensuring safe and efficient operation. This document introduces the goals, categories, and challenges of sensor data processing, focusing on environment perception through electromagnetic and pressure wave detection.</p>
-<hr>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="importance-in-autonomous-driving">Importance in Autonomous Driving<a href="#importance-in-autonomous-driving" class="hash-link" aria-label="Direct link to Importance in Autonomous Driving" title="Direct link to Importance in Autonomous Driving">​</a></h2>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="foundation-of-autonomous-driving">Foundation of Autonomous Driving<a href="#foundation-of-autonomous-driving" class="hash-link" aria-label="Direct link to Foundation of Autonomous Driving" title="Direct link to Foundation of Autonomous Driving">​</a></h3>
 <p>Autonomous vehicles rely heavily on sensor data to navigate and interact with their surroundings. Sensors such as cameras, LiDAR, radar, and ultrasonic devices collect vast amounts of data in real-time, which are essential for tasks like object detection, localization, and decision-making. Accurate perception of the environment allows autonomous systems to:</p>
@@ -46,7 +45,6 @@
 <li>Predictive Actions: Anticipating potential future states of the environment to proactively adjust plans.</li>
 </ul>
 <p>This seamless integration ensures that the autonomous system can respond effectively to both immediate and anticipated changes in the driving environment, much like human reflexes.</p>
-<hr>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="categories-of-sensor-data-processing">Categories of Sensor Data Processing<a href="#categories-of-sensor-data-processing" class="hash-link" aria-label="Direct link to Categories of Sensor Data Processing" title="Direct link to Categories of Sensor Data Processing">​</a></h2>
 <p>Sensor data processing in autonomous vehicles can be broadly categorized into two main areas: environment perception and self-perception. This documentation focuses on environment perception, which involves detecting and interpreting external stimuli through electromagnetic and pressure wave detection.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="1-environment-perception">1. Environment Perception<a href="#1-environment-perception" class="hash-link" aria-label="Direct link to 1. Environment Perception" title="Direct link to 1. Environment Perception">​</a></h3>
@@ -115,7 +113,6 @@
 <li>Wheel Speed Detectors: Monitor the rotation speed of each wheel to detect slipping or skidding.</li>
 </ul>
 <p><em>Note: While self-perception is critical for overall vehicle operation, this documentation focuses solely on environment perception.</em></p>
-<hr>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="research-challenges">Research Challenges<a href="#research-challenges" class="hash-link" aria-label="Direct link to Research Challenges" title="Direct link to Research Challenges">​</a></h2>
 <p>Advancing sensor data processing for autonomous vehicles involves addressing several key challenges to ensure accuracy, reliability, and cost-effectiveness.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="accuracy-and-reliability">Accuracy and Reliability<a href="#accuracy-and-reliability" class="hash-link" aria-label="Direct link to Accuracy and Reliability" title="Direct link to Accuracy and Reliability">​</a></h3>
@@ -139,7 +136,6 @@
 <li>Data Heterogeneity: Managing varying data formats, resolutions, and update rates from different sensor types.</li>
 <li>Algorithm Complexity: Developing efficient algorithms that can handle the combined data without introducing latency, which is critical for real-time applications.</li>
 </ul>
-<hr>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="processing-workflow">Processing Workflow<a href="#processing-workflow" class="hash-link" aria-label="Direct link to Processing Workflow" title="Direct link to Processing Workflow">​</a></h2>
 <p>The sensor data processing workflow in autonomous vehicles typically follows a structured sequence of steps to transform raw sensor inputs into actionable insights.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="1-raw-data-acquisition">1. Raw Data Acquisition<a href="#1-raw-data-acquisition" class="hash-link" aria-label="Direct link to 1. Raw Data Acquisition" title="Direct link to 1. Raw Data Acquisition">​</a></h3>
@@ -178,7 +174,6 @@
 <li>Path Planning: Using object positions and classifications to determine safe and efficient routes.</li>
 <li>Control Systems: Adjusting vehicle dynamics based on planned paths and detected environmental factors.</li>
 </ul>
-<hr>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="technological-highlights">Technological Highlights<a href="#technological-highlights" class="hash-link" aria-label="Direct link to Technological Highlights" title="Direct link to Technological Highlights">​</a></h2>
 <p>Advancements in sensor technologies have significantly enhanced the capabilities of autonomous vehicles. This section highlights key technologies, their advantages, and associated challenges.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="camera-and-lidar">Camera and LiDAR<a href="#camera-and-lidar" class="hash-link" aria-label="Direct link to Camera and LiDAR" title="Direct link to Camera and LiDAR">​</a></h3>
@@ -207,7 +202,6 @@
 <li>Range Limitations: Ultrasonic sensors have shorter effective ranges, making them suitable only for close-proximity applications.</li>
 <li>Interference: Multiple radar systems operating in close proximity can experience signal interference, affecting data accuracy.</li>
 </ul>
-<hr>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="applications-in-autonomous-driving">Applications in Autonomous Driving<a href="#applications-in-autonomous-driving" class="hash-link" aria-label="Direct link to Applications in Autonomous Driving" title="Direct link to Applications in Autonomous Driving">​</a></h2>
 <p>Sensor data processing plays a pivotal role in various autonomous driving applications, ensuring vehicles can navigate safely and efficiently through complex environments.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="lane-keeping">Lane Keeping<a href="#lane-keeping" class="hash-link" aria-label="Direct link to Lane Keeping" title="Direct link to Lane Keeping">​</a></h3>
@@ -231,13 +225,10 @@
 <li>Right-of-Way Management: Sensors assess the presence and movement of other vehicles and pedestrians to manage right-of-way at intersections.</li>
 <li>Predictive Modeling: Anticipating the actions of other road users to make informed decisions on movement through intersections.</li>
 </ul>
-<hr>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="conclusion">Conclusion<a href="#conclusion" class="hash-link" aria-label="Direct link to Conclusion" title="Direct link to Conclusion">​</a></h2>
 <p>Mastering sensor data processing is critical for advancing autonomous driving technologies. By focusing on environment perception, researchers and engineers can contribute to safer and more reliable autonomous systems. Effective sensor data processing involves accurately acquiring, preprocessing, and interpreting data from a variety of sensors to model the surrounding environment and inform decision-making processes. Addressing challenges related to accuracy, cost, and data fusion is essential for the continued development and deployment of autonomous vehicles.</p>
 <p>Future sections will delve deeper into practical implementations of sensor data processing, including segmentation, mapping, and object tracking. This documentation provides a structured foundation to understand the principles, challenges, and applications of sensor data processing in automated vehicles, catering to both beginners and advanced users by ensuring clarity, technical depth, and contextual relevance throughout.</p>
-<hr>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="quiz---introduction-to-sensor-data-processing">Quiz - Introduction to Sensor Data Processing<a href="#quiz---introduction-to-sensor-data-processing" class="hash-link" aria-label="Direct link to Quiz - Introduction to Sensor Data Processing" title="Direct link to Quiz - Introduction to Sensor Data Processing">​</a></h2>
-<hr>
 <ul>
 <li>
 <p>Sensor data processing is at ... of data processing in an automated vehicle.</p>
@@ -248,9 +239,6 @@
 </ul>
 <p>Explanation: Sensor data processing is the first step in an automated vehicle&#x27;s decision-making pipeline. It involves collecting raw data from sensors and converting it into actionable insights for subsequent tasks like perception, localization, and control.</p>
 </li>
-</ul>
-<hr>
-<ul>
 <li>
 <p>What makes sensor data processing especially important in automated vehicles?</p>
 <ul class="contains-task-list containsTaskList_mC6p">
@@ -260,9 +248,6 @@
 </ul>
 <p>Explanation: Sensor data processing plays a central role in automated vehicles because it is foundational to many interconnected systems. Errors or inefficiencies in this stage can propagate through the system, affecting perception, decision-making, and control.</p>
 </li>
-</ul>
-<hr>
-<ul>
 <li>
 <p>Input for sensor data processing is generated by ...</p>
 <ul class="contains-task-list containsTaskList_mC6p">
@@ -272,9 +257,6 @@
 </ul>
 <p>Explanation: Sensor data is collected from the external environment (e.g., roads, obstacles, pedestrians) as well as from the vehicle itself (e.g., wheel speed, acceleration). These inputs provide a comprehensive view for understanding both the environment and the vehicle’s state.</p>
 </li>
-</ul>
-<hr>
-<ul>
 <li>
 <p>Wheel speed is an example for ...</p>
 <ul class="contains-task-list containsTaskList_mC6p">
@@ -284,9 +266,6 @@
 </ul>
 <p>Explanation: Wheel speed is a measurement of the vehicle’s internal state, which falls under self-perception. It provides critical information about the vehicle&#x27;s motion and is essential for functions like traction control and odometry.</p>
 </li>
-</ul>
-<hr>
-<ul>
 <li>
 <p>A lidar sensor is able to provide information on ...</p>
 <ul class="contains-task-list containsTaskList_mC6p">
@@ -296,9 +275,6 @@
 </ul>
 <p>Explanation: Lidar sensors emit laser pulses to detect objects and create a precise 3D map of the surroundings by measuring the distance and location of reflection points. They do not capture color or detailed textures like cameras.</p>
 </li>
-</ul>
-<hr>
-<ul>
 <li>
 <p>One disadvantage of lidar sensors compared to cameras nowadays:</p>
 <ul class="contains-task-list containsTaskList_mC6p">
@@ -308,9 +284,6 @@
 </ul>
 <p>Explanation: Lidar sensors are significantly more expensive than cameras due to their complex hardware. While they excel in depth perception and 3D mapping, their cost remains a limitation in widespread adoption.</p>
 </li>
-</ul>
-<hr>
-<ul>
 <li>
 <p>Microphones ...:</p>
 <ul class="contains-task-list containsTaskList_mC6p">
@@ -320,9 +293,6 @@
 </ul>
 <p>Explanation: Microphones can help with environment perception by detecting ambient sounds (e.g., emergency sirens) and self-perception by monitoring internal vehicle noises for diagnostics.</p>
 </li>
-</ul>
-<hr>
-<ul>
 <li>
 <p>There exist active and passive sensors. Active sensors emit signals and receive signals while passive sensors only receive signals.</p>
 <ul class="contains-task-list containsTaskList_mC6p">
@@ -333,9 +303,6 @@
 </ul>
 <p>Explanation: Active sensors like lidar emit energy (e.g., lasers) to detect objects. Passive sensors like thermal cameras rely on natural emissions (e.g., heat) and do not actively emit energy. RGB cameras and ultrasonic sensors are also passive since they do not emit signals.</p>
 </li>
-</ul>
-<hr>
-<ul>
 <li>
 <p>By combining multiple different sensor modalities, an automated vehicle can directly acquire information on the 3D location, color and velocity of an object in the environment. Mark the sensor setup, which is capable of doing so:</p>
 <ul class="contains-task-list containsTaskList_mC6p">
@@ -346,9 +313,6 @@
 </ul>
 <p>Explanation: Combining lidar, radar, and RGB cameras allows the system to gather 3D spatial data (lidar), velocity (radar), and color information (RGB cameras), providing a complete picture of the environment.</p>
 </li>
-</ul>
-<hr>
-<ul>
 <li>
 <p>The time-of-flight principle can be used to measure distances D using a laser pulse. The laser pulse travels at light speed c and is reflected by an object in the environment such that the pulse&#x27;s reflection is registered at the emitting sensor at time t after it was emitted. What formula should we use to determine the distance between the sensor and the object which created the reflection?</p>
 <ul class="contains-task-list containsTaskList_mC6p">
