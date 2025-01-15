@@ -2,8 +2,6 @@
 
 Environment perception is a critical component of sensor data processing in autonomous vehicles. It involves detecting and characterizing elements within the vehicle's surroundings to enable safe and intelligent decision-making. This document outlines the goals and challenges of environment perception, emphasizing the use of advanced algorithms, particularly neural networks, to tackle these tasks.
 
----
-
 ## Goals of Environment Perception
 
 The primary objectives of environment perception are to accurately detect, locate, classify, and understand objects and events in the vehicle's environment. Achieving these goals ensures that autonomous vehicles can navigate safely and efficiently. The main goals are outlined below:
@@ -63,8 +61,6 @@ Detailed characterization enhances the contextual understanding of the environme
 
 - Contextual Factors: Includes understanding the relationships between objects, environmental conditions, and traffic rules.
 - Impact: Leads to improved situational awareness and adaptability in complex driving scenarios.
-
----
 
 ## Challenges in Environment Perception
 
@@ -188,8 +184,6 @@ Regularly validating model accuracy over the vehicle's lifespan ensures that per
 - Techniques: Continuous monitoring, periodic testing, and deploying validation frameworks to assess model performance.
 - Importance: Prevents degradation of perception capabilities and ensures ongoing safety and reliability.
 
----
-
 ## Leveraging Neural Networks
 
 Neural networks are a cornerstone of modern environment perception due to their ability to handle complex tasks and learn from large datasets. Their application has revolutionized the way autonomous vehicles interpret sensor data, enabling more accurate and robust perception systems.
@@ -212,7 +206,7 @@ Incorporating techniques to reduce bias in detection and classification ensures 
 - Methods: Balancing training datasets, implementing fairness constraints in loss functions, and conducting bias audits.
 - Outcome: Promotes inclusive and reliable perception, enhancing safety and trustworthiness.
 
----
+
 
 ## Conclusion
 
