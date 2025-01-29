@@ -6,7 +6,7 @@ Connected Driving represents a pivotal advancement in the evolution of automated
 
 ## Key Aspects of Connected Driving
 
-### 1. Relation to the A-Model
+### Relation to the A-Model
 
 **Integration with A-Model:**
 Connected driving is seamlessly embedded within the A-Model, a streamlined functional architecture designed for automated vehicles. This integration enhances the A-Model by:
@@ -18,7 +18,7 @@ Connected driving is seamlessly embedded within the A-Model, a streamlined funct
 **Visualization:**
 The interconnected components within the A-Model are typically represented using wireless symbols, highlighting the dependency on robust communication technologies that facilitate real-time data exchange.
 
-### 2. Goals of Connected Driving
+### Goals of Connected Driving
 
 **Support for Various Road Users:**
 Connected driving systems are designed to accommodate a diverse range of road users, ensuring a harmonious and safe transportation environment:
@@ -33,7 +33,7 @@ Optimizing the management of mobility systems through connected technologies inv
 - **Traffic Control Optimization:** Utilizes real-time data to improve the efficiency of traffic signals, digital speed signs, and other control mechanisms.
 - **Computing Balance:** Strategically distributes computing tasks between local edge servers and remote cloud systems to achieve optimal performance and responsiveness.
 
-### 3. Functional Categorization
+### Functional Categorization
 
 Connected driving functionalities are systematically categorized to address both general and specific challenges within the transportation ecosystem:
 
@@ -46,7 +46,7 @@ Connected driving functionalities are systematically categorized to address both
 - **Real-Time Data Exchange:** Facilitates the sharing of sensor data between vehicles to overcome occlusions and blind spots, ensuring comprehensive environmental awareness.
 - **Enhanced Environment Modeling:** Improves the accuracy of autonomous system perceptions, leading to safer and more reliable decision-making.
 
-### 4. Terminology Overview
+### Terminology Overview
 
 A solid grasp of key terminologies is essential for navigating the landscape of connected driving:
 
@@ -91,7 +91,7 @@ Connected Driving offers a multitude of advantages that transform the driving ex
 
 To ensure a comprehensive understanding of Connected Driving, the module incorporates a variety of interactive and practical learning activities:
 
-### 1. Coding Assignments
+### Coding Assignments
 
 **Objective:** Implement connected driving functionalities using frameworks such as ROS (Robot Operating System).
 
@@ -128,7 +128,7 @@ if __name__ == '__main__':
 - **Publisher Setup:** A publisher is created to send messages on the `traffic_signal` topic.
 - **Loop:** The node publishes the traffic signal status ("Green Light") at a rate of 10 Hz until shutdown.
 
-### 2. Quizzes
+### Quizzes
 
 **Objective:** Reinforce conceptual understanding through self-assessment.
 

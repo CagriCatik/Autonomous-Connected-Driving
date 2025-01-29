@@ -10,8 +10,9 @@ The **state vector** encapsulates all the properties of an object that are estim
 
 The state vector is typically defined as follows:
 
+
+
 $$
-\[
 \mathbf{x}_{\hat{G}} = 
 \begin{bmatrix}
 x \\
@@ -19,21 +20,21 @@ y \\
 v_x \\
 v_y \\
 a_x \\
-a_y \\
+a_y
 \end{bmatrix}
-\]
 $$
+
 
 Where:
 - **Position**:
-  - \( x \): Longitudinal position relative to the ego vehicle.
-  - \( y \): Lateral position relative to the ego vehicle.
+  -  $x$ : Longitudinal position relative to the ego vehicle.
+  -  $y$ : Lateral position relative to the ego vehicle.
 - **Velocity**:
-  - \( v_x \): Longitudinal velocity.
-  - \( v_y \): Lateral velocity.
+  -  $v_x$: Longitudinal velocity.
+  -  $v_y$ : Lateral velocity.
 - **Acceleration**:
-  - \( a_x \): Longitudinal acceleration.
-  - \( a_y \): Lateral acceleration.
+  -  $a_x$ : Longitudinal acceleration.
+  -  $a_y$ : Lateral acceleration.
 - **Dimensions**:
   - **Width**: The lateral size of the object.
   - **Height**: The vertical size of the object.
@@ -42,15 +43,15 @@ Where:
 
 ### Explanation of Components
 
-- **Position (\( x, y \))**:
+- **Position ( $x$, $y$ )**:
   - Represents the current location of the object in the global environment model.
   - Critical for determining the object's proximity to the ego vehicle and potential collision paths.
   
-- **Velocity (\( v_x, v_y \))**:
+- **Velocity ( $v_x$, $v_y$ )**:
   - Indicates the speed and direction of the object's movement.
   - Essential for predicting future positions based on current motion.
   
-- **Acceleration (\( a_x, a_y \))**:
+- **Acceleration ( $a_x$, $a_y$ )**:
   - Captures changes in the object's velocity over time.
   - Allows the Kalman filter to adapt to dynamic movements, such as speeding up, slowing down, or changing direction.
 
@@ -81,30 +82,30 @@ The **error covariance matrix** quantifies the uncertainty associated with each 
 ### Characteristics of the Error Covariance Matrix
 
 $$
-\[
 \mathbf{P} = 
 \begin{bmatrix}
-P_{xx} & P_{xy} & P_{xv_x} & P_{xy_v} & P_{x a_x} & P_{xy_a} \\
-P_{yx} & P_{yy} & P_{yv_x} & P_{yy_v} & P_{y a_x} & P_{yy_a} \\
-P_{v_x x} & P_{v_x y} & P_{v_x v_x} & P_{v_x y_v} & P_{v_x a_x} & P_{v_x y_a} \\
-P_{v_y x} & P_{v_y y} & P_{v_y v_x} & P_{v_y y_v} & P_{v_y a_x} & P_{v_y y_a} \\
-P_{a_x x} & P_{a_x y} & P_{a_x v_x} & P_{a_x y_v} & P_{a_x a_x} & P_{a_x y_a} \\
-P_{a_y x} & P_{a_y y} & P_{a_y v_x} & P_{a_y y_v} & P_{a_y a_x} & P_{a_y y_a} \\
+P_{xx} & P_{xy} & P_{x v_x} & P_{x v_y} & P_{x a_x} & P_{x a_y} \\
+P_{yx} & P_{yy} & P_{y v_x} & P_{y v_y} & P_{y a_x} & P_{y a_y} \\
+P_{v_x x} & P_{v_x y} & P_{v_x v_x} & P_{v_x v_y} & P_{v_x a_x} & P_{v_x a_y} \\
+P_{v_y x} & P_{v_y y} & P_{v_y v_x} & P_{v_y v_y} & P_{v_y a_x} & P_{v_y a_y} \\
+P_{a_x x} & P_{a_x y} & P_{a_x v_x} & P_{a_x v_y} & P_{a_x a_x} & P_{a_x a_y} \\
+P_{a_y x} & P_{a_y y} & P_{a_y v_x} & P_{a_y v_y} & P_{a_y a_x} & P_{a_y a_y}
 \end{bmatrix}
-\]
 $$
 
-Where each $\( P_{ij} \)$ represents the covariance between state variables $\( i \)$ and $\( j \)$.
+
+
+Where each $ P_{ij} $ represents the covariance between state variables $ i $ and $ j $.
 
 ### Interpretation
 
-- **Diagonal Elements $(\( P_{ii} \))$**:
+- **Diagonal Elements $( P_{ii} )$**:
   - Represent the variance of each corresponding state variable.
   - Indicate the degree of uncertainty in each estimate.
   - **Smaller Values**: Higher confidence and lower uncertainty.
   - **Larger Values**: Greater uncertainty and lower confidence.
   
-- **Off-Diagonal Elements $(\( P_{ij} \)$, $\( i \neq j \))$**:
+- **Off-Diagonal Elements $( P_{ij} $, $ i \neq j )$**:
   - Capture the covariance between different state variables.
   - Reflect the interdependencies and correlations between estimates.
   - **Positive Values**: Indicate that an increase in one variable is associated with an increase in another.
@@ -115,7 +116,6 @@ Where each $\( P_{ij} \)$ represents the covariance between state variables $\( 
 An initial covariance matrix is often set to represent high uncertainty in the state estimates before any measurements are incorporated.
 
 $$
-\[
 \mathbf{P}_0 = 
 \begin{bmatrix}
 1000 & 0 & 0 & 0 & 0 & 0 \\
@@ -125,7 +125,6 @@ $$
 0 & 0 & 0 & 0 & 1000 & 0 \\
 0 & 0 & 0 & 0 & 0 & 1000 \\
 \end{bmatrix}
-\]
 $$
 
 ```python
@@ -142,33 +141,29 @@ During the prediction and update steps of the Kalman filter, the error covarianc
 #### Prediction Step
 
 $$
-\[
 \mathbf{P}[k] = \mathbf{F} \cdot \mathbf{P}[k-1] \cdot \mathbf{F}^T + \mathbf{Q}
-\]
 $$
 
-- **$\( \mathbf{F} \)$**: Motion model matrix.
-- **$\( \mathbf{Q} \)$**: Process noise covariance matrix.
+- **$ \mathbf{F} $**: Motion model matrix.
+- **$ \mathbf{Q} $**: Process noise covariance matrix.
 
 #### Update Step
 
 $$
-\[
 \mathbf{P}[k|k] = (\mathbf{I} - \mathbf{K} \cdot \mathbf{H}) \cdot \mathbf{P}[k|k-1]
-\]
 $$
 
-- **$\( \mathbf{K} \)$**: Kalman Gain.
-- **$\( \mathbf{H} \)$**: Measurement matrix.
-- **$\( \mathbf{I} \)$**: Identity matrix.
+- **$ \mathbf{K} $**: Kalman Gain.
+- **$ \mathbf{H} $**: Measurement matrix.
+- **$ \mathbf{I} $**: Identity matrix.
 
 ### Importance in the Kalman Filter
 
 The error covariance matrix plays a critical role in the Kalman filter by:
 
-- **Determining the Kalman Gain ($\( \mathbf{K} \)$)**:
+- **Determining the Kalman Gain ($ \mathbf{K} $)**:
   - The Kalman Gain balances the trust between the prediction and the new measurements.
-  - High uncertainty in the prediction $(\( \mathbf{P} \))$ leads to higher Kalman Gain, giving more weight to the measurements.
+  - High uncertainty in the prediction $( \mathbf{P} )$ leads to higher Kalman Gain, giving more weight to the measurements.
   
 - **Assessing Filter Confidence**:
   - The magnitude of the covariance elements indicates the filter's confidence in each state estimate.

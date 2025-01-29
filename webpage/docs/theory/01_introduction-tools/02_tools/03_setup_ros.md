@@ -1,9 +1,6 @@
 # Setup ROS Coding Environment
 
-## Introduction
 This guide provides a detailed walkthrough for setting up the ROS coding environment required for the ACDC course. It includes instructions for installing and configuring essential tools like Docker, Visual Studio Code (VS Code), and related scripts, ensuring a seamless development experience with ROS and ROS 2.
-
----
 
 To begin, it is recommended to use **Visual Studio Code (VS Code)** as the Integrated Development Environment (IDE) for editing and managing ROS code. Install VS Code by following the official [installation guide for Ubuntu](https://code.visualstudio.com/docs/setup/linux). Alternatively, you can use any IDE you are familiar with.
 

@@ -4,9 +4,9 @@ Connected driving leverages advanced communication technologies to enhance vehic
 
 ---
 
-# Key Terminologies and Abbreviations
+## Key Terminologies and Abbreviations
 
-## V2X (Vehicle-to-Everything)
+### V2X (Vehicle-to-Everything)
 V2X is an overarching term that encompasses all forms of vehicular connectivity. It enables communication between a vehicle and various entities, including other vehicles, infrastructure, pedestrians, and cloud-based services. V2X plays a critical role in enhancing road safety, improving traffic management, and enabling advanced driver assistance systems (ADAS).
 
 Subcategories of V2X:
@@ -23,16 +23,16 @@ Subcategories of V2X:
 - V2P (Vehicle-to-Pedestrian):
   V2P communication ensures the safety of pedestrians by enabling vehicles to detect and communicate with individuals on foot. This is particularly important in urban environments and complex traffic scenarios where pedestrian movements can be unpredictable.
 
-## Directional Reversal
+### Directional Reversal
 The directional reversal of V2X abbreviations (e.g., I2V, C2V) indicates the flow of data in the opposite direction. For instance, while V2I refers to communication from the vehicle to the infrastructure, I2V denotes communication from the infrastructure to the vehicle. This bidirectional communication is essential for comprehensive data exchange and coordinated responses between vehicles and their environment.
 
 ---
 
-# Connectivity Approaches
+## Connectivity Approaches
 
 V2X communication is enabled through two primary technological approaches, each with its distinct characteristics, advantages, and challenges.
 
-## Wi-Fi-Based Approach
+### Wi-Fi-Based Approach
 
 IEEE 802.11p Standard:
 Often referred to as Wi-Fi in the automotive domain, IEEE 802.11p is a standard specifically designed for vehicular environments. It facilitates direct communication between vehicles and between vehicles and infrastructure over short distances, typically up to a few hundred meters. This standard operates in the 5.9 GHz band and supports high-speed data transmission with low latency, making it suitable for safety-critical applications.
@@ -58,7 +58,7 @@ Challenges:
 - Infrastructure Requirements:
   Deploying Wi-Fi-based V2X systems necessitates additional infrastructure, such as roadside units (RSUs), to bridge the gap between vehicles and the internet, potentially leading to higher initial deployment costs.
 
-## Cellular-V2X (C-V2X)
+### Cellular-V2X (C-V2X)
 
 Definition:
 Cellular-V2X leverages existing cellular networks (including LTE, 4G, and emerging 5G technologies) to facilitate V2X communications. This approach integrates V2X capabilities into the broader cellular infrastructure, enabling both direct and network-based communications.
@@ -89,7 +89,7 @@ Challenges:
 
 ---
 
-# Comparative Insights
+## Comparative Insights
 
 | Feature                      | Wi-Fi-Based (ITS-G5/DSRC) | Cellular-V2X (C-V2X)         |
 |------------------------------|----------------------------|------------------------------|
@@ -103,7 +103,7 @@ This comparison highlights the trade-offs between Wi-Fi-based and Cellular-V2X a
 
 ---
 
-# Strategic Considerations
+## Strategic Considerations
 
 When deciding between Wi-Fi-based and Cellular-V2X approaches, several strategic factors come into play:
 
@@ -121,7 +121,7 @@ When deciding between Wi-Fi-based and Cellular-V2X approaches, several strategic
 
 ---
 
-# Applications of V2X Technologies
+## Applications of V2X Technologies
 
 V2X technologies enable a myriad of applications that transform the driving experience, enhance safety, and improve overall transportation efficiency. Key applications include:
 
@@ -148,7 +148,7 @@ V2X technologies enable a myriad of applications that transform the driving expe
 
 ---
 
-# Conclusion
+## Conclusion
 
 Understanding and implementing V2X technologies is pivotal for the advancement of connected and automated driving. V2X serves as the backbone for a connected driving ecosystem, enabling seamless communication between vehicles, infrastructure, pedestrians, and cloud services. While regional preferences and technical challenges exist, the synergy of Wi-Fi-based and Cellular-V2X approaches offers a robust framework to transform mobility, safety, and traffic management globally.
 

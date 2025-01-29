@@ -1,7 +1,5 @@
 # Motivation
 
-## Introduction
-
 Automated and connected driving offers transformative potential in the transportation domain. This documentation explores the motivations behind these innovations, focusing on their safety, efficiency, environmental, and accessibility benefits. Additionally, it delves into the SAE levels of driving automation, a standardized framework to guide progress in automated driving development.
 
 ---
